@@ -3,8 +3,6 @@
  *  - Entry screen for all authentication
  *  - User can tap to login, forget password, signup...
  *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
  */
 import React, { Component } from 'react';
 import {

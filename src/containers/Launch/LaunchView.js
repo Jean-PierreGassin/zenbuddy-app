@@ -3,8 +3,6 @@
  *  - Shows a nice loading screen whilst:
  *  - Checking if user is logged in, and redirects from there
  *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
  */
 import React, { Component, PropTypes } from 'react';
 import {

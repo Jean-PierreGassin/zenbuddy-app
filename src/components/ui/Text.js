@@ -3,8 +3,6 @@
  *
      <Text h1>Hello World</Text>
  *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
  */
 import React, { Component, PropTypes } from 'react';
 import { Text } from 'react-native';

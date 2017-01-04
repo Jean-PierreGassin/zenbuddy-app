@@ -3,8 +3,6 @@
  *
     <TabIcon icon={'search'} selected={false} />
  *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
  */
 import React, { PropTypes } from 'react';
 import { Icon } from 'react-native-elements';

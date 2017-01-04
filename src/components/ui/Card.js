@@ -3,8 +3,6 @@
  *
      <Button text={'Server is down'} />
  *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
  */
 import React, { Component } from 'react';
 import { Card } from 'react-native-elements';

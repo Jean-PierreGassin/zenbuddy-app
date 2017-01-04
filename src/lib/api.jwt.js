@@ -1,8 +1,6 @@
 /**
  * API JWT Auth Functions
  *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
  */
  /* global fetch console */
 import { AsyncStorage } from 'react-native';

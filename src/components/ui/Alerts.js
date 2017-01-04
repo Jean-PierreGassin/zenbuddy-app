@@ -7,8 +7,6 @@
       status={'Something\'s happening...'}
     />
  *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
  */
 import React, { PropTypes } from 'react';
 import {

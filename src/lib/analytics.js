@@ -1,8 +1,6 @@
 /**
  * Custom Redux Middleware to track Redux Actions
  *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
  */
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 

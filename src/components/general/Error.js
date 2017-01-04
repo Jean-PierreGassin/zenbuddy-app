@@ -3,8 +3,6 @@
  *
     <Error text={'Server is down'} />
  *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
  */
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
