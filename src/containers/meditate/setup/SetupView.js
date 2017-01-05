@@ -90,7 +90,7 @@ class SetupView extends Component {
         selectedValue={this.state.sessionLength}
         onValueChange={(length) => this.setState({
           sessionLength: length,
-          readableSessionLength: `Session length: ${length} minutes`,
+          readableSessionLength: `Your session will be ${length} minutes long`,
         })
       }>
         {sessionLengths}
@@ -118,7 +118,7 @@ class SetupView extends Component {
 
               this.setState({
                 sessionSound: sound.file,
-                readableSessionSound: `You'll be listening to: ${sound.name}`,
+                readableSessionSound: `You'll be listening to ${sound.name}`,
               });
             }}
             hitSlop={{ top: 1, right: 10, bottom: 1, left: 10 }}
@@ -157,7 +157,7 @@ class SetupView extends Component {
         selectedValue={this.state.sessionInterval}
         onValueChange={(interval) => this.setState({
           sessionInterval: interval,
-          readableSessionInterval: `with ${interval} session intervals`,
+          readableSessionInterval: `${interval} times during your session`,
         })
       }>
         {sessionIntervals}
