@@ -142,7 +142,12 @@ class SetupView extends Component {
   }
 
   startSession = () => {
-    this.props.updateMe(this.state);
+    this.props.updateMe({
+      sessionSettings: {
+        sound: this.state.sessionSound,
+        length: this.state.sessionLength,
+      },
+    });
 
     Actions.session();
   }
