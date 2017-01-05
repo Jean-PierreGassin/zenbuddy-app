@@ -20,7 +20,7 @@ export default {
     backgroundColor: Colors.background,
   },
   containerCentered: {
-    height: Sizes.screen.height - Sizes.navbarHeight,
+    height: Sizes.screen.height - Sizes.navbarHeight - Sizes.tabbarHeight,
     justifyContent: 'center',
     alignItems: 'center',
   },
