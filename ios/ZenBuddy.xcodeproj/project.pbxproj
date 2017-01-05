@@ -32,6 +32,7 @@
 		1693424F1E1DAC2500B44A6D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342461E1DAC2500B44A6D /* SimpleLineIcons.ttf */; };
 		169342501E1DAC2500B44A6D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342471E1DAC2500B44A6D /* Zocial.ttf */; };
 		169342561E1E0B4500B44A6D /* Avenir-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 169342551E1E0B4500B44A6D /* Avenir-Light.otf */; };
+		1693425D1E1E275300B44A6D /* libRNSimpleSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1693425C1E1E273F00B44A6D /* libRNSimpleSound.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
@@ -149,6 +150,13 @@
 			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
 			remoteInfo = "React-tvOS";
 		};
+		1693425B1E1E273F00B44A6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169342571E1E273F00B44A6D /* RNSimpleSound.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27D4F42F1BED747600C15668;
+			remoteInfo = RNSimpleSound;
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -209,6 +217,7 @@
 		169342461E1DAC2500B44A6D /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		169342471E1DAC2500B44A6D /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
 		169342551E1E0B4500B44A6D /* Avenir-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Light.otf"; sourceTree = "<group>"; };
+		169342571E1E273F00B44A6D /* RNSimpleSound.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSimpleSound.xcodeproj; path = "../node_modules/react-native-simple-sound/RNSimpleSound.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -227,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1693425D1E1E275300B44A6D /* libRNSimpleSound.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -369,6 +379,14 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		169342581E1E273F00B44A6D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1693425C1E1E273F00B44A6D /* libRNSimpleSound.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +408,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				169342571E1E273F00B44A6D /* RNSimpleSound.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -550,6 +569,10 @@
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
+				{
+					ProductGroup = 169342581E1E273F00B44A6D /* Products */;
+					ProjectRef = 169342571E1E273F00B44A6D /* RNSimpleSound.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -663,6 +686,13 @@
 			fileType = archive.ar;
 			path = "libReact-tvOS.a";
 			remoteRef = 1693423A1E1DA8FF00B44A6D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1693425C1E1E273F00B44A6D /* libRNSimpleSound.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSimpleSound.a;
+			remoteRef = 1693425B1E1E273F00B44A6D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {

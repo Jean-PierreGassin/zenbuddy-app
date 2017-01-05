@@ -3430,10 +3430,6 @@ react-native-google-analytics-bridge@^4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/react-native-google-analytics-bridge/-/react-native-google-analytics-bridge-4.0.2.tgz#24adac55043adaddb01a61822d338fe5cd3ddd61"
 
-react-native-modal-picker@^0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/react-native-modal-picker/-/react-native-modal-picker-0.0.16.tgz#c9324d880a3bb8f36b772f378164977e2f431cbc"
-
 react-native-router-flux@^3.37.0:
   version "3.37.0"
   resolved "https://registry.yarnpkg.com/react-native-router-flux/-/react-native-router-flux-3.37.0.tgz#18e8fd3e1e6dbdc4d8340cd47313c28bb9bb1caf"
@@ -3446,6 +3442,10 @@ react-native-router-flux@^3.37.0:
 react-native-side-menu@^0.20.1:
   version "0.20.1"
   resolved "https://registry.yarnpkg.com/react-native-side-menu/-/react-native-side-menu-0.20.1.tgz#df21b4bb9d8a1aa3bae53d74ddf8a739eb59bfc5"
+
+react-native-simple-sound@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-simple-sound/-/react-native-simple-sound-1.0.0.tgz#a5a7c10455416c13a1b51611d5a9d61a9a10a387"
 
 react-native-tab-navigator@^0.3.3:
   version "0.3.3"
