@@ -10,6 +10,9 @@ import {
   InteractionManager,
 } from 'react-native';
 
+// Consts and Libs
+import { AppStyles, AppSizes } from '@theme/';
+
 // Components
 import { Text } from '@ui/';
 import Loading from '@components/general/Loading';
@@ -35,7 +38,9 @@ class PersonalView extends Component {
     if (this.state.error) return <Error text={this.state.error} />;
 
     return (
-      <Text>Personal View</Text>
+      <View style={[AppStyles.containerCentered]}>
+        <Text>Personal View</Text>
+      </View>
     );
   }
 }

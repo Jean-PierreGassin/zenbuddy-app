@@ -9,6 +9,9 @@ import {
   InteractionManager,
 } from 'react-native';
 
+// Consts and Libs
+import { AppStyles, AppSizes } from '@theme/';
+
 // Components
 import { Text } from '@ui/';
 import Loading from '@components/general/Loading';
@@ -34,7 +37,9 @@ class SettingsView extends Component {
     if (this.state.error) return <Error text={this.state.error} />;
 
     return (
-      <Text>Settings View</Text>
+      <View style={[AppStyles.containerCentered]}>
+        <Text>Settings View</Text>
+      </View>
     );
   }
 }
