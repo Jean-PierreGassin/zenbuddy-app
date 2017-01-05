@@ -32,19 +32,8 @@ export default Actions.create(
 
     {/* Main App */}
     <Scene key={'app'} {...AppConfig.navbarProps} title={AppConfig.appName} hideNavBar={false} type={ActionConst.RESET}>
-      {/* Drawer Side Menu */}
-      <Scene key={'home'} component={Drawer} initial={'tabBar'}>
-        {/* Tabbar */}
-        {TabsScenes}
-      </Scene>
-
-      {/* General */}
-      <Scene
-        key={'comingSoon'}
-        title={'Coming Soon'}
-        component={Placeholder}
-        analyticsDesc={'Placeholder: Coming Soon'}
-      />
+      {/* Tabbar */}
+      {TabsScenes}
     </Scene>
   </Scene>,
 );

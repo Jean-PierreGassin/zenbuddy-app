@@ -4,25 +4,25 @@
  */
 
 const app = {
-  background: '#E9EBEE',
+  background: '#fe621d',
 };
 
 const brand = {
   brand: {
-    primary: '#0E4EF8',
-    secondary: '#17233D',
+    primary: '#FD8145',
+    secondary: '#fe621d',
   },
 };
 
 const text = {
-  textPrimary: '#222222',
+  textPrimary: '#ffffff',
   textSecondary: '#777777',
   headingPrimary: brand.brand.primary,
   headingSecondary: brand.brand.primary,
 };
 
 const borders = {
-  border: '#D0D1D5',
+  border: '#fe621d',
 };
 
 const tabbar = {

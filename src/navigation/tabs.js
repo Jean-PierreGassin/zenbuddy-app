@@ -21,7 +21,7 @@ import RecipeView from '@containers/recipes/RecipeView';
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
-  renderLeftButton: () => <NavbarMenuButton />,
+  renderRightButton: () => <NavbarMenuButton />,
   sceneStyle: {
     ...AppConfig.navbarProps.sceneStyle,
     paddingBottom: AppSizes.tabbarHeight,
@@ -30,45 +30,30 @@ const navbarPropsTabs = {
 
 /* Routes ==================================================================== */
 const scenes = (
-  <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={0.95}>
+  <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={1}>
     <Scene
       {...navbarPropsTabs}
-      key={'recipes'}
-      title={'Recipes'}
-      icon={props => TabIcon({ ...props, icon: 'search' })}
-    >
-      <Scene
-        {...navbarPropsTabs}
-        key={'recipesListing'}
-        component={Recipes}
-        title={AppConfig.appName}
-        analyticsDesc={'Recipes: Browse Recipes'}
-      />
-      <Scene
-        {...AppConfig.navbarProps}
-        key={'recipeView'}
-        component={RecipeView}
-        getTitle={props => ((props.title) ? props.title : 'View Recipe')}
-        analyticsDesc={'RecipeView: View Recipe'}
-      />
-    </Scene>
-
+      key={'recipesListing'}
+      component={Placeholder}
+      title={'ZenBuddy'}
+      icon={props => TabIcon({ ...props, icon: 'weekend' })}
+      analyticsDesc={'Placeholder: Coming Soon'}
+    />
     <Scene
       key={'timeline'}
       {...navbarPropsTabs}
       title={'Coming Soon'}
       component={Placeholder}
-      icon={props => TabIcon({ ...props, icon: 'timeline' })}
+      icon={props => TabIcon({ ...props, icon: 'person-outline' })}
       analyticsDesc={'Placeholder: Coming Soon'}
     />
-
     <Scene
-      key={'styleGuide'}
+      key={'somethingelse'}
       {...navbarPropsTabs}
-      title={'Style Guide'}
-      component={StyleGuide}
-      icon={props => TabIcon({ ...props, icon: 'speaker-notes' })}
-      analyticsDesc={'StyleGuide: Style Guide'}
+      title={'Coming Soon'}
+      component={Placeholder}
+      icon={props => TabIcon({ ...props, icon: 'people-outline' })}
+      analyticsDesc={'Placeholder: Coming Soon'}
     />
   </Scene>
 );

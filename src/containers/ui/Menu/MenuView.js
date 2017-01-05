@@ -91,7 +91,15 @@ class Menu extends Component {
     this.state = {
       menu: [
         {
+          title: 'Home',
+          onPress: () => { this.props.closeSideMenu(); Actions.app(); },
+        },
+        {
           title: 'Recipes',
+          onPress: () => { this.props.closeSideMenu(); Actions.app(); },
+        },
+        {
+          title: 'Settings',
           onPress: () => { this.props.closeSideMenu(); Actions.app(); },
         },
         {

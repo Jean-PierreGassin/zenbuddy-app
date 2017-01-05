@@ -24,7 +24,7 @@ const RouterWithRedux = connect()(Router);
 
 // Load middleware
 let middleware = [
-  Analytics,
+  // Analytics,
   thunk, // Allows action creators to return functions (not just plain objects)
 ];
 
