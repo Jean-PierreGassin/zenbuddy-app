@@ -20,6 +20,7 @@ export default {
     backgroundColor: Colors.background,
   },
   containerCentered: {
+    height: Sizes.screen.height - Sizes.navbarHeight,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -209,6 +210,19 @@ export default {
   },
   flex6: {
     flex: 6,
+  },
+
+  // Buttons
+  primaryButton: {
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: Colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    height: Sizes.buttonHeight,
+    width: Sizes.screen.widthThreeQuarters,
+    backgroundColor: Colors.brand.primary,
   },
 
   // Navbar

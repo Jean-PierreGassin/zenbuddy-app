@@ -10,15 +10,15 @@ const app = {
 const brand = {
   brand: {
     primary: '#FD8145',
-    secondary: '#fe621d',
+    secondary: '#ffffff',
   },
 };
 
 const text = {
   textPrimary: '#ffffff',
   textSecondary: '#777777',
-  headingPrimary: brand.brand.primary,
-  headingSecondary: brand.brand.primary,
+  headingPrimary: brand.brand.secondary,
+  headingSecondary: brand.brand.secondary,
 };
 
 const borders = {

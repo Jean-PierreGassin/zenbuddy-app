@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 
-// Component 
+// Component
 class NavbarMenuButton extends Component {
   static componentName = 'NavbarMenuButton';
 
@@ -22,14 +22,13 @@ class NavbarMenuButton extends Component {
       <TouchableOpacity
         onPress={() => Actions.settings()}
         activeOpacity={0.7}
-        style={{ top: 2 }}
-        hitSlop={{ top: 7, right: 7, bottom: 7, left: 7 }}
+        hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
       >
-        <Icon name={'settings'} size={32} color={'#FFF'} />
+        <Icon name={'settings-applications'} size={25} color={'#FFF'} />
       </TouchableOpacity>
     );
   }
 }
 
-// Export Component 
+// Export Component
 export default NavbarMenuButton;
