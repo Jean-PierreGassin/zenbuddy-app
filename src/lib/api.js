@@ -2,7 +2,7 @@
  * API Functions
  *
  */
- /* global fetch console */
+ // global fetch console */
 import DeviceInfo from 'react-native-device-info';
 
 import JWT from '@lib/api.jwt';
@@ -37,7 +37,7 @@ const DEBUG_MODE = AppConfig.DEV;
 let requestCounter = 0;
 
 
-/* Helper Functions ==================================================================== */
+// Helper Functions 
 /**
   * Debug or not to debug
   */
@@ -194,7 +194,7 @@ function fetcher(method, endpoint, params, body) {
   });
 }
 
-/* Create the API Export ==================================================================== */
+// Create the API Export 
 /**
   * Build services from Endpoints
   * - So we can call AppAPI.recipes.get() for example
@@ -215,5 +215,5 @@ ENDPOINTS.forEach((endpoint, key) => {
   };
 });
 
-/* Export ==================================================================== */
+// Export 
 export default AppAPI;

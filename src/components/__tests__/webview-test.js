@@ -1,7 +1,7 @@
 /**
  * Test to check if the component renderes correctly
  */
- /* global it expect */
+ // global it expect */
 
 import 'react-native';
 import React from 'react';
@@ -15,7 +15,7 @@ import WebView from '../general/WebView';
  */
 it('WebView renders correcly', () => {
   const tree = renderer.create(
-    <WebView url={'http://google.com'} />
+    <WebView url={'http:// google.com'} />
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

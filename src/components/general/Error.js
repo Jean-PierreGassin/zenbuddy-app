@@ -14,7 +14,7 @@ import { AppStyles } from '@theme/';
 // Components
 import { Spacer, Text } from '@ui/';
 
-/* Component ==================================================================== */
+// Component 
 const Error = ({ text }) => (
   <View style={[AppStyles.container, AppStyles.containerCentered]}>
     <Icon name={'ios-alert-outline'} size={50} color={'#CCC'} />
@@ -29,5 +29,5 @@ Error.propTypes = { text: PropTypes.string };
 Error.defaultProps = { text: 'Woops, Something went wrong.' };
 Error.componentName = 'Error';
 
-/* Export Component ==================================================================== */
+// Export Component 
 export default Error;

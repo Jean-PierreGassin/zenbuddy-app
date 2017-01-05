@@ -28,7 +28,7 @@ const navbarPropsTabs = {
   },
 };
 
-/* Routes ==================================================================== */
+// Routes 
 const scenes = (
   <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={1}>
     <Scene

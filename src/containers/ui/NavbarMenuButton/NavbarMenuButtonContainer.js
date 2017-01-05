@@ -13,5 +13,5 @@ const mapStateToProps = () => ({});
 // Any actions to map to the component?
 const mapDispatchToProps = {};
 
-/* Export Component ==================================================================== */
+// Export Component 
 exports.NavbarMenuButton = connect(mapStateToProps, mapDispatchToProps)(NavbarMenuButtonRender);

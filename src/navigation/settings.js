@@ -20,7 +20,7 @@ const navbarPropsTabs = {
   },
 };
 
-/* Routes ==================================================================== */
+// Routes 
 const scene = (
   <Scene
     {...navbarPropsTabs}

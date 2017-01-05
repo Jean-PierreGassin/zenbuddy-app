@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 
-/* Component ==================================================================== */
+// Component 
 const Spacer = ({ size }) => (
   <View
     style={{
@@ -23,5 +23,5 @@ Spacer.propTypes = { size: PropTypes.number };
 Spacer.defaultProps = { size: 10 };
 Spacer.componentName = 'Spacer';
 
-/* Export Component ==================================================================== */
+// Export Component 
 export default Spacer;

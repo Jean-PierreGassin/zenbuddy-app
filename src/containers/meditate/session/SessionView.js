@@ -15,12 +15,10 @@ import { Text } from '@ui/';
 import Loading from '@components/general/Loading';
 import Error from '@components/general/Error';
 
-/* Styles ==================================================================== */
-const styles = StyleSheet.create({
+// Styles 
+const styles = StyleSheet.create({});
 
-});
-
-/* Component ==================================================================== */
+// Component
 class SessionView extends Component {
   static componentName = 'SessionView';
 
@@ -37,10 +35,10 @@ class SessionView extends Component {
     if (this.state.error) return <Error text={this.state.error} />;
 
     return (
-      <Text>Test</Text>
+      <Text>Session View</Text>
     );
   }
 }
 
-/* Export Component ==================================================================== */
+// Export Component
 export default SessionView;

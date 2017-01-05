@@ -5,7 +5,7 @@
 
 export default {
   // The URL we're connecting to
-  hostname: 'http://wp-api.mcnam.ee',
+  hostname: 'http:// wp-api.mcnam.ee',
 
   // Map shortnames to the actual endpoints, so that we can
   // use them like so: AppAPI.ENDPOINT_NAME.METHOD()

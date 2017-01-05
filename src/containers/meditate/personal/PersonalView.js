@@ -15,12 +15,10 @@ import { Text } from '@ui/';
 import Loading from '@components/general/Loading';
 import Error from '@components/general/Error';
 
-/* Styles ==================================================================== */
-const styles = StyleSheet.create({
+// Styles
+const styles = StyleSheet.create({});
 
-});
-
-/* Component ==================================================================== */
+// Component
 class PersonalView extends Component {
   static componentName = 'PersonalView';
 
@@ -37,10 +35,10 @@ class PersonalView extends Component {
     if (this.state.error) return <Error text={this.state.error} />;
 
     return (
-      <Text>Test</Text>
+      <Text>Personal View</Text>
     );
   }
 }
 
-/* Export Component ==================================================================== */
+// Export Component
 export default PersonalView;

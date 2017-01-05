@@ -15,11 +15,10 @@ import { Actions } from 'react-native-router-flux';
 // Consts and Libs
 import { AppStyles, AppSizes } from '@theme/';
 
-/* Styles ==================================================================== */
-const styles = StyleSheet.create({
-});
+// Styles
+const styles = StyleSheet.create({});
 
-/* Component ==================================================================== */
+// Component
 class AppLaunch extends Component {
   static componentName = 'AppLaunch';
 
@@ -29,12 +28,6 @@ class AppLaunch extends Component {
 
   componentDidMount = () => {
     Actions.app({ type: 'reset' });
-    // Try to authenticate based on existing token
-    // this.props.login()
-    //   // Logged in, show index screen
-    //   .then(() => Actions.app({ type: 'reset' }))
-    //   // Not Logged in, show Login screen
-    //   .catch(() => Actions.authenticate({ type: 'reset' }));
   }
 
   render = () => (
@@ -48,5 +41,5 @@ class AppLaunch extends Component {
   );
 }
 
-/* Export Component ==================================================================== */
+// Export Component
 export default AppLaunch;

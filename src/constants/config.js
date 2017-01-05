@@ -2,7 +2,7 @@
  * Global App Config
  *
  */
-/* global __DEV__ */
+// global __DEV__ */
 import { AppColors, AppStyles, AppSizes } from '@theme/';
 
 export default {
@@ -17,8 +17,8 @@ export default {
 
   // URLs
   urls: {
-    resetPassword: 'http://wp-api.mcnam.ee/wp-login.php?action=lostpassword',
-    signUp: 'http://wp-api.mcnam.ee/wp-login.php?action=register',
+    resetPassword: 'http:// wp-api.mcnam.ee/wp-login.php?action=lostpassword',
+    signUp: 'http:// wp-api.mcnam.ee/wp-login.php?action=register',
   },
 
   // Navbar Props

@@ -1,7 +1,7 @@
 /**
  * Test to check if the component renderes correctly
  */
-/* global it expect */
+// global it expect */
 
 import 'react-native';
 import React from 'react';

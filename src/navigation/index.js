@@ -14,7 +14,7 @@ import Placeholder from '@components/general/Placeholder';
 import TabsScenes from './tabs';
 import SettingsScenes from './settings';
 
-/* Routes ==================================================================== */
+// Routes
 export default Actions.create(
   <Scene key={'root'} {...AppConfig.navbarProps}>
     <Scene
@@ -24,9 +24,7 @@ export default Actions.create(
       analyticsDesc={'AppLaunch: Launching App'}
     />
 
-    {/* Main App */}
     <Scene key={'app'} {...AppConfig.navbarProps} title={AppConfig.appName} hideNavBar={false} type={ActionConst.RESET}>
-      {/* Tabbar */}
       {TabsScenes}
 
       {SettingsScenes}

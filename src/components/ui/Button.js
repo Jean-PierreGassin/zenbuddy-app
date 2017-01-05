@@ -11,7 +11,7 @@ import { Button } from 'react-native-elements';
 // Consts and Libs
 import { AppColors, AppFonts, AppSizes } from '@theme/';
 
-/* Component ==================================================================== */
+// Component 
 class CustomButton extends Component {
   static propTypes = {
     small: PropTypes.bool,
@@ -104,5 +104,5 @@ class CustomButton extends Component {
   render = () => <Button {...this.buttonProps()} />;
 }
 
-/* Export Component ==================================================================== */
+// Export Component 
 export default CustomButton;

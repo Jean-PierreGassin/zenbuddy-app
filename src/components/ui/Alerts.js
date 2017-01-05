@@ -17,7 +17,7 @@ import {
 // Components
 import { Spacer, Text } from '@ui/';
 
-/* Styles ==================================================================== */
+// Styles 
 const styles = StyleSheet.create({
   alerts: {
     left: 0,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
 });
 
-/* Component ==================================================================== */
+// Component 
 const Alerts = ({ status, success, error }) => (
   <View style={styles.alerts}>
     {success !== '' &&
@@ -114,5 +114,5 @@ Alerts.defaultProps = {
 
 Alerts.componentName = 'Alerts';
 
-/* Export Component ==================================================================== */
+// Export Component 
 export default Alerts;

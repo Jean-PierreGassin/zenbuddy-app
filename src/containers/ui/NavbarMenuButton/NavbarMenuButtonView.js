@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 
-/* Component ==================================================================== */
+// Component 
 class NavbarMenuButton extends Component {
   static componentName = 'NavbarMenuButton';
 
@@ -31,5 +31,5 @@ class NavbarMenuButton extends Component {
   }
 }
 
-/* Export Component ==================================================================== */
+// Export Component 
 export default NavbarMenuButton;

@@ -2,7 +2,7 @@
  * API JWT Auth Functions
  *
  */
- /* global fetch console */
+ //global fetch console */
 import { AsyncStorage } from 'react-native';
 import jwtDecode from 'jwt-decode';
 
