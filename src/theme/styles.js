@@ -225,6 +225,16 @@ export default {
     backgroundColor: Colors.brand.primary,
   },
 
+  // Modals
+  modalContainer: {
+    bottom: 0,
+    position: 'absolute',
+    flexDirection: 'column',
+    height: Sizes.screen.heightThird,
+    width: Sizes.screen.width,
+    backgroundColor: Colors.background,
+  },
+
   // Navbar
   navbar: {
     backgroundColor: Colors.brand.primary,
