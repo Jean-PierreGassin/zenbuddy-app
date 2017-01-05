@@ -14,7 +14,7 @@ const base = {
   lineHeight: lineHeight(14),
   ...Platform.select({
     ios: {
-      family: 'HelveticaNeue',
+      family: 'Avenir-Light',
     },
     android: {
       family: 'Roboto',

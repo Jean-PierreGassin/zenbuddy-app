@@ -31,6 +31,7 @@
 		1693424E1E1DAC2500B44A6D /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342451E1DAC2500B44A6D /* Octicons.ttf */; };
 		1693424F1E1DAC2500B44A6D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342461E1DAC2500B44A6D /* SimpleLineIcons.ttf */; };
 		169342501E1DAC2500B44A6D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342471E1DAC2500B44A6D /* Zocial.ttf */; };
+		169342561E1E0B4500B44A6D /* Avenir-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 169342551E1E0B4500B44A6D /* Avenir-Light.otf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
@@ -207,6 +208,7 @@
 		169342451E1DAC2500B44A6D /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		169342461E1DAC2500B44A6D /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		169342471E1DAC2500B44A6D /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		169342551E1E0B4500B44A6D /* Avenir-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Light.otf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -359,6 +361,14 @@
 			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
 		};
+		169342541E1E0AF700B44A6D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				169342551E1E0B4500B44A6D /* Avenir-Light.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +421,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ZenBuddyTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				169342541E1E0AF700B44A6D /* Fonts */,
 				1693423E1E1DAC2500B44A6D /* Resources */,
 			);
 			indentWidth = 2;
@@ -697,6 +708,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1693424D1E1DAC2500B44A6D /* MaterialIcons.ttf in Resources */,
+				169342561E1E0B4500B44A6D /* Avenir-Light.otf in Resources */,
 				1693424E1E1DAC2500B44A6D /* Octicons.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				1693424A1E1DAC2500B44A6D /* FontAwesome.ttf in Resources */,
