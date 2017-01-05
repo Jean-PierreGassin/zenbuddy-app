@@ -83,14 +83,13 @@ export function getMe() {
   * Update My User Data
   * - Receives complete user data in return
   */
-export function updateMe(payload) {
-  return dispatch => AppAPI.me.post(payload)
-    .then((userData) => {
-      dispatch({
-        type: 'USER_REPLACE',
-        data: userData,
-      });
-
-      return userData;
+export function updateMe(userData) {
+  return dispatch =>  {
+    dispatch({
+      type: 'USER_REPLACE',
+      data: userData,
     });
+
+    return userData;
+  };
 }

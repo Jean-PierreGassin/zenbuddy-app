@@ -141,6 +141,12 @@ class SetupView extends Component {
     });
   }
 
+  startSession = () => {
+    this.props.updateMe(this.state);
+
+    Actions.session();
+  }
+
   render = () => {
     if (this.state.loading) return <Loading />;
     if (this.state.error) return <Error text={this.state.error} />;
@@ -182,7 +188,7 @@ class SetupView extends Component {
           disabled={buttonDisabled}
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          onPress={() => Actions.session()}
+          onPress={() => this.startSession()}
           style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}>
           <Text>Begin Your Session</Text>
           <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={styles.playIcon} />

@@ -33,15 +33,8 @@ class SessionView extends Component {
     super(props);
 
     this.state = {
-      loading: false,
-      modalType: 'none',
-      modalVisible: false,
-      sessionLengths: [],
-      sessionSounds: [],
       sessionLength: 5,
-      readableSessionLength: 'Set your session length',
       sessionSound: 0,
-      readableSessionSound: 'Pick a mindful sound',
     };
   }
 
@@ -52,9 +45,6 @@ class SessionView extends Component {
   }
 
   render = () => {
-    if (this.state.loading) return <Loading />;
-    if (this.state.error) return <Error text={this.state.error} />;
-
     return (
       <View style={[AppStyles.containerCentered]}>
         <Text>Session Screen</Text>
