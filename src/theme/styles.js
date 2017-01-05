@@ -234,8 +234,12 @@ export default {
     width: Sizes.screen.width,
     backgroundColor: Colors.background,
   },
-  pickerItem: {
+  modalPickerItem: {
     color: Colors.brand.secondary,
+  },
+  modalScrollView: {
+    padding: 20,
+    alignItems: 'center',
   },
 
   // Navbar

@@ -3443,9 +3443,9 @@ react-native-side-menu@^0.20.1:
   version "0.20.1"
   resolved "https://registry.yarnpkg.com/react-native-side-menu/-/react-native-side-menu-0.20.1.tgz#df21b4bb9d8a1aa3bae53d74ddf8a739eb59bfc5"
 
-react-native-simple-sound@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-simple-sound/-/react-native-simple-sound-1.0.0.tgz#a5a7c10455416c13a1b51611d5a9d61a9a10a387"
+react-native-sound@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/react-native-sound/-/react-native-sound-0.8.3.tgz#2c0b08dde0c9afee33e6aef3de020f2781c38bed"
 
 react-native-tab-navigator@^0.3.3:
   version "0.3.3"

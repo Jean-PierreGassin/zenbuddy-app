@@ -3,12 +3,14 @@
  *  - Allows the user to sit through a meditation session
  *
  */
+import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements';
 import React, { Component, PropTypes } from 'react';
 import {
   View,
   Modal,
   Picker,
+  ScrollView,
   StyleSheet,
   TouchableOpacity,
   InteractionManager,
@@ -71,7 +73,6 @@ class SessionView extends Component {
     for (let time = 5; time <= 120; time++) {
       sessionLengths.push(
         <Picker.Item
-          style={AppStyles.picker}
           key={time}
           label={`${time} minutes`}
           value={time}
@@ -81,12 +82,13 @@ class SessionView extends Component {
 
     const picker = (
       <Picker
-        itemStyle={AppStyles.pickerItem}
+        itemStyle={AppStyles.modalPickerItem}
         selectedValue={this.state.sessionLength}
         onValueChange={(length) => this.setState({
           sessionLength: length,
           readableSessionLength: `Session length: ${length} minutes`,
-        })}>
+        })
+      }>
         {sessionLengths}
       </Picker>
     );
@@ -95,7 +97,47 @@ class SessionView extends Component {
   }
 
   getSessionSounds = () => {
+    const sounds = [
+      { name: 'Birds', 'file': 'click.mp3' },
+      { name: 'Waves', 'file': 'test.mp3' },
+      { name: 'Drums', 'file': 'zzz.mp3' },
+    ];
 
+    return (
+      <ScrollView contentContainerStyle={AppStyles.modalScrollView}>
+        {sounds.map((sound) => (
+          <TouchableOpacity
+            key={`SOUND-${sound.name}`}
+            activeOpacity={0.7}
+            onPress={() => {
+              this.playSound(sound.file);
+
+              this.setState({
+                sessionSound: sound.file,
+                readableSessionSound: `You'll be listening to: ${sound.name}`,
+              });
+            }}
+            hitSlop={{ top: 1, right: 10, bottom: 1, left: 10 }}
+            style={AppStyles.primaryButton}>
+            <Text>{sound.name}</Text>
+
+            {this.state.sessionSound === sound.file &&
+              <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={styles.playIcon} />
+            }
+
+            {this.state.sessionSound !== sound.file &&
+              <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={styles.playIcon} />
+            }
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    );
+  }
+
+  playSound = (file) => {
+    let soundFile = new Sound(file, Sound.MAIN_BUNDLE, (error) => {
+      soundFile.play((success) => {});
+    });
   }
 
   render = () => {
