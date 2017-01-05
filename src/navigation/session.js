@@ -1,5 +1,5 @@
 /**
- * Settings scene
+ * Session Scenes
  *
  */
 import React from 'react';
@@ -10,7 +10,7 @@ import { AppConfig } from '@constants/';
 import { AppStyles, AppSizes } from '@theme/';
 
 // Scenes
-import Settings from '@containers/meditate/settings/SettingsContainer';
+import Session from '@containers/meditate/session/SessionContainer';
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -24,10 +24,12 @@ const navbarPropsTabs = {
 const scene = (
   <Scene
     {...navbarPropsTabs}
-    key={'settings'}
-    component={Settings}
-    title={'Settings'}
-    analyticsDesc={'Settings'}
+    hideNavBar
+    direction={'vertical'}
+    key={'session'}
+    component={Session}
+    title={'Session'}
+    analyticsDesc={'Session'}
   />
 );
 

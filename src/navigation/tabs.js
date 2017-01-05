@@ -14,8 +14,7 @@ import { TabIcon } from '@ui/';
 import { NavbarMenuButton } from '@containers/ui/NavbarMenuButton/NavbarMenuButtonContainer';
 
 // Scenes
-import Placeholder from '@components/general/Placeholder';
-import Session from '@containers/meditate/session/SessionContainer';
+import Setup from '@containers/meditate/setup/SetupContainer';
 import Personal from '@containers/meditate/personal/PersonalContainer';
 import Friends from '@containers/meditate/friends/FriendsContainer';
 
@@ -33,11 +32,11 @@ const scenes = (
   <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={1}>
     <Scene
       {...navbarPropsTabs}
-      key={'session'}
-      component={Session}
+      key={'setup'}
+      component={Setup}
       title={'ZenBuddy'}
       icon={props => TabIcon({ ...props, icon: 'weekend' })}
-      analyticsDesc={'Meditate: Session'}
+      analyticsDesc={'Session: Setup'}
     />
     <Scene
       key={'personal'}

@@ -10,9 +10,9 @@ import { AppConfig } from '@constants/';
 
 // Scenes
 import AppLaunch from '@containers/Launch/LaunchContainer';
-import Placeholder from '@components/general/Placeholder';
 import TabsScenes from './tabs';
-import SettingsScenes from './settings';
+import SessionScene from './session';
+import SettingsScene from './settings';
 
 // Routes
 export default Actions.create(
@@ -26,8 +26,8 @@ export default Actions.create(
 
     <Scene key={'app'} {...AppConfig.navbarProps} title={AppConfig.appName} hideNavBar={false} type={ActionConst.RESET}>
       {TabsScenes}
-
-      {SettingsScenes}
+      {SessionScene}
+      {SettingsScene}
     </Scene>
   </Scene>,
 );
