@@ -7,6 +7,8 @@ import { Icon } from 'react-native-elements';
 import React, { Component, PropTypes } from 'react';
 import {
   View,
+  Modal,
+  Picker,
   StyleSheet,
   TouchableOpacity,
   InteractionManager,
@@ -38,18 +40,70 @@ class SessionView extends Component {
 
     this.state = {
       loading: false,
+      modalType: 'none',
+      modalVisible: false,
+      sessionLengths: [],
+      sessionSounds: [],
+      sessionLength: 5,
+      sessionSound: 0,
     };
+  }
+
+  toggleModal = (type) => {
+    this.setState({
+      modalType: type,
+      modalVisible: !this.state.modalVisible,
+    });
+  }
+
+  getSessionLengths = () => {
+    const sessionLengths = [];
+
+    for (let time = 5; time <= 120; time++) {
+      sessionLengths.push(
+        <Picker.Item
+          key={time}
+          label={`${time} minutes`}
+          value={time}
+        />
+      );
+    }
+
+    const picker = (
+      <Picker
+        selectedValue={this.state.sessionLength}
+        onValueChange={(length) => this.setState({sessionLength: length})}>
+        {sessionLengths}
+      </Picker>
+    );
+
+    return picker;
+  }
+
+  getSessionSounds= () => {
+
   }
 
   render = () => {
     if (this.state.loading) return <Loading />;
     if (this.state.error) return <Error text={this.state.error} />;
 
+    let modalContents;
+
+    if (this.state.modalType === 'sessionLengths') {
+      modalContents = this.getSessionLengths();
+    }
+
+    if (this.state.modalType === 'sessionSounds') {
+      modalContents = this.getSessionSounds();
+    }
+
     return (
       <View style={[AppStyles.containerCentered]}>
         <TouchableOpacity
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
+          onPress={() => this.toggleModal('sessionLengths')}
           style={AppStyles.primaryButton}>
           <Text>Set your session length</Text>
         </TouchableOpacity>
@@ -59,6 +113,7 @@ class SessionView extends Component {
         <TouchableOpacity
           activeOpacity={0.7}
           hitSlop={{ top: 5, right: 10, bottom: 10, left: 10 }}
+          onPress={() => this.toggleModal('sessionSounds')}
           style={AppStyles.primaryButton}>
           <Text>Pick a mindful sound</Text>
         </TouchableOpacity>
@@ -71,8 +126,25 @@ class SessionView extends Component {
           style={AppStyles.primaryButton}>
           <Text>Begin Your Session</Text>
           <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={styles.playIcon} />
-
         </TouchableOpacity>
+
+        <Modal
+          transparent
+          animationType={"slide"}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {alert("Modal has been closed.")}}
+          >
+         <View style={{marginTop: 22}}>
+          <View>
+            {modalContents}
+
+            <TouchableOpacity onPress={() => this.setState({modalVisible: false})}>
+              <Text>Hide Modal</Text>
+            </TouchableOpacity>
+
+          </View>
+         </View>
+       </Modal>
       </View>
     );
   }
