@@ -4,8 +4,8 @@
  */
 
 import jwtDecode from 'jwt-decode';
-
 import AppAPI from '@lib/api';
+import iCloudStorage from 'react-native-icloudstore';
 
 /**
   * Login to API and receive Token
@@ -89,6 +89,8 @@ export function updateMe(userData) {
       type: 'USER_REPLACE',
       data: userData,
     });
+
+    iCloudStorage.setItem('user', JSON.stringify(userData));
 
     return userData;
   };

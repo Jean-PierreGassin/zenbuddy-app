@@ -3011,7 +3011,7 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment@2.x.x:
+moment@2.x.x, moment@^2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
@@ -3429,6 +3429,10 @@ react-native-experimental-navigation@0.26.x:
 react-native-google-analytics-bridge@^4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/react-native-google-analytics-bridge/-/react-native-google-analytics-bridge-4.0.2.tgz#24adac55043adaddb01a61822d338fe5cd3ddd61"
+
+react-native-icloudstore@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/react-native-icloudstore/-/react-native-icloudstore-0.8.0.tgz#2a1ebbacb8695f3f685728005575d6f070fc0870"
 
 react-native-router-flux@^3.37.0:
   version "3.37.0"

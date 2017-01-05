@@ -3,6 +3,7 @@
  *  - Allows the user to sit through a meditation session
  *
  */
+import iCloudStorage from 'react-native-icloudstore';
 import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
@@ -174,15 +175,25 @@ class SetupView extends Component {
   }
 
   startSession = () => {
-    this.props.updateMe({
-      sessionSettings: {
+    iCloudStorage.getItem('user').then((response) => {
+      let userData = JSON.parse(response);
+
+      if (!userData.sessionSettings) {
+        userData.sessionSettings = {};
+      }
+
+      userData.sessionSettings = {
         sound: this.state.sessionSound,
         length: this.state.sessionLength,
         intervals: this.state.sessionInterval,
-      },
-    });
+      };
 
-    Actions.session();
+      this.props.updateMe({
+        ...userData,
+      });
+
+      Actions.session();
+    });
   }
 
   render = () => {

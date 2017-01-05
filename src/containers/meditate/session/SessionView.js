@@ -3,6 +3,8 @@
  *  - Allows the user to sit through a meditation session
  *
  */
+import moment from 'moment';
+import iCloudStorage from 'react-native-icloudstore';
 import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
@@ -23,7 +25,12 @@ import Loading from '@components/general/Loading';
 import Error from '@components/general/Error';
 
 // Styles
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  clockText: {
+    ...AppStyles.h2,
+    textAlign: 'center',
+  },
+});
 
 var clockTimer;
 var soundTimer;
@@ -38,6 +45,7 @@ class SessionView extends Component {
     this.state = {
       currentTime: 0,
       readableCurrentTime: '00:00:00',
+      isFinished: false,
     };
   }
 
@@ -52,11 +60,15 @@ class SessionView extends Component {
   }
 
   startTimer = () => {
-    const sessionLength = this.props.user.sessionSettings.length * 60;
+    // const sessionLength = this.props.user.sessionSettings.length * 60;
+    const sessionLength = 1;
 
     clockTimer = setInterval(() => {
       if (this.state.currentTime >= sessionLength) {
         clearInterval(clockTimer);
+        clearInterval(soundTimer);
+
+        this.finishSession();
 
         return;
       }
@@ -76,12 +88,6 @@ class SessionView extends Component {
     const intervalTime = sessionLength * 1000 / this.props.user.sessionSettings.intervals;
 
     soundTimer = setInterval(() => {
-      if (this.state.currentTime >= sessionLength) {
-        clearInterval(soundTimer);
-
-        return;
-      }
-
       this.playSound(this.props.user.sessionSettings.sound);
     }, intervalTime);
   }
@@ -92,18 +98,53 @@ class SessionView extends Component {
     });
   }
 
+  finishSession = () => {
+    this.playSound('finish.mp3');
+    this.saveHistory();
+
+    this.setState({
+      isFinished: true,
+      readableCurrentTime: `Well done, you've completed your ${this.props.user.sessionSettings.length} minute session!`,
+    });
+
+    setTimeout(() => {
+      Actions.pop();
+    }, 3000);
+  }
+
+  saveHistory = () => {
+    iCloudStorage.getItem('user').then((response) => {
+      let userData = JSON.parse(response);
+
+      if (!userData.sessionHistory) {
+        userData.sessionHistory = [];
+      }
+
+      userData.sessionHistory.push({
+        date: moment().format('MMMM Do YYYY @ h:mma'),
+        length: this.props.user.sessionSettings.length,
+        intervals: this.props.user.sessionSettings.intervals,
+      });
+
+      this.props.updateMe({
+        ...userData,
+      });
+    });
+  }
+
   render = () => {
     return (
-      <View style={[AppStyles.containerCentered]}>
+      <View style={AppStyles.containerCentered}>
         <Icon name={'access-time'} size={250} color={'#ffffff'} />
 
         <Spacer size={50} />
 
-        <Text h2 style={styles.timeText}>{this.state.readableCurrentTime}</Text>
+        <Text h2 style={[styles.clockText]}>{this.state.readableCurrentTime}</Text>
 
         <Spacer size={50} />
 
         <TouchableOpacity
+          disabled={this.state.isFinished}
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           onPress={() => Actions.pop()}
