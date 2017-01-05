@@ -28,7 +28,7 @@ const Loading = ({ text, transparent }) => (
     <ActivityIndicator
       animating
       size={'large'}
-      color={transparent ? '#000' : '#AAA'}
+      color={'#FFFFFF'}
     />
 
     <Spacer size={10} />

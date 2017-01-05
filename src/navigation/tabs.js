@@ -15,9 +15,9 @@ import { NavbarMenuButton } from '@containers/ui/NavbarMenuButton/NavbarMenuButt
 
 // Scenes
 import Placeholder from '@components/general/Placeholder';
-import StyleGuide from '@containers/StyleGuideView';
-import Recipes from '@containers/recipes/Browse/BrowseContainer';
-import RecipeView from '@containers/recipes/RecipeView';
+import Session from '@containers/meditate/session/SessionContainer';
+import Personal from '@containers/meditate/personal/PersonalContainer';
+import Friends from '@containers/meditate/friends/FriendsContainer';
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -33,27 +33,27 @@ const scenes = (
   <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={1}>
     <Scene
       {...navbarPropsTabs}
-      key={'recipesListing'}
-      component={Placeholder}
+      key={'session'}
+      component={Session}
       title={'ZenBuddy'}
       icon={props => TabIcon({ ...props, icon: 'weekend' })}
-      analyticsDesc={'Placeholder: Coming Soon'}
+      analyticsDesc={'Meditate: Session'}
     />
     <Scene
-      key={'timeline'}
+      key={'personal'}
       {...navbarPropsTabs}
-      title={'Coming Soon'}
-      component={Placeholder}
+      title={'Statistics'}
+      component={Personal}
       icon={props => TabIcon({ ...props, icon: 'person-outline' })}
-      analyticsDesc={'Placeholder: Coming Soon'}
+      analyticsDesc={'Personal: Statistics'}
     />
     <Scene
-      key={'somethingelse'}
+      key={'friends'}
       {...navbarPropsTabs}
-      title={'Coming Soon'}
-      component={Placeholder}
+      title={'ZenBuddies'}
+      component={Friends}
       icon={props => TabIcon({ ...props, icon: 'people-outline' })}
-      analyticsDesc={'Placeholder: Coming Soon'}
+      analyticsDesc={'Friends: ZenBuddies'}
     />
   </Scene>
 );
