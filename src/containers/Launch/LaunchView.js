@@ -7,7 +7,6 @@
 import React, { Component, PropTypes } from 'react';
 import {
   View,
-  Image,
   StyleSheet,
   ActivityIndicator,
 } from 'react-native';
@@ -18,10 +17,6 @@ import { AppStyles, AppSizes } from '@theme/';
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
-  launchImage: {
-    width: AppSizes.screen.width,
-    height: AppSizes.screen.height,
-  },
 });
 
 /* Component ==================================================================== */
@@ -44,16 +39,11 @@ class AppLaunch extends Component {
 
   render = () => (
     <View style={[AppStyles.container]}>
-      <Image
-        source={require('@images/launch.jpg')}
-        style={[styles.launchImage, AppStyles.containerCentered]}
-      >
-        <ActivityIndicator
-          animating
-          size={'large'}
-          color={'#FFFFFF'}
-        />
-      </Image>
+      <ActivityIndicator
+        animating
+        size={'large'}
+        color={'#FFFFFF'}
+      />
     </View>
   );
 }

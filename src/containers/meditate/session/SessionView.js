@@ -28,16 +28,8 @@ class SessionView extends Component {
     super(props);
 
     this.state = {
-      loading: true,
+      loading: false,
     };
-  }
-
-  componentDidMount = () => {
-    InteractionManager.runAfterInteractions(() => {
-      this.setState({
-        loading: false,
-      });
-    });
   }
 
   render = () => {

@@ -1,6 +1,5 @@
 /**
- * Friends Screen
- *  - Allows the user to sit through a meditation session
+ * Settings Screen
  *
  */
 import React, { Component, PropTypes } from 'react';
@@ -16,13 +15,11 @@ import Loading from '@components/general/Loading';
 import Error from '@components/general/Error';
 
 /* Styles ==================================================================== */
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
 
 /* Component ==================================================================== */
-class FriendsView extends Component {
-  static componentName = 'FriendsView';
+class SettingsView extends Component {
+  static componentName = 'SettingsView';
 
   constructor(props) {
     super(props);
@@ -43,4 +40,4 @@ class FriendsView extends Component {
 }
 
 /* Export Component ==================================================================== */
-export default FriendsView;
+export default SettingsView;
