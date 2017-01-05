@@ -11,6 +11,7 @@ const brand = {
   brand: {
     primary: '#FD8145',
     secondary: '#ffffff',
+    disabled: '#FDB591',
   },
 };
 

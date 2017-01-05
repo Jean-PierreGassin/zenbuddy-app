@@ -224,6 +224,9 @@ export default {
     width: Sizes.screen.widthThreeQuarters,
     backgroundColor: Colors.brand.primary,
   },
+  primaryButtonDisabled: {
+    backgroundColor: Colors.brand.disabled,
+  },
 
   // Modals
   modalContainer: {
