@@ -253,7 +253,7 @@ class SetupView extends Component {
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           onPress={() => this.startSession()}
           style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}>
-          <Text>Begin Your Session</Text>
+          <Text>Begin your session</Text>
           <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={styles.playIcon} />
         </TouchableOpacity>
 
