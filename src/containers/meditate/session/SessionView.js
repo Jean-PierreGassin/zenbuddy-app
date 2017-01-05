@@ -52,7 +52,9 @@ class SessionView extends Component {
       sessionLengths: [],
       sessionSounds: [],
       sessionLength: 5,
+      readableSessionLength: 'Set your session length',
       sessionSound: 0,
+      readableSessionSound: 'Pick a mindful sound',
     };
   }
 
@@ -81,7 +83,10 @@ class SessionView extends Component {
       <Picker
         itemStyle={AppStyles.pickerItem}
         selectedValue={this.state.sessionLength}
-        onValueChange={(length) => this.setState({sessionLength: length})}>
+        onValueChange={(length) => this.setState({
+          sessionLength: length,
+          readableSessionLength: `Session length: ${length} minutes`,
+        })}>
         {sessionLengths}
       </Picker>
     );
@@ -89,7 +94,7 @@ class SessionView extends Component {
     return picker;
   }
 
-  getSessionSounds= () => {
+  getSessionSounds = () => {
 
   }
 
@@ -114,7 +119,7 @@ class SessionView extends Component {
           hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
           onPress={() => this.toggleModal('sessionLengths')}
           style={AppStyles.primaryButton}>
-          <Text>Set your session length</Text>
+          <Text>{this.state.readableSessionLength}</Text>
         </TouchableOpacity>
 
         <Spacer size={10} />
@@ -124,7 +129,7 @@ class SessionView extends Component {
           hitSlop={{ top: 5, right: 10, bottom: 10, left: 10 }}
           onPress={() => this.toggleModal('sessionSounds')}
           style={AppStyles.primaryButton}>
-          <Text>Pick a mindful sound</Text>
+          <Text>{this.state.readableSessionSound}</Text>
         </TouchableOpacity>
 
         <Spacer size={50} />
