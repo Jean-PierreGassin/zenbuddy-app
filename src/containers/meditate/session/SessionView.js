@@ -25,6 +25,9 @@ import Error from '@components/general/Error';
 // Styles
 const styles = StyleSheet.create({});
 
+var clockTimer;
+var soundTimer;
+
 // Component
 class SessionView extends Component {
   static componentName = 'SessionView';
@@ -33,9 +36,54 @@ class SessionView extends Component {
     super(props);
 
     this.state = {
-      sessionLength: 5,
-      sessionSound: 0,
+      currentTime: 0,
+      readableCurrentTime: '00:00:00',
     };
+  }
+
+  componentWillMount = () => {
+    this.startTimer();
+    this.startSound();
+  }
+
+  componentWillUnmount = () => {
+    clearInterval(clockTimer);
+    clearInterval(soundTimer);
+  }
+
+  startTimer = () => {
+    const sessionLength = this.props.user.sessionSettings.length * 60;
+
+    clockTimer = setInterval(() => {
+      if (this.state.currentTime >= sessionLength) {
+        clearInterval(clockTimer);
+
+        return;
+      }
+
+      const currentTime = this.state.currentTime + 1;
+      const readableCurrentTime = new Date(1000 * currentTime).toISOString().substr(11, 8);
+
+      this.setState({
+        currentTime,
+        readableCurrentTime,
+      });
+    }, 1000);
+  }
+
+  startSound = () => {
+    const sessionLength = this.props.user.sessionSettings.length * 60;
+    const intervalTime = sessionLength * 1000 / this.props.user.sessionSettings.intervals;
+
+    soundTimer = setInterval(() => {
+      if (this.state.currentTime >= sessionLength) {
+        clearInterval(soundTimer);
+
+        return;
+      }
+
+      this.playSound(this.props.user.sessionSettings.sound);
+    }, intervalTime);
   }
 
   playSound = (file) => {
@@ -47,7 +95,21 @@ class SessionView extends Component {
   render = () => {
     return (
       <View style={[AppStyles.containerCentered]}>
-        <Text>Session Screen</Text>
+        <Icon name={'access-time'} size={250} color={'#ffffff'} />
+
+        <Spacer size={50} />
+
+        <Text h2 style={styles.timeText}>{this.state.readableCurrentTime}</Text>
+
+        <Spacer size={50} />
+
+        <TouchableOpacity
+          activeOpacity={0.7}
+          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+          onPress={() => console.log('go back')}
+          style={AppStyles.primaryButton}>
+          <Text>I'm finished</Text>
+        </TouchableOpacity>
       </View>
     );
   }

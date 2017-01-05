@@ -54,10 +54,13 @@ class SetupView extends Component {
       modalVisible: false,
       sessionLengths: [],
       sessionSounds: [],
+      sessionIntervals: [],
       sessionLength: 5,
       readableSessionLength: 'Set your session length',
       sessionSound: 0,
       readableSessionSound: 'Pick a mindful sound',
+      sessionIntervals: 4,
+      readableSessionInterval: 'Choose your mindful intervals',
     };
   }
 
@@ -135,6 +138,35 @@ class SetupView extends Component {
     );
   }
 
+  getSessionIntervals = () => {
+    const sessionIntervals = [];
+
+    for (let intervals = 3; intervals <= 8; intervals++) {
+      sessionIntervals.push(
+        <Picker.Item
+          key={intervals}
+          label={`${intervals} intervals`}
+          value={intervals}
+        />
+      );
+    }
+
+    const picker = (
+      <Picker
+        itemStyle={AppStyles.modalPickerItem}
+        selectedValue={this.state.sessionInterval}
+        onValueChange={(interval) => this.setState({
+          sessionInterval: interval,
+          readableSessionInterval: `with ${interval} session intervals`,
+        })
+      }>
+        {sessionIntervals}
+      </Picker>
+    );
+
+    return picker;
+  }
+
   playSound = (file) => {
     let soundFile = new Sound(file, Sound.MAIN_BUNDLE, (error) => {
       soundFile.play((success) => {});
@@ -146,6 +178,7 @@ class SetupView extends Component {
       sessionSettings: {
         sound: this.state.sessionSound,
         length: this.state.sessionLength,
+        intervals: this.state.sessionInterval,
       },
     });
 
@@ -157,7 +190,7 @@ class SetupView extends Component {
     if (this.state.error) return <Error text={this.state.error} />;
 
     let modalContents;
-    let buttonDisabled = !this.state.sessionLength || !this.state.sessionSound;
+    let buttonDisabled = !this.state.sessionLength || !this.state.sessionSound || !this.state.sessionInterval;
 
     if (this.state.modalType === 'sessionLengths') {
       modalContents = this.getSessionLengths();
@@ -165,6 +198,10 @@ class SetupView extends Component {
 
     if (this.state.modalType === 'sessionSounds') {
       modalContents = this.getSessionSounds();
+    }
+
+    if (this.state.modalType === 'sessionIntervals') {
+      modalContents = this.getSessionIntervals();
     }
 
     return (
@@ -185,6 +222,16 @@ class SetupView extends Component {
           onPress={() => this.toggleModal('sessionSounds')}
           style={AppStyles.primaryButton}>
           <Text>{this.state.readableSessionSound}</Text>
+        </TouchableOpacity>
+
+        <Spacer size={10} />
+
+        <TouchableOpacity
+          activeOpacity={0.7}
+          hitSlop={{ top: 5, right: 10, bottom: 10, left: 10 }}
+          onPress={() => this.toggleModal('sessionIntervals')}
+          style={AppStyles.primaryButton}>
+          <Text>{this.state.readableSessionInterval}</Text>
         </TouchableOpacity>
 
         <Spacer size={50} />
