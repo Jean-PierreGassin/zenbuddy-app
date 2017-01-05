@@ -234,6 +234,9 @@ export default {
     width: Sizes.screen.width,
     backgroundColor: Colors.background,
   },
+  pickerItem: {
+    color: Colors.brand.secondary,
+  },
 
   // Navbar
   navbar: {

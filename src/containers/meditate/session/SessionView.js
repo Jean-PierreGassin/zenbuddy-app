@@ -69,6 +69,7 @@ class SessionView extends Component {
     for (let time = 5; time <= 120; time++) {
       sessionLengths.push(
         <Picker.Item
+          style={AppStyles.picker}
           key={time}
           label={`${time} minutes`}
           value={time}
@@ -78,6 +79,7 @@ class SessionView extends Component {
 
     const picker = (
       <Picker
+        itemStyle={AppStyles.pickerItem}
         selectedValue={this.state.sessionLength}
         onValueChange={(length) => this.setState({sessionLength: length})}>
         {sessionLengths}
