@@ -106,7 +106,7 @@ class SessionView extends Component {
         <TouchableOpacity
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          onPress={() => console.log('go back')}
+          onPress={() => Actions.pop()}
           style={AppStyles.primaryButton}>
           <Text>I'm finished</Text>
         </TouchableOpacity>
