@@ -56,7 +56,7 @@ class SetupView extends Component {
       sessionLengths: [],
       sessionSounds: [],
       sessionIntervals: [],
-      sessionLength: 5,
+      sessionLength: 0,
       readableSessionLength: 'Set your session length',
       sessionSound: 0,
       readableSessionSound: 'Pick a mindful sound',
@@ -75,6 +75,14 @@ class SetupView extends Component {
   getSessionLengths = () => {
     const sessionLengths = [];
 
+    sessionLengths.push(
+      <Picker.Item
+        key={'DEFAULT'}
+        label={'-'}
+        value={''}
+      />
+    );
+
     for (let time = 5; time <= 120; time++) {
       sessionLengths.push(
         <Picker.Item
@@ -89,10 +97,14 @@ class SetupView extends Component {
       <Picker
         itemStyle={AppStyles.modalPickerItem}
         selectedValue={this.state.sessionLength}
-        onValueChange={(length) => this.setState({
-          sessionLength: length,
-          readableSessionLength: `Your session will be ${length} minutes long`,
-        })
+        onValueChange={(length) => {
+          if (length) {
+            this.setState({
+              sessionLength: length,
+              readableSessionLength: `Your session will be ${length} minutes long`,
+            });
+          }
+        }
       }>
         {sessionLengths}
       </Picker>
@@ -145,6 +157,14 @@ class SetupView extends Component {
   getSessionIntervals = () => {
     const sessionIntervals = [];
 
+    sessionIntervals.push(
+      <Picker.Item
+        key={'DEFAULT'}
+        label={'-'}
+        value={''}
+      />
+    );
+
     for (let intervals = 3; intervals <= 8; intervals++) {
       sessionIntervals.push(
         <Picker.Item
@@ -159,10 +179,14 @@ class SetupView extends Component {
       <Picker
         itemStyle={AppStyles.modalPickerItem}
         selectedValue={this.state.sessionInterval}
-        onValueChange={(interval) => this.setState({
-          sessionInterval: interval,
-          readableSessionInterval: `${interval} times during your session`,
-        })
+        onValueChange={(interval) => {
+          if (interval) {
+            this.setState({
+              sessionInterval: interval,
+              readableSessionInterval: `${interval} times during your session`,
+            });
+          }
+        }
       }>
         {sessionIntervals}
       </Picker>
