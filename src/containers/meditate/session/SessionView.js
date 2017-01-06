@@ -60,8 +60,7 @@ class SessionView extends Component {
   }
 
   startTimer = () => {
-    // const sessionLength = this.props.user.sessionSettings.length * 60;
-    const sessionLength = 1;
+    const sessionLength = this.props.user.sessionSettings.length * 60;
 
     clockTimer = setInterval(() => {
       if (this.state.currentTime >= sessionLength) {
@@ -85,10 +84,16 @@ class SessionView extends Component {
 
   startSound = () => {
     const sessionLength = this.props.user.sessionSettings.length * 60;
-    const intervalTime = sessionLength * 1000 / this.props.user.sessionSettings.intervals;
+    const intervalTime = (sessionLength + 1) * 1000 / this.props.user.sessionSettings.intervals;
 
     soundTimer = setInterval(() => {
       this.playSound(this.props.user.sessionSettings.sound);
+
+      if ((sessionLength - this.state.currentTime) - (intervalTime / 1000) < 0) {
+        clearInterval(soundTimer);
+
+        return;
+      }
     }, intervalTime);
   }
 
