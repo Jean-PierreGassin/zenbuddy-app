@@ -91,9 +91,11 @@ class PersonalView extends Component {
     return (
       <View style={AppStyles.containerCentered}>
         <ScrollView>
-          <Spacer size={10} />
+          <Spacer size={20} />
 
-          <Text h3>My current Zen streak is {this.state.userData.sessionStreak} days, keep it up!</Text>
+          <Text h4>My current Zen streak is {this.state.userData.sessionStreak} day(s), keep it up!</Text>
+
+          <Spacer size={10} />
 
           <Text h3>Session history</Text>
 
