@@ -67,7 +67,6 @@ class PersonalView extends Component {
           key={`SESSION-${key}`}
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          onPress={() => console.log('History pressed')}
           style={AppStyles.primaryPill}>
           <Text h4>{moment(session.date).format('MMMM Do YYYY @ h:mma')}</Text>
           <Text>My session lasted for {session.length} minutes with {session.intervals ? session.intervals : 0} session intervals</Text>
