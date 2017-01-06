@@ -114,19 +114,36 @@ class SessionView extends Component {
 
   saveHistory = () => {
     iCloudStorage.getItem('user').then((response) => {
+      let sessionStreak = 1;
       let userData = JSON.parse(response);
+      let currentDate = moment().format();
 
       if (!userData.sessionHistory) {
         userData.sessionHistory = [];
       }
 
+      if (userData.sessionHistory) {
+        let historyLength = userData.sessionHistory.length - 1;
+
+        for (let session = historyLength; session > -1; session--) {
+          let previousSession = userData.sessionHistory[session];
+
+          if (moment(currentDate).subtract(sessionStreak, 'days').isSame(moment(previousSession.date), 'day')) {
+            sessionStreak += 1;
+          } else {
+            break;
+          }
+        }
+      }
+
       userData.sessionHistory.push({
-        date: moment().format('MMMM Do YYYY @ h:mma'),
+        date: currentDate,
         length: this.props.user.sessionSettings.length,
         intervals: this.props.user.sessionSettings.intervals,
       });
 
       this.props.updateMe({
+        sessionStreak,
         ...userData,
       });
     });
