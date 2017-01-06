@@ -103,9 +103,12 @@ class SetupView extends Component {
 
   getSessionSounds = () => {
     const sounds = [
-      { name: 'Birds', 'file': 'click.mp3' },
-      { name: 'Waves', 'file': 'test.mp3' },
-      { name: 'Drums', 'file': 'zzz.mp3' },
+      { name: 'Bellow', 'file': 'bellow.wav' },
+      { name: 'Birds', 'file': 'birds.wav' },
+      { name: 'Bleep', 'file': 'bleep.wav' },
+      { name: 'Piccolo', 'file': 'piccolo.wav' },
+      { name: 'Ting', 'file': 'ting.wav' },
+      { name: 'Water Drop', 'file': 'water-drop.wav' },
     ];
 
     return (

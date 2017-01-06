@@ -99,7 +99,7 @@ class SessionView extends Component {
   }
 
   finishSession = () => {
-    this.playSound('finish.mp3');
+    this.playSound('finish.wav');
     this.saveHistory();
 
     this.setState({

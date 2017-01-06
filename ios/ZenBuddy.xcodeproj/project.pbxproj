@@ -24,6 +24,13 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		165D44901E1EF48C00DB888A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165D448F1E1EF48C00DB888A /* HealthKit.framework */; };
+		165D44931E1F39B600DB888A /* finish.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44921E1F39B600DB888A /* finish.wav */; };
+		165D449B1E1F3BE500DB888A /* bellow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44941E1F3BE500DB888A /* bellow.wav */; };
+		165D449C1E1F3BE500DB888A /* birds.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44951E1F3BE500DB888A /* birds.wav */; };
+		165D449D1E1F3BE500DB888A /* bleep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44961E1F3BE500DB888A /* bleep.wav */; };
+		165D449F1E1F3BE500DB888A /* piccolo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44981E1F3BE500DB888A /* piccolo.wav */; };
+		165D44A01E1F3BE500DB888A /* ting.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44991E1F3BE500DB888A /* ting.wav */; };
+		165D44A11E1F3BE500DB888A /* water-drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D449A1E1F3BE500DB888A /* water-drop.wav */; };
 		169342481E1DAC2500B44A6D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1693423F1E1DAC2500B44A6D /* Entypo.ttf */; };
 		169342491E1DAC2500B44A6D /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342401E1DAC2500B44A6D /* EvilIcons.ttf */; };
 		1693424A1E1DAC2500B44A6D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342411E1DAC2500B44A6D /* FontAwesome.ttf */; };
@@ -35,7 +42,6 @@
 		169342501E1DAC2500B44A6D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342471E1DAC2500B44A6D /* Zocial.ttf */; };
 		169342561E1E0B4500B44A6D /* Avenir-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 169342551E1E0B4500B44A6D /* Avenir-Light.otf */; };
 		169342641E1E29FB00B44A6D /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 169342631E1E29F500B44A6D /* libRNSound.a */; };
-		1693426C1E1E2BB700B44A6D /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1693426B1E1E2BB700B44A6D /* click.mp3 */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
@@ -219,6 +225,13 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		165D448F1E1EF48C00DB888A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		165D44911E1EF48C00DB888A /* ZenBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ZenBuddy.entitlements; path = ZenBuddy/ZenBuddy.entitlements; sourceTree = "<group>"; };
+		165D44921E1F39B600DB888A /* finish.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = finish.wav; path = ../src/sounds/finish.wav; sourceTree = "<group>"; };
+		165D44941E1F3BE500DB888A /* bellow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bellow.wav; path = ../src/sounds/bellow.wav; sourceTree = "<group>"; };
+		165D44951E1F3BE500DB888A /* birds.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = birds.wav; path = ../src/sounds/birds.wav; sourceTree = "<group>"; };
+		165D44961E1F3BE500DB888A /* bleep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bleep.wav; path = ../src/sounds/bleep.wav; sourceTree = "<group>"; };
+		165D44981E1F3BE500DB888A /* piccolo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = piccolo.wav; path = ../src/sounds/piccolo.wav; sourceTree = "<group>"; };
+		165D44991E1F3BE500DB888A /* ting.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ting.wav; path = ../src/sounds/ting.wav; sourceTree = "<group>"; };
+		165D449A1E1F3BE500DB888A /* water-drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "water-drop.wav"; path = "../src/sounds/water-drop.wav"; sourceTree = "<group>"; };
 		1693423F1E1DAC2500B44A6D /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		169342401E1DAC2500B44A6D /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
 		169342411E1DAC2500B44A6D /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -230,7 +243,6 @@
 		169342471E1DAC2500B44A6D /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
 		169342551E1E0B4500B44A6D /* Avenir-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Light.otf"; sourceTree = "<group>"; };
 		1693425E1E1E29F400B44A6D /* RNSound.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
-		1693426B1E1E2BB700B44A6D /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = click.mp3; path = ../src/sounds/click.mp3; sourceTree = "<group>"; };
 		42786A264169454B94E67B92 /* icloudstorage.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = icloudstorage.xcodeproj; path = "../node_modules/react-native-icloudstore/icloudstorage.xcodeproj"; sourceTree = "<group>"; };
 		44AD98E8A6154FA5AB40D969 /* libicloudstorage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libicloudstorage.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -424,7 +436,13 @@
 		1693426D1E1E2C1300B44A6D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				1693426B1E1E2BB700B44A6D /* click.mp3 */,
+				165D44941E1F3BE500DB888A /* bellow.wav */,
+				165D44951E1F3BE500DB888A /* birds.wav */,
+				165D44961E1F3BE500DB888A /* bleep.wav */,
+				165D44981E1F3BE500DB888A /* piccolo.wav */,
+				165D44991E1F3BE500DB888A /* ting.wav */,
+				165D449A1E1F3BE500DB888A /* water-drop.wav */,
+				165D44921E1F39B600DB888A /* finish.wav */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -799,18 +817,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1693424D1E1DAC2500B44A6D /* MaterialIcons.ttf in Resources */,
+				165D449B1E1F3BE500DB888A /* bellow.wav in Resources */,
+				165D449F1E1F3BE500DB888A /* piccolo.wav in Resources */,
+				165D44A11E1F3BE500DB888A /* water-drop.wav in Resources */,
 				169342561E1E0B4500B44A6D /* Avenir-Light.otf in Resources */,
 				1693424E1E1DAC2500B44A6D /* Octicons.ttf in Resources */,
-				1693426C1E1E2BB700B44A6D /* click.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				165D44931E1F39B600DB888A /* finish.wav in Resources */,
 				1693424A1E1DAC2500B44A6D /* FontAwesome.ttf in Resources */,
 				169342491E1DAC2500B44A6D /* EvilIcons.ttf in Resources */,
 				1693424C1E1DAC2500B44A6D /* Ionicons.ttf in Resources */,
+				165D44A01E1F3BE500DB888A /* ting.wav in Resources */,
 				169342501E1DAC2500B44A6D /* Zocial.ttf in Resources */,
 				1693424B1E1DAC2500B44A6D /* Foundation.ttf in Resources */,
 				1693424F1E1DAC2500B44A6D /* SimpleLineIcons.ttf in Resources */,
 				169342481E1DAC2500B44A6D /* Entypo.ttf in Resources */,
+				165D449D1E1F3BE500DB888A /* bleep.wav in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				165D449C1E1F3BE500DB888A /* birds.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
