@@ -245,7 +245,7 @@ export default {
     bottom: 0,
     position: 'absolute',
     flexDirection: 'column',
-    height: Sizes.screen.heightThird,
+    height: Sizes.screen * 0.45,
     width: Sizes.screen.width,
     backgroundColor: Colors.background,
   },
