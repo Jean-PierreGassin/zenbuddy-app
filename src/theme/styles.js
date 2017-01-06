@@ -228,6 +228,18 @@ export default {
     backgroundColor: Colors.brand.disabled,
   },
 
+  // Pills
+  primaryPill: {
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: Colors.border,
+    justifyContent: 'center',
+    flexDirection: 'column',
+    width: Sizes.screen.width * 0.90,
+    backgroundColor: Colors.brand.primary,
+  },
+
   // Modals
   modalContainer: {
     bottom: 0,
