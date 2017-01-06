@@ -176,7 +176,11 @@ class SetupView extends Component {
 
   startSession = () => {
     iCloudStorage.getItem('user').then((response) => {
-      let userData = JSON.parse(response);
+      let userData = {};
+
+      if (response) {
+        userData = JSON.parse(response);
+      }
 
       if (!userData.sessionSettings) {
         userData.sessionSettings = {};
