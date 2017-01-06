@@ -4,6 +4,7 @@
  *  - Checking if user is logged in, and redirects from there
  *
  */
+import iCloudStorage from 'react-native-icloudstore';
 import React, { Component, PropTypes } from 'react';
 import {
   View,
@@ -22,12 +23,20 @@ const styles = StyleSheet.create({});
 class AppLaunch extends Component {
   static componentName = 'AppLaunch';
 
-  static propTypes = {
-    login: PropTypes.func.isRequired,
-  }
-
   componentDidMount = () => {
     Actions.app({ type: 'reset' });
+
+    // iCloudStorage.removeItem('user');
+
+    iCloudStorage.getItem('user').then((response) => {
+      if (response) {
+        let userData = JSON.parse(response);
+
+        this.props.updateMe({
+          ...userData,
+        });
+      }
+    });
   }
 
   render = () => (

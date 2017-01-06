@@ -5,7 +5,7 @@
 import { connect } from 'react-redux';
 
 // Actions
-import * as UserActions from '@redux/user/actions';
+import * as User from '@redux/user/actions';
 
 // The component we're mapping to
 import AppLaunchRender from './LaunchView';
@@ -16,7 +16,7 @@ const mapStateToProps = () => ({
 
 // Any actions to map to the component?
 const mapDispatchToProps = {
-  login: UserActions.login,
+  updateMe: User.updateMe,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppLaunchRender);
