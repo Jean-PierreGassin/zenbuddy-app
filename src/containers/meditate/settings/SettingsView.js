@@ -37,8 +37,9 @@ class SettingsView extends Component {
     if (this.state.error) return <Error text={this.state.error} />;
 
     return (
-      <View style={[AppStyles.containerCentered]}>
-        <Text>Settings View</Text>
+      <View style={AppStyles.containerCentered}>
+        <Text h6>ZenBuddy v1.0.0</Text>
+        <Text h6>Created by Jean-Pierre Gassin</Text>
       </View>
     );
   }
