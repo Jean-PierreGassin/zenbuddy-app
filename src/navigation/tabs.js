@@ -16,7 +16,6 @@ import { NavbarMenuButton } from '@containers/ui/NavbarMenuButton/NavbarMenuButt
 // Scenes
 import Setup from '@containers/meditate/setup/SetupContainer';
 import Personal from '@containers/meditate/personal/PersonalContainer';
-import Friends from '@containers/meditate/friends/FriendsContainer';
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -45,14 +44,6 @@ const scenes = (
       component={Personal}
       icon={props => TabIcon({ ...props, icon: 'person-outline' })}
       analyticsDesc={'Personal: Statistics'}
-    />
-    <Scene
-      key={'friends'}
-      {...navbarPropsTabs}
-      title={'ZenBuddies'}
-      component={Friends}
-      icon={props => TabIcon({ ...props, icon: 'people-outline' })}
-      analyticsDesc={'Friends: ZenBuddies'}
     />
   </Scene>
 );
