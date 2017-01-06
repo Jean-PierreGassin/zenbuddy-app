@@ -42,7 +42,7 @@ const scenes = (
       {...navbarPropsTabs}
       title={'Statistics'}
       component={Personal}
-      icon={props => TabIcon({ ...props, icon: 'person-outline' })}
+      icon={props => TabIcon({ ...props, icon: 'person' })}
       analyticsDesc={'Personal: Statistics'}
     />
   </Scene>
