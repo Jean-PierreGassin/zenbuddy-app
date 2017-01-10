@@ -23,7 +23,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		165D44901E1EF48C00DB888A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165D448F1E1EF48C00DB888A /* HealthKit.framework */; };
 		165D44931E1F39B600DB888A /* finish.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44921E1F39B600DB888A /* finish.wav */; };
 		165D449B1E1F3BE500DB888A /* bellow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44941E1F3BE500DB888A /* bellow.wav */; };
 		165D449C1E1F3BE500DB888A /* birds.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44951E1F3BE500DB888A /* birds.wav */; };
@@ -31,6 +30,8 @@
 		165D449F1E1F3BE500DB888A /* piccolo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44981E1F3BE500DB888A /* piccolo.wav */; };
 		165D44A01E1F3BE500DB888A /* ting.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44991E1F3BE500DB888A /* ting.wav */; };
 		165D44A11E1F3BE500DB888A /* water-drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D449A1E1F3BE500DB888A /* water-drop.wav */; };
+		16887F1A1E25044E00FB2474 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16887F191E25044E00FB2474 /* CloudKit.framework */; };
+		16887F1C1E25045900FB2474 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16887F1B1E25045900FB2474 /* HealthKit.framework */; };
 		169342481E1DAC2500B44A6D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1693423F1E1DAC2500B44A6D /* Entypo.ttf */; };
 		169342491E1DAC2500B44A6D /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342401E1DAC2500B44A6D /* EvilIcons.ttf */; };
 		1693424A1E1DAC2500B44A6D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342411E1DAC2500B44A6D /* FontAwesome.ttf */; };
@@ -223,7 +224,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ZenBuddy/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ZenBuddy/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		165D448F1E1EF48C00DB888A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		165D44911E1EF48C00DB888A /* ZenBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ZenBuddy.entitlements; path = ZenBuddy/ZenBuddy.entitlements; sourceTree = "<group>"; };
 		165D44921E1F39B600DB888A /* finish.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = finish.wav; path = ../src/sounds/finish.wav; sourceTree = "<group>"; };
 		165D44941E1F3BE500DB888A /* bellow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bellow.wav; path = ../src/sounds/bellow.wav; sourceTree = "<group>"; };
@@ -232,6 +232,8 @@
 		165D44981E1F3BE500DB888A /* piccolo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = piccolo.wav; path = ../src/sounds/piccolo.wav; sourceTree = "<group>"; };
 		165D44991E1F3BE500DB888A /* ting.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ting.wav; path = ../src/sounds/ting.wav; sourceTree = "<group>"; };
 		165D449A1E1F3BE500DB888A /* water-drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "water-drop.wav"; path = "../src/sounds/water-drop.wav"; sourceTree = "<group>"; };
+		16887F191E25044E00FB2474 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		16887F1B1E25045900FB2474 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1693423F1E1DAC2500B44A6D /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		169342401E1DAC2500B44A6D /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
 		169342411E1DAC2500B44A6D /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -270,11 +272,12 @@
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
+				16887F1A1E25044E00FB2474 /* CloudKit.framework in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
+				16887F1C1E25045900FB2474 /* HealthKit.framework in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
-				165D44901E1EF48C00DB888A /* HealthKit.framework in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				032A448415714AD893E57CF8 /* libicloudstorage.a in Frameworks */,
 			);
@@ -395,7 +398,8 @@
 		165D448E1E1EF48C00DB888A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				165D448F1E1EF48C00DB888A /* HealthKit.framework */,
+				16887F1B1E25045900FB2474 /* HealthKit.framework */,
+				16887F191E25044E00FB2474 /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -569,12 +573,19 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 59MWT6FAX8;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 3D9JZMTZU3;
+						DevelopmentTeam = 59MWT6FAX8;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -902,6 +913,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 59MWT6FAX8;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -913,6 +925,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZenBuddy.app/ZenBuddy";
 			};
@@ -923,6 +936,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 59MWT6FAX8;
 				INFOPLIST_FILE = ZenBuddyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -930,6 +944,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZenBuddy.app/ZenBuddy";
 			};
@@ -943,7 +958,7 @@
 				CODE_SIGN_ENTITLEMENTS = ZenBuddy/ZenBuddy.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 3D9JZMTZU3;
+				DEVELOPMENT_TEAM = 59MWT6FAX8;
 				INFOPLIST_FILE = ZenBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -951,7 +966,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zenbuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenbuddy.app;
 				PRODUCT_NAME = ZenBuddy;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -964,7 +979,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ZenBuddy/ZenBuddy.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3D9JZMTZU3;
+				DEVELOPMENT_TEAM = 59MWT6FAX8;
 				INFOPLIST_FILE = ZenBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -972,7 +987,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zenbuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenbuddy.app;
 				PRODUCT_NAME = ZenBuddy;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
