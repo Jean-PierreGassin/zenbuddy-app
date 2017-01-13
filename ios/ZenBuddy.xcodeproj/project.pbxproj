@@ -31,7 +31,6 @@
 		165D44A01E1F3BE500DB888A /* ting.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44991E1F3BE500DB888A /* ting.wav */; };
 		165D44A11E1F3BE500DB888A /* water-drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D449A1E1F3BE500DB888A /* water-drop.wav */; };
 		16887F1A1E25044E00FB2474 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16887F191E25044E00FB2474 /* CloudKit.framework */; };
-		16887F1C1E25045900FB2474 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16887F1B1E25045900FB2474 /* HealthKit.framework */; };
 		169342481E1DAC2500B44A6D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1693423F1E1DAC2500B44A6D /* Entypo.ttf */; };
 		169342491E1DAC2500B44A6D /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342401E1DAC2500B44A6D /* EvilIcons.ttf */; };
 		1693424A1E1DAC2500B44A6D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342411E1DAC2500B44A6D /* FontAwesome.ttf */; };
@@ -233,7 +232,6 @@
 		165D44991E1F3BE500DB888A /* ting.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ting.wav; path = ../src/sounds/ting.wav; sourceTree = "<group>"; };
 		165D449A1E1F3BE500DB888A /* water-drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "water-drop.wav"; path = "../src/sounds/water-drop.wav"; sourceTree = "<group>"; };
 		16887F191E25044E00FB2474 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		16887F1B1E25045900FB2474 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1693423F1E1DAC2500B44A6D /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		169342401E1DAC2500B44A6D /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
 		169342411E1DAC2500B44A6D /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -274,7 +272,6 @@
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				16887F1A1E25044E00FB2474 /* CloudKit.framework in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
-				16887F1C1E25045900FB2474 /* HealthKit.framework in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
@@ -398,7 +395,6 @@
 		165D448E1E1EF48C00DB888A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				16887F1B1E25045900FB2474 /* HealthKit.framework */,
 				16887F191E25044E00FB2474 /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -580,7 +576,7 @@
 						DevelopmentTeam = 59MWT6FAX8;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
