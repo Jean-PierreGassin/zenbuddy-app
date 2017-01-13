@@ -64,7 +64,7 @@ class PersonalView extends Component {
     this.state.userData.sessionHistory.forEach((session, key) => {
       sessions.push(
         <TouchableOpacity
-          key={`SESSION-${key}`}
+          key={key}
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           style={AppStyles.primaryPill}>
@@ -81,6 +81,7 @@ class PersonalView extends Component {
     this.setState({
       sessions,
     });
+    console.log(sessions);
   }
 
   render = () => {
