@@ -4,12 +4,14 @@
  *
  */
 import moment from 'moment';
+import iCloudStorage from 'react-native-icloudstore';
 import React, { Component, PropTypes } from 'react';
 import {
   View,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  NativeEventEmitter,
   InteractionManager,
 } from 'react-native';
 
@@ -40,6 +42,9 @@ class PersonalView extends Component {
   }
 
   componentWillMount = () => {
+    this.eventEmitter = new NativeEventEmitter(iCloudStorage);
+    this.eventEmitter.addListener('iCloudStoreDidChangeRemotely', () => this.syncUser());
+
     this.setState({
       loading: false,
       userData: this.props.user,
@@ -48,6 +53,24 @@ class PersonalView extends Component {
 
   componentDidMount = () => {
     this.renderHistoryPills();
+  }
+  
+  syncUser = () => {
+    iCloudStorage.getItem('user').then((response) => {
+      if (response) {
+        const userData = JSON.parse(response);
+
+        this.props.updateMe({
+          ...userData,
+        });
+
+        this.setState({
+          userData,
+        });
+        
+        this.renderHistoryPills();
+      }
+    });
   }
 
   renderHistoryPills = () => {
