@@ -4,6 +4,7 @@
  *
  */
 import moment from 'moment';
+import KeepAwake from 'react-native-keep-awake';
 import iCloudStorage from 'react-native-icloudstore';
 import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements';
@@ -52,11 +53,15 @@ class SessionView extends Component {
   componentWillMount = () => {
     this.startTimer();
     this.startSound();
+    
+    KeepAwake.activate();
   }
 
   componentWillUnmount = () => {
     clearInterval(clockTimer);
     clearInterval(soundTimer);
+    
+    KeepAwake.deactivate();
   }
 
   startTimer = () => {

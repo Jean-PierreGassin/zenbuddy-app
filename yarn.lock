@@ -3434,6 +3434,10 @@ react-native-icloudstore@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/react-native-icloudstore/-/react-native-icloudstore-0.8.0.tgz#2a1ebbacb8695f3f685728005575d6f070fc0870"
 
+react-native-keep-awake@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-keep-awake/-/react-native-keep-awake-1.0.7.tgz#4ca2deb2448d1dbfec375d97e1299559a350d81f"
+
 react-native-router-flux@^3.37.0:
   version "3.37.0"
   resolved "https://registry.yarnpkg.com/react-native-router-flux/-/react-native-router-flux-3.37.0.tgz#18e8fd3e1e6dbdc4d8340cd47313c28bb9bb1caf"
