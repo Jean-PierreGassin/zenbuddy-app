@@ -65,7 +65,8 @@ class SessionView extends Component {
   }
 
   startTimer = () => {
-    const sessionLength = this.props.user.sessionSettings.length * 60;
+    // const sessionLength = this.props.user.sessionSettings.length * 60;
+    const sessionLength = 1;
 
     clockTimer = setInterval(() => {
       if (this.state.currentTime >= sessionLength) {
@@ -124,7 +125,7 @@ class SessionView extends Component {
 
   saveHistory = () => {
     iCloudStorage.getItem('user').then((response) => {
-      let sessionStreak = 1;
+      let streak = 1;
       let userData = JSON.parse(response);
       let currentDate = moment().format();
 
@@ -136,10 +137,28 @@ class SessionView extends Component {
         let historyLength = userData.sessionHistory.length - 1;
 
         for (let session = historyLength; session > -1; session--) {
-          let previousSession = userData.sessionHistory[session];
-
-          if (moment(currentDate).subtract(sessionStreak, 'days').isSame(moment(previousSession.date), 'day')) {
-            sessionStreak += 1;
+          const previousSession = userData.sessionHistory[session];
+          const schedule = userData.sessionSettings.schedule;
+          
+          if (moment(currentDate).subtract(streak, 'days').isSame(moment(previousSession.date), 'day')) {
+            streak += 1;
+          } else if (schedule.days.indexOf(moment(currentDate).isoWeekday()) > -1) {
+            let daysInBetween = moment(currentDate).diff(moment(previousSession.date), 'days');
+            let lastScheduledSession = schedule.days[schedule.days.indexOf(moment(previousSession.date).isoWeekday())];
+            
+            if (lastScheduledSession === 1) {
+              lastScheduledSession = schedule.days[schedule.days.length - 1];
+            }
+            
+            if (moment(currentDate).isoWeekday() !== lastScheduledSession) break;
+            
+            if (daysInBetween > lastScheduledSession) break;
+            
+            if (daysInBetween > 7) break;
+            
+            if (moment(currentDate).subtract(daysInBetween, 'days').isSame(moment(previousSession.date), 'day')) {
+              streak += 1;
+            }
           } else {
             break;
           }
@@ -153,8 +172,8 @@ class SessionView extends Component {
       });
 
       this.props.updateMe({
-        sessionStreak,
         ...userData,
+        sessionStreak: streak,
       });
     });
   }
