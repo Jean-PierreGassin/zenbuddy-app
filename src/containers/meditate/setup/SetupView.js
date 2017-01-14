@@ -33,13 +33,6 @@ const styles = StyleSheet.create({
     right: 4,
     top: 4,
   },
-  modalCloseButton: {
-    height: 45,
-    padding: 20,
-    backgroundColor: '#FD8145',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-  },
 });
 
 // Component
@@ -214,6 +207,7 @@ class SetupView extends Component {
       }
 
       userData.sessionSettings = {
+        ...userData.sessionSettings,
         sound: this.state.sessionSound,
         length: this.state.sessionLength,
         intervals: this.state.sessionInterval,
@@ -295,7 +289,7 @@ class SetupView extends Component {
           onRequestClose={() => {alert("Modal has been closed.")}}>
           <View style={AppStyles.modalContainer}>
             <TouchableOpacity
-              style={styles.modalCloseButton}
+              style={AppStyles.modalCloseButton}
               onPress={() => this.setState({modalVisible: false})}>
               <Text h4>Close</Text>
             </TouchableOpacity>
