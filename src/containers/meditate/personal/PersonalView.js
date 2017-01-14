@@ -104,7 +104,6 @@ class PersonalView extends Component {
     this.setState({
       sessions,
     });
-    console.log(sessions);
   }
 
   render = () => {
