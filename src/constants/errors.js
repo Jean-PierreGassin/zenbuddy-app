@@ -1,8 +1,3 @@
-/**
- * App Error Messages
- *
- */
-
 export default {
   // Defaults
   default: 'Hmm, an unknown error occured',

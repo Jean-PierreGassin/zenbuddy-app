@@ -1,7 +1,3 @@
-/**
- * Launch Screen Container
- *
- */
 import { connect } from 'react-redux';
 
 // Actions

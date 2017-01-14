@@ -48,6 +48,10 @@ const daysList = [
 class SettingsView extends Component {
   static componentName = 'SettingsView';
 
+  static propTypes = {
+    updateMe: React.PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
 
@@ -60,22 +64,22 @@ class SettingsView extends Component {
       readableScheduleDays: 'Days: none',
     };
   }
-  
+
   componentWillMount = () => {
     iCloudStorage.getItem('user').then((response) => {
       if (response) {
         const userData = JSON.parse(response);
 
         if (userData.sessionSettings && userData.sessionSettings.schedule) {
-          let schedule = userData.sessionSettings.schedule;
-          
+          const schedule = userData.sessionSettings.schedule;
+
           if (schedule.time === 0) {
             schedule.time = 'Reminder time: none';
           }
-          
+
           let newDayList = [];
-          let newDayListObjects = [];
-          
+          const newDayListObjects = [];
+
           if (schedule.days.length > 0) {
             daysList.forEach((day) => {
               if (schedule.days.indexOf(Number(day.index)) > -1) {
@@ -83,14 +87,14 @@ class SettingsView extends Component {
                 newDayListObjects.push(day);
               }
             });
-            
+
             newDayList = newDayList.join(', ');
           }
-          
+
           if (newDayList.length === 0) {
             newDayList = 'Days: none';
           }
-          
+
           this.setState({
             scheduleDays: newDayListObjects,
             readableScheduleDays: newDayList,
@@ -100,14 +104,7 @@ class SettingsView extends Component {
       }
     });
   }
-  
-  toggleModal = (type) => {
-    this.setState({
-      modalType: type,
-      modalVisible: !this.state.modalVisible,
-    });
-  }
-  
+
   getScheduleTimes = () => {
     const times = this.generateTimes(15);
     const timesJsx = [];
@@ -117,7 +114,7 @@ class SettingsView extends Component {
         key={'DEFAULT'}
         label={'None'}
         value={'Reminder time: none'}
-      />
+      />,
     );
 
     times.forEach((time, index) => {
@@ -126,7 +123,7 @@ class SettingsView extends Component {
           key={index}
           label={time}
           value={time}
-        />
+        />,
       );
     });
 
@@ -142,28 +139,14 @@ class SettingsView extends Component {
 
     return picker;
   }
-  
-  generateTimes = (increments) => {
-    const times = [];
-    const date = new Date(1970, 0, 1, 0, 0, 0, 0);
 
-    while (date.getDate() === 1) {
-      const point = date.toLocaleTimeString('en-US');
-
-      date.setMinutes(date.getMinutes() + increments);
-      times.push(point);
-    }
-    
-    return times;
-  }
-  
   getScheduleDays = () => {
     const dayIndexes = [];
-    
+
     this.state.scheduleDays.forEach((day) => {
       dayIndexes.push(day.index);
     });
-    
+
     return (
       <ScrollView contentContainerStyle={AppStyles.modalScrollView}>
         {daysList.map(day => (
@@ -189,10 +172,10 @@ class SettingsView extends Component {
     const readableScheduleDays = [];
     let scheduleDays = this.state.scheduleDays;
     let wasRemoved = false;
-    
+
     if (day.name === 'None') {
       scheduleDays = [];
-      
+
       return this.setState({
         scheduleDays,
         readableScheduleDays: 'Days: none',
@@ -219,7 +202,10 @@ class SettingsView extends Component {
     }
 
     scheduleDays.sort((a, b) => {
-      return a.index > b.index;
+      const firstIndex = a.index;
+      const secondIndex = b.index;
+
+      return firstIndex > secondIndex;
     });
 
     scheduleDays.forEach((dayObject) => {
@@ -229,6 +215,27 @@ class SettingsView extends Component {
     return this.setState({
       scheduleDays,
       readableScheduleDays: readableScheduleDays.join(', '),
+    });
+  }
+
+  generateTimes = (increments) => {
+    const times = [];
+    const date = new Date(1970, 0, 1, 0, 0, 0, 0);
+
+    while (date.getDate() === 1) {
+      const point = date.toLocaleTimeString('en-US');
+
+      date.setMinutes(date.getMinutes() + increments);
+      times.push(point);
+    }
+
+    return times;
+  }
+
+  toggleModal = (type) => {
+    this.setState({
+      modalType: type,
+      modalVisible: !this.state.modalVisible,
     });
   }
 
@@ -261,7 +268,7 @@ class SettingsView extends Component {
       this.state.scheduleDays.forEach((day) => {
         newScheduleDays.push(Number(day.index));
       });
-      
+
       let newScheduleTime = this.state.scheduleTime;
 
       if (newScheduleTime === 'Reminder time: none') {
@@ -282,7 +289,7 @@ class SettingsView extends Component {
   render = () => {
     if (this.state.loading) return <Loading />;
     if (this.state.error) return <Error text={this.state.error} />;
-    
+
     let modalContents;
 
     if (this.state.modalType === 'sessionScheduleDays') {
@@ -297,53 +304,58 @@ class SettingsView extends Component {
       <View style={AppStyles.containerCentered}>
         <ScrollView>
           <Spacer size={20} />
-          
+
           <Text h3>Zen Schedule</Text>
           <TouchableOpacity
             activeOpacity={0.7}
             hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
             onPress={() => this.toggleModal('sessionScheduleDays')}
-            style={AppStyles.primaryButton}>
+            style={AppStyles.primaryButton}
+          >
             <Text>{this.state.readableScheduleDays}</Text>
           </TouchableOpacity>
-          
-          {/*<TouchableOpacity
-            activeOpacity={0.7}
-            hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
-            onPress={() => this.toggleModal('sessionScheduleTime')}
-            style={AppStyles.primaryButton}>
+
+          {/*
+          <TouchableOpacity
+          activeOpacity={0.7}
+          hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
+          onPress={() => this.toggleModal('sessionScheduleTime')}
+          style={AppStyles.primaryButton}>
             <Text>{this.state.scheduleTime}</Text>
-          </TouchableOpacity>*/}
+          </TouchableOpacity>
+          */}
         </ScrollView>
-        
+
         <Modal
           transparent
-          animationType={"slide"}
+          animationType={'slide'}
           visible={this.state.modalVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}>
+        >
           <View style={AppStyles.modalContainer}>
             <TouchableOpacity
               style={AppStyles.modalCloseButton}
-              onPress={() => this.setState({modalVisible: false})}>
+              onPress={() => this.setState({ modalVisible: false })}
+            >
               <Text h4>Close</Text>
             </TouchableOpacity>
 
             {modalContents}
           </View>
         </Modal>
-        
+
         <Spacer size={50} />
 
         <TouchableOpacity
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           onPress={() => this.saveSettings()}
-          style={AppStyles.primaryButton}>
+          style={AppStyles.primaryButton}
+        >
           <Text>Save</Text>
         </TouchableOpacity>
-        
+
         <Spacer size={50} />
-        
+
         <Text h6>ZenBuddy v1.0.0</Text>
         <Text h6>Created by Jean-Pierre Gassin</Text>
       </View>

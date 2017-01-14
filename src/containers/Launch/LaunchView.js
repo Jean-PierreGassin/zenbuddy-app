@@ -1,9 +1,3 @@
-/**
- * Launch Screen
- *  - Shows a nice loading screen whilst:
- *  - Checking if user is logged in, and redirects from there
- *
- */
 import iCloudStorage from 'react-native-icloudstore';
 import React, { Component, PropTypes } from 'react';
 import {
@@ -16,12 +10,13 @@ import { Actions } from 'react-native-router-flux';
 // Consts and Libs
 import { AppStyles, AppSizes } from '@theme/';
 
-// Styles
-const styles = StyleSheet.create({});
-
 // Component
 class AppLaunch extends Component {
   static componentName = 'AppLaunch';
+
+  static propTypes = {
+    updateMe: React.PropTypes.func.isRequired,
+  }
 
   componentDidMount = () => {
     Actions.app({ type: 'reset' });
@@ -30,7 +25,7 @@ class AppLaunch extends Component {
 
     iCloudStorage.getItem('user').then((response) => {
       if (response) {
-        let userData = JSON.parse(response);
+        const userData = JSON.parse(response);
 
         this.props.updateMe({
           ...userData,

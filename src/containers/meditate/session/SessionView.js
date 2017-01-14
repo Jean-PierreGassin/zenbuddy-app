@@ -14,7 +14,6 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  InteractionManager,
 } from 'react-native';
 
 // Consts and Libs
@@ -33,12 +32,23 @@ const styles = StyleSheet.create({
   },
 });
 
-var clockTimer;
-var soundTimer;
+let clockTimer;
+let soundTimer;
 
 // Component
 class SessionView extends Component {
   static componentName = 'SessionView';
+
+  static propTypes = {
+    user: React.PropTypes.shape({
+      sessionSettings: React.PropTypes.shape({
+        length: React.PropTypes.number.isRequired,
+        sound: React.PropTypes.string.isRequired,
+        intervals: React.PropTypes.number.isRequired,
+      }).isRequired,
+    }).isRequired,
+    updateMe: React.PropTypes.func.isRequired,
+  }
 
   constructor(props) {
     super(props);
@@ -53,19 +63,20 @@ class SessionView extends Component {
   componentWillMount = () => {
     this.startTimer();
     this.startSound();
-    
+
     KeepAwake.activate();
   }
 
   componentWillUnmount = () => {
     clearInterval(clockTimer);
     clearInterval(soundTimer);
-    
+
     KeepAwake.deactivate();
   }
 
   startTimer = () => {
-    const sessionLength = this.props.user.sessionSettings.length * 60;
+    // const sessionLength = this.props.user.sessionSettings.length * 60;
+    const sessionLength = 1;
 
     clockTimer = setInterval(() => {
       if (this.state.currentTime >= sessionLength) {
@@ -96,15 +107,13 @@ class SessionView extends Component {
 
       if ((sessionLength - this.state.currentTime) - (intervalTime / 1000) < 0) {
         clearInterval(soundTimer);
-
-        return;
       }
     }, intervalTime);
   }
 
   playSound = (file) => {
-    let soundFile = new Sound(file, Sound.MAIN_BUNDLE, (error) => {
-      soundFile.play((success) => {});
+    const soundFile = new Sound(file, Sound.MAIN_BUNDLE, () => {
+      soundFile.play(() => {});
     });
   }
 
@@ -124,37 +133,28 @@ class SessionView extends Component {
 
   saveHistory = () => {
     iCloudStorage.getItem('user').then((response) => {
+      const userData = JSON.parse(response);
+      const currentDate = moment().format();
       let streak = 1;
-      let userData = JSON.parse(response);
-      let currentDate = moment().format();
 
       if (!userData.sessionHistory) {
         userData.sessionHistory = [];
       }
 
       if (userData.sessionHistory) {
-        let historyLength = userData.sessionHistory.length - 1;
+        const historyLength = userData.sessionHistory.length - 1;
 
-        for (let session = historyLength; session > -1; session--) {
+        for (let session = historyLength; session > -1; session -= 1) {
           const previousSession = userData.sessionHistory[session];
           const schedule = userData.sessionSettings.schedule;
-          
+
           if (moment(currentDate).subtract(streak, 'days').isSame(moment(previousSession.date), 'day')) {
             streak += 1;
           } else if (schedule.days.indexOf(moment(currentDate).isoWeekday()) > -1) {
-            let daysInBetween = moment(currentDate).diff(moment(previousSession.date), 'days');
-            let lastScheduledSession = schedule.days[schedule.days.indexOf(moment(previousSession.date).isoWeekday())];
-            
-            if (lastScheduledSession === 1) {
-              lastScheduledSession = schedule.days[schedule.days.length - 1];
-            }
-            
-            if (moment(currentDate).isoWeekday() !== lastScheduledSession) break;
-            
-            if (daysInBetween > lastScheduledSession) break;
-            
+            const daysInBetween = moment(currentDate).diff(moment(previousSession.date), 'days');
+
             if (daysInBetween > 7) break;
-            
+
             if (moment(currentDate).subtract(daysInBetween, 'days').isSame(moment(previousSession.date), 'day')) {
               streak += 1;
             }
@@ -193,8 +193,9 @@ class SessionView extends Component {
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           onPress={() => Actions.pop()}
-          style={AppStyles.primaryButton}>
-          <Text>I'm finished</Text>
+          style={AppStyles.primaryButton}
+        >
+          <Text>I am finished</Text>
         </TouchableOpacity>
       </View>
     );

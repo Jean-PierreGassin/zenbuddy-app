@@ -9,10 +9,8 @@ import React, { Component, PropTypes } from 'react';
 import {
   View,
   ScrollView,
-  StyleSheet,
   TouchableOpacity,
   NativeEventEmitter,
-  InteractionManager,
 } from 'react-native';
 
 // Consts and Libs
@@ -23,12 +21,14 @@ import { Text, Spacer } from '@ui/';
 import Loading from '@components/general/Loading';
 import Error from '@components/general/Error';
 
-// Styles
-const styles = StyleSheet.create({});
-
 // Component
 class PersonalView extends Component {
   static componentName = 'PersonalView';
+
+  static propTypes = {
+    user: React.PropTypes.shape({}).isRequired,
+    updateMe: React.PropTypes.func.isRequired,
+  }
 
   constructor(props) {
     super(props);
@@ -54,7 +54,7 @@ class PersonalView extends Component {
   componentDidMount = () => {
     this.renderHistoryPills();
   }
-  
+
   syncUser = () => {
     iCloudStorage.getItem('user').then((response) => {
       if (response) {
@@ -67,7 +67,7 @@ class PersonalView extends Component {
         this.setState({
           userData,
         });
-        
+
         this.renderHistoryPills();
       }
     });
@@ -90,18 +90,26 @@ class PersonalView extends Component {
           key={key}
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          style={AppStyles.primaryPill}>
+          style={AppStyles.primaryPill}
+        >
           <Text h4>{moment(session.date).format('MMMM Do YYYY @ h:mma')}</Text>
-          <Text>My session lasted for {session.length} minutes with {session.intervals ? session.intervals : 0} session intervals</Text>
-        </TouchableOpacity>
+          <Text>
+            My session lasted for {session.length}
+            &nbsp;minutes with {session.intervals ? session.intervals : 0}
+            &nbsp;session intervals
+          </Text>
+        </TouchableOpacity>,
       );
     });
 
     sessions.sort((a, b) => {
-      return a.key < b.key;
+      const firstKey = a.key;
+      const secondKey = b.key;
+
+      return firstKey < secondKey;
     });
 
-    this.setState({
+    return this.setState({
       sessions,
     });
   }
@@ -115,7 +123,9 @@ class PersonalView extends Component {
         <ScrollView>
           <Spacer size={20} />
 
-          <Text h4>My current Zen streak is {this.state.userData.sessionStreak} day(s), keep it up!</Text>
+          <Text h4>
+            My current Zen streak is {this.state.userData.sessionStreak} day(s), keep it up!
+          </Text>
 
           <Spacer size={10} />
 

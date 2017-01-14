@@ -15,7 +15,6 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  InteractionManager,
 } from 'react-native';
 
 // Consts and Libs
@@ -39,6 +38,10 @@ const styles = StyleSheet.create({
 class SetupView extends Component {
   static componentName = 'SetupView';
 
+  static propTypes = {
+    updateMe: React.PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
 
@@ -53,16 +56,8 @@ class SetupView extends Component {
       readableSessionLength: 'Set your session length',
       sessionSound: 0,
       readableSessionSound: 'Pick a mindful sound',
-      sessionIntervals: 4,
       readableSessionInterval: 'Choose your mindful intervals',
     };
-  }
-
-  toggleModal = (type) => {
-    this.setState({
-      modalType: type,
-      modalVisible: !this.state.modalVisible,
-    });
   }
 
   getSessionLengths = () => {
@@ -73,16 +68,16 @@ class SetupView extends Component {
         key={'DEFAULT'}
         label={'-'}
         value={''}
-      />
+      />,
     );
 
-    for (let time = 5; time <= 120; time++) {
+    for (let time = 5; time <= 120; time += 1) {
       sessionLengths.push(
         <Picker.Item
           key={time}
           label={`${time} minutes`}
           value={time}
-        />
+        />,
       );
     }
 
@@ -97,8 +92,8 @@ class SetupView extends Component {
               readableSessionLength: `Your session will be ${length} minutes long`,
             });
           }
-        }
-      }>
+        }}
+      >
         {sessionLengths}
       </Picker>
     );
@@ -108,17 +103,17 @@ class SetupView extends Component {
 
   getSessionSounds = () => {
     const sounds = [
-      { name: 'Bellow', 'file': 'bellow.wav' },
-      { name: 'Birds', 'file': 'birds.wav' },
-      { name: 'Bleep', 'file': 'bleep.wav' },
-      { name: 'Piccolo', 'file': 'piccolo.wav' },
-      { name: 'Ting', 'file': 'ting.wav' },
-      { name: 'Water Drop', 'file': 'water-drop.wav' },
+      { name: 'Bellow', file: 'bellow.wav' },
+      { name: 'Birds', file: 'birds.wav' },
+      { name: 'Bleep', file: 'bleep.wav' },
+      { name: 'Piccolo', file: 'piccolo.wav' },
+      { name: 'Ting', file: 'ting.wav' },
+      { name: 'Water Drop', file: 'water-drop.wav' },
     ];
 
     return (
       <ScrollView contentContainerStyle={AppStyles.modalScrollView}>
-        {sounds.map((sound) => (
+        {sounds.map(sound => (
           <TouchableOpacity
             key={`SOUND-${sound.name}`}
             activeOpacity={0.7}
@@ -131,7 +126,8 @@ class SetupView extends Component {
               });
             }}
             hitSlop={{ top: 1, right: 10, bottom: 1, left: 10 }}
-            style={AppStyles.primaryButton}>
+            style={AppStyles.primaryButton}
+          >
             <Text>{sound.name}</Text>
 
             {this.state.sessionSound === sound.file &&
@@ -155,16 +151,16 @@ class SetupView extends Component {
         key={'DEFAULT'}
         label={'-'}
         value={''}
-      />
+      />,
     );
 
-    for (let intervals = 3; intervals <= 8; intervals++) {
+    for (let intervals = 3; intervals <= 8; intervals += 1) {
       sessionIntervals.push(
         <Picker.Item
           key={intervals}
           label={`${intervals} intervals`}
           value={intervals}
-        />
+        />,
       );
     }
 
@@ -179,8 +175,8 @@ class SetupView extends Component {
               readableSessionInterval: `${interval} times during your session`,
             });
           }
-        }
-      }>
+        }}
+      >
         {sessionIntervals}
       </Picker>
     );
@@ -188,9 +184,16 @@ class SetupView extends Component {
     return picker;
   }
 
+  toggleModal = (type) => {
+    this.setState({
+      modalType: type,
+      modalVisible: !this.state.modalVisible,
+    });
+  }
+
   playSound = (file) => {
-    let soundFile = new Sound(file, Sound.MAIN_BUNDLE, (error) => {
-      soundFile.play((success) => {});
+    const soundFile = new Sound(file, Sound.MAIN_BUNDLE, () => {
+      soundFile.play(() => {});
     });
   }
 
@@ -226,7 +229,8 @@ class SetupView extends Component {
     if (this.state.error) return <Error text={this.state.error} />;
 
     let modalContents;
-    let buttonDisabled = !this.state.sessionLength || !this.state.sessionSound || !this.state.sessionInterval;
+    const buttonDisabled = (!this.state.sessionLength ||
+      !this.state.sessionSound || !this.state.sessionInterval);
 
     if (this.state.modalType === 'sessionLengths') {
       modalContents = this.getSessionLengths();
@@ -246,7 +250,8 @@ class SetupView extends Component {
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
           onPress={() => this.toggleModal('sessionLengths')}
-          style={AppStyles.primaryButton}>
+          style={AppStyles.primaryButton}
+        >
           <Text>{this.state.readableSessionLength}</Text>
         </TouchableOpacity>
 
@@ -256,7 +261,8 @@ class SetupView extends Component {
           activeOpacity={0.7}
           hitSlop={{ top: 5, right: 10, bottom: 10, left: 10 }}
           onPress={() => this.toggleModal('sessionSounds')}
-          style={AppStyles.primaryButton}>
+          style={AppStyles.primaryButton}
+        >
           <Text>{this.state.readableSessionSound}</Text>
         </TouchableOpacity>
 
@@ -266,7 +272,8 @@ class SetupView extends Component {
           activeOpacity={0.7}
           hitSlop={{ top: 5, right: 10, bottom: 10, left: 10 }}
           onPress={() => this.toggleModal('sessionIntervals')}
-          style={AppStyles.primaryButton}>
+          style={AppStyles.primaryButton}
+        >
           <Text>{this.state.readableSessionInterval}</Text>
         </TouchableOpacity>
 
@@ -277,20 +284,22 @@ class SetupView extends Component {
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           onPress={() => this.startSession()}
-          style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}>
+          style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}
+        >
           <Text>Begin your session</Text>
           <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={styles.playIcon} />
         </TouchableOpacity>
 
         <Modal
           transparent
-          animationType={"slide"}
+          animationType={'slide'}
           visible={this.state.modalVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}>
+        >
           <View style={AppStyles.modalContainer}>
             <TouchableOpacity
               style={AppStyles.modalCloseButton}
-              onPress={() => this.setState({modalVisible: false})}>
+              onPress={() => this.setState({ modalVisible: false })}
+            >
               <Text h4>Close</Text>
             </TouchableOpacity>
 

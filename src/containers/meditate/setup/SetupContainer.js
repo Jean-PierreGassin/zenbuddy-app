@@ -9,7 +9,7 @@ import * as User from '@redux/user/actions';
 import SetupRender from './SetupView';
 
 // What data from the store shall we send to the component?
-const mapStateToProps = state => ({});
+const mapStateToProps = () => ({});
 
 // Any actions to map to the component?
 const mapDispatchToProps = {
