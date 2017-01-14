@@ -158,6 +158,12 @@ class SettingsView extends Component {
   }
   
   getScheduleDays = () => {
+    const dayIndexes = [];
+    
+    this.state.scheduleDays.forEach((day) => {
+      dayIndexes.push(day.index);
+    });
+    
     return (
       <ScrollView contentContainerStyle={AppStyles.modalScrollView}>
         {daysList.map(day => (
@@ -170,7 +176,7 @@ class SettingsView extends Component {
           >
             <Text>{day.name}</Text>
 
-            {this.state.scheduleDays.indexOf(day.index) > -1 &&
+            {dayIndexes.indexOf(day.index) > -1 &&
               <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={styles.tickIcon} />
             }
           </TouchableOpacity>
