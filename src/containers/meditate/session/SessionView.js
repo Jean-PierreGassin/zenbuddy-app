@@ -65,8 +65,7 @@ class SessionView extends Component {
   }
 
   startTimer = () => {
-    // const sessionLength = this.props.user.sessionSettings.length * 60;
-    const sessionLength = 1;
+    const sessionLength = this.props.user.sessionSettings.length * 60;
 
     clockTimer = setInterval(() => {
       if (this.state.currentTime >= sessionLength) {
