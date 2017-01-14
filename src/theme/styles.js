@@ -256,6 +256,13 @@ export default {
     padding: 20,
     alignItems: 'center',
   },
+  modalCloseButton: {
+    height: 45,
+    padding: 20,
+    backgroundColor: '#FD8145',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
 
   // Navbar
   navbar: {
