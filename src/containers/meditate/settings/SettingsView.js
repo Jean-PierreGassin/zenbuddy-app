@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
 });
 
 const daysList = [
+  { name: 'None', index: '0', friendlyName: 'Days: none' },
   { name: 'Monday', index: '1', friendlyName: 'Mon' },
   { name: 'Tuesday', index: '2', friendlyName: 'Tue' },
   { name: 'Wednesday', index: '3', friendlyName: 'Wed' },
@@ -86,9 +87,13 @@ class SettingsView extends Component {
             newDayList = newDayList.join(', ');
           }
           
+          if (newDayList.length === 0) {
+            newDayList = 'Days: none';
+          }
+          
           this.setState({
             scheduleDays: newDayListObjects,
-            readableScheduleDays: newDayList || 'Days: none',
+            readableScheduleDays: newDayList,
             scheduleTime: schedule.time,
           });
         }
@@ -175,9 +180,18 @@ class SettingsView extends Component {
   }
 
   setScheduleDays = (day) => {
-    const scheduleDays = this.state.scheduleDays;
     const readableScheduleDays = [];
+    let scheduleDays = this.state.scheduleDays;
     let wasRemoved = false;
+    
+    if (day.name === 'None') {
+      scheduleDays = [];
+      
+      return this.setState({
+        scheduleDays,
+        readableScheduleDays: 'Days: none',
+      });
+    }
 
     scheduleDays.forEach((storedDay, index) => {
       if (storedDay.name === day.name) {
@@ -287,13 +301,13 @@ class SettingsView extends Component {
             <Text>{this.state.readableScheduleDays}</Text>
           </TouchableOpacity>
           
-          <TouchableOpacity
+          {/*<TouchableOpacity
             activeOpacity={0.7}
             hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
             onPress={() => this.toggleModal('sessionScheduleTime')}
             style={AppStyles.primaryButton}>
             <Text>{this.state.scheduleTime}</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
         </ScrollView>
         
         <Modal
@@ -322,7 +336,7 @@ class SettingsView extends Component {
           <Text>Save</Text>
         </TouchableOpacity>
         
-        <Spacer size={20} />
+        <Spacer size={50} />
         
         <Text h6>ZenBuddy v1.0.0</Text>
         <Text h6>Created by Jean-Pierre Gassin</Text>
