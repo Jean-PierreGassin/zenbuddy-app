@@ -129,6 +129,7 @@ class SessionView extends Component {
 
     setTimeout(() => {
       Actions.pop();
+      Actions.personal();
     }, 3000);
   }
 
