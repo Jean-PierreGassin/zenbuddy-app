@@ -134,38 +134,15 @@ class SessionView extends Component {
   saveHistory = () => {
     iCloudStorage.getItem('user').then((response) => {
       const userData = JSON.parse(response);
-      const currentDate = moment().format();
-      let streak = 1;
 
       if (!userData.sessionHistory) {
         userData.sessionHistory = [];
       }
 
-      if (userData.sessionHistory) {
-        const historyLength = userData.sessionHistory.length - 1;
-
-        for (let session = historyLength; session > -1; session -= 1) {
-          const previousSession = userData.sessionHistory[session];
-          const schedule = userData.sessionSettings.schedule;
-
-          if (moment(currentDate).subtract(streak, 'days').isSame(moment(previousSession.date), 'day')) {
-            streak += 1;
-          } else if (schedule.days.indexOf(moment(currentDate).isoWeekday()) > -1) {
-            const daysInBetween = moment(currentDate).diff(moment(previousSession.date), 'days');
-
-            if (daysInBetween > 7) break;
-
-            if (moment(currentDate).subtract(daysInBetween, 'days').isSame(moment(previousSession.date), 'day')) {
-              streak += 1;
-            }
-          } else {
-            break;
-          }
-        }
-      }
+      const streak = this.calculateStreak(userData);
 
       userData.sessionHistory.push({
-        date: currentDate,
+        date: moment().format(),
         length: this.props.user.sessionSettings.length,
         intervals: this.props.user.sessionSettings.intervals,
       });
@@ -177,29 +154,82 @@ class SessionView extends Component {
     });
   }
 
-  render = () => {
-    return (
-      <View style={AppStyles.containerCentered}>
-        <Icon name={'access-time'} size={250} color={'#ffffff'} />
+  calculateStreak = (userData) => {
+    let currentStreak = userData.sessionStreak;
 
-        <Spacer size={50} />
+    if (userData.sessionHistory.length === 0) return 1;
+    if (!currentStreak) currentStreak = 1;
 
-        <Text h2 style={[styles.clockText]}>{this.state.readableCurrentTime}</Text>
+    const currentDate = moment().format();
+    const lastSession = userData.sessionHistory[userData.sessionHistory.length - 1];
+    const sessionSchedule = userData.sessionSettings.schedule;
 
-        <Spacer size={50} />
+    // Do not increase streak if we already increased it today
+    if (moment(currentDate).isSame(moment(lastSession.date), 'day')) {
+      return currentStreak;
+    }
 
-        <TouchableOpacity
-          disabled={this.state.isFinished}
-          activeOpacity={0.7}
-          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          onPress={() => Actions.pop()}
-          style={AppStyles.primaryButton}
-        >
-          <Text>I am finished</Text>
-        </TouchableOpacity>
-      </View>
-    );
+    // Reset streak if no sessions for more than a week
+    if (moment(lastSession.date).diff(currentDate, 'days') > 7) {
+      currentStreak = 1;
+
+      return currentStreak;
+    }
+
+    // Session continued from the day before
+    if (moment(currentDate).diff(lastSession.date, 'days') === 1) {
+      currentStreak += 1;
+    }
+
+    // Check if user is adhering to schedule instead
+    const currentDay = moment(currentDate).isoWeekday();
+    const previousDay = moment(lastSession.date).isoWeekday();
+    const currentDayIndex = sessionSchedule.days.indexOf(currentDay);
+    let previousScheduledSession = sessionSchedule.days[currentDayIndex - 1];
+
+    if (currentDayIndex === sessionSchedule.days.length - 1) {
+      previousScheduledSession = sessionSchedule.days[0];
+    }
+
+    if (currentDayIndex === 0) {
+      previousScheduledSession = sessionSchedule.days[sessionSchedule.days.length - 1];
+    }
+
+    if (previousScheduledSession === previousDay) {
+      currentStreak += 1;
+
+      return currentStreak;
+    }
+
+    // Check if we have missed a day
+    if (moment(currentDate).diff(lastSession.date, 'days') !== 1) {
+      currentStreak = 1;
+    }
+
+    return currentStreak;
   }
+
+  render = () => (
+    <View style={AppStyles.containerCentered}>
+      <Icon name={'access-time'} size={250} color={'#ffffff'} />
+
+      <Spacer size={50} />
+
+      <Text h2 style={[styles.clockText]}>{this.state.readableCurrentTime}</Text>
+
+      <Spacer size={50} />
+
+      <TouchableOpacity
+        disabled={this.state.isFinished}
+        activeOpacity={0.7}
+        hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+        onPress={() => Actions.pop()}
+        style={AppStyles.primaryButton}
+      >
+        <Text>I am finished</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 // Export Component
