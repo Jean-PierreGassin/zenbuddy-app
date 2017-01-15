@@ -97,8 +97,8 @@ class SetupView extends Component {
       { name: 'Bellow', file: 'bellow.wav' },
       { name: 'Birds', file: 'birds.wav' },
       { name: 'Bleep', file: 'bleep.wav' },
-      { name: 'Piccolo', file: 'piccolo.wav' },
-      { name: 'Ting', file: 'ting.wav' },
+      { name: 'Twinkle', file: 'twinkle.mp3' },
+      { name: 'Chimes', file: 'chimes.mp3' },
       { name: 'Water Drop', file: 'water-drop.wav' },
     ];
 

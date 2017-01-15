@@ -27,9 +27,9 @@
 		165D449B1E1F3BE500DB888A /* bellow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44941E1F3BE500DB888A /* bellow.wav */; };
 		165D449C1E1F3BE500DB888A /* birds.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44951E1F3BE500DB888A /* birds.wav */; };
 		165D449D1E1F3BE500DB888A /* bleep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44961E1F3BE500DB888A /* bleep.wav */; };
-		165D449F1E1F3BE500DB888A /* piccolo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44981E1F3BE500DB888A /* piccolo.wav */; };
-		165D44A01E1F3BE500DB888A /* ting.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D44991E1F3BE500DB888A /* ting.wav */; };
 		165D44A11E1F3BE500DB888A /* water-drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165D449A1E1F3BE500DB888A /* water-drop.wav */; };
+		166746641E2B94E6000B1C66 /* chimes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 166746621E2B94E6000B1C66 /* chimes.mp3 */; };
+		166746651E2B94E6000B1C66 /* twinkle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 166746631E2B94E6000B1C66 /* twinkle.mp3 */; };
 		16887F1A1E25044E00FB2474 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16887F191E25044E00FB2474 /* CloudKit.framework */; };
 		169342481E1DAC2500B44A6D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1693423F1E1DAC2500B44A6D /* Entypo.ttf */; };
 		169342491E1DAC2500B44A6D /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 169342401E1DAC2500B44A6D /* EvilIcons.ttf */; };
@@ -236,9 +236,9 @@
 		165D44941E1F3BE500DB888A /* bellow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bellow.wav; path = ../src/sounds/bellow.wav; sourceTree = "<group>"; };
 		165D44951E1F3BE500DB888A /* birds.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = birds.wav; path = ../src/sounds/birds.wav; sourceTree = "<group>"; };
 		165D44961E1F3BE500DB888A /* bleep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bleep.wav; path = ../src/sounds/bleep.wav; sourceTree = "<group>"; };
-		165D44981E1F3BE500DB888A /* piccolo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = piccolo.wav; path = ../src/sounds/piccolo.wav; sourceTree = "<group>"; };
-		165D44991E1F3BE500DB888A /* ting.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ting.wav; path = ../src/sounds/ting.wav; sourceTree = "<group>"; };
 		165D449A1E1F3BE500DB888A /* water-drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "water-drop.wav"; path = "../src/sounds/water-drop.wav"; sourceTree = "<group>"; };
+		166746621E2B94E6000B1C66 /* chimes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimes.mp3; path = ../src/sounds/chimes.mp3; sourceTree = "<group>"; };
+		166746631E2B94E6000B1C66 /* twinkle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = twinkle.mp3; path = ../src/sounds/twinkle.mp3; sourceTree = "<group>"; };
 		16887F191E25044E00FB2474 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		1693423F1E1DAC2500B44A6D /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		169342401E1DAC2500B44A6D /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
@@ -455,11 +455,11 @@
 		1693426D1E1E2C1300B44A6D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				166746621E2B94E6000B1C66 /* chimes.mp3 */,
+				166746631E2B94E6000B1C66 /* twinkle.mp3 */,
 				165D44941E1F3BE500DB888A /* bellow.wav */,
 				165D44951E1F3BE500DB888A /* birds.wav */,
 				165D44961E1F3BE500DB888A /* bleep.wav */,
-				165D44981E1F3BE500DB888A /* piccolo.wav */,
-				165D44991E1F3BE500DB888A /* ting.wav */,
 				165D449A1E1F3BE500DB888A /* water-drop.wav */,
 				165D44921E1F39B600DB888A /* finish.wav */,
 			);
@@ -856,7 +856,6 @@
 			files = (
 				1693424D1E1DAC2500B44A6D /* MaterialIcons.ttf in Resources */,
 				165D449B1E1F3BE500DB888A /* bellow.wav in Resources */,
-				165D449F1E1F3BE500DB888A /* piccolo.wav in Resources */,
 				165D44A11E1F3BE500DB888A /* water-drop.wav in Resources */,
 				169342561E1E0B4500B44A6D /* Avenir-Light.otf in Resources */,
 				1693424E1E1DAC2500B44A6D /* Octicons.ttf in Resources */,
@@ -865,14 +864,15 @@
 				1693424A1E1DAC2500B44A6D /* FontAwesome.ttf in Resources */,
 				169342491E1DAC2500B44A6D /* EvilIcons.ttf in Resources */,
 				1693424C1E1DAC2500B44A6D /* Ionicons.ttf in Resources */,
-				165D44A01E1F3BE500DB888A /* ting.wav in Resources */,
 				169342501E1DAC2500B44A6D /* Zocial.ttf in Resources */,
 				1693424B1E1DAC2500B44A6D /* Foundation.ttf in Resources */,
+				166746651E2B94E6000B1C66 /* twinkle.mp3 in Resources */,
 				1693424F1E1DAC2500B44A6D /* SimpleLineIcons.ttf in Resources */,
 				169342481E1DAC2500B44A6D /* Entypo.ttf in Resources */,
 				165D449D1E1F3BE500DB888A /* bleep.wav in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				165D449C1E1F3BE500DB888A /* birds.wav in Resources */,
+				166746641E2B94E6000B1C66 /* chimes.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
