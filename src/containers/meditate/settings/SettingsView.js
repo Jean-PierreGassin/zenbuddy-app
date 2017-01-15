@@ -24,15 +24,6 @@ import { Text, Spacer } from '@ui/';
 import Loading from '@components/general/Loading';
 import Error from '@components/general/Error';
 
-// Styles
-const styles = StyleSheet.create({
-  tickIcon: {
-    position: 'absolute',
-    right: 4,
-    top: 4,
-  },
-});
-
 const daysList = [
   { name: 'None', index: '0', friendlyName: 'Days: none' },
   { name: 'Monday', index: '1', friendlyName: 'Mon' },
@@ -160,7 +151,7 @@ class SettingsView extends Component {
             <Text>{day.name}</Text>
 
             {dayIndexes.indexOf(day.index) > -1 &&
-              <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={styles.tickIcon} />
+              <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
             }
           </TouchableOpacity>
         ))}

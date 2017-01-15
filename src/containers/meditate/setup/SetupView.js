@@ -25,15 +25,6 @@ import { Text, Spacer } from '@ui/';
 import Loading from '@components/general/Loading';
 import Error from '@components/general/Error';
 
-// Styles
-const styles = StyleSheet.create({
-  playIcon: {
-    position: 'absolute',
-    right: 4,
-    top: 4,
-  },
-});
-
 // Component
 class SetupView extends Component {
   static componentName = 'SetupView';
@@ -131,11 +122,11 @@ class SetupView extends Component {
             <Text>{sound.name}</Text>
 
             {this.state.sessionSound === sound.file &&
-              <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={styles.playIcon} />
+              <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
             }
 
             {this.state.sessionSound !== sound.file &&
-              <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={styles.playIcon} />
+              <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
             }
           </TouchableOpacity>
         ))}
@@ -275,6 +266,7 @@ class SetupView extends Component {
           style={AppStyles.primaryButton}
         >
           <Text>{this.state.readableSessionInterval}</Text>
+          <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
         </TouchableOpacity>
 
         <Spacer size={50} />
@@ -287,7 +279,7 @@ class SetupView extends Component {
           style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}
         >
           <Text>Begin your session</Text>
-          <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={styles.playIcon} />
+          <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
         </TouchableOpacity>
 
         <Modal
