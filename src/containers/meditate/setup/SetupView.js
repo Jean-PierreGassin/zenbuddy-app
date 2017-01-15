@@ -10,10 +10,10 @@ import { Actions } from 'react-native-router-flux';
 import React, { Component, PropTypes } from 'react';
 import {
   View,
+  Alert,
   Modal,
   Picker,
   ScrollView,
-  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 
@@ -215,6 +215,16 @@ class SetupView extends Component {
     });
   }
 
+  showHint = () => {
+    Alert.alert(
+      'ZenBuddy',
+      'Session intervals are the amount of times your selected sound will play during your session, this is helpful for when you want a cue to move onto your next mental exercise',
+      [
+        { text: 'Got it!', onPress: () => {} },
+      ],
+    );
+  }
+
   render = () => {
     if (this.state.loading) return <Loading />;
     if (this.state.error) return <Error text={this.state.error} />;
@@ -266,7 +276,15 @@ class SetupView extends Component {
           style={AppStyles.primaryButton}
         >
           <Text>{this.state.readableSessionInterval}</Text>
-          <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
+
+          <TouchableOpacity
+            activeOpacity={0.7}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            onPress={() => this.showHint()}
+            style={AppStyles.buttonIcon}
+          >
+            <Icon name={'help'} size={35} color={'#fe621d'} />
+          </TouchableOpacity>
         </TouchableOpacity>
 
         <Spacer size={50} />

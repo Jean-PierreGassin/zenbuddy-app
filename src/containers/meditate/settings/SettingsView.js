@@ -11,7 +11,6 @@ import {
   Modal,
   Alert,
   Picker,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
@@ -277,6 +276,16 @@ class SettingsView extends Component {
     Actions.pop();
   }
 
+  showHint = () => {
+    Alert.alert(
+      'ZenBuddy',
+      'Setting a schedule means that your streak will not be broken if you miss a non-scheduled day',
+      [
+        { text: 'Got it!', onPress: () => {} },
+      ],
+    );
+  }
+
   render = () => {
     if (this.state.loading) return <Loading />;
     if (this.state.error) return <Error text={this.state.error} />;
@@ -304,6 +313,15 @@ class SettingsView extends Component {
             style={AppStyles.primaryButton}
           >
             <Text>{this.state.readableScheduleDays}</Text>
+
+            <TouchableOpacity
+              activeOpacity={0.7}
+              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+              onPress={() => this.showHint()}
+              style={AppStyles.buttonIcon}
+            >
+              <Icon name={'help'} size={35} color={'#fe621d'} />
+            </TouchableOpacity>
           </TouchableOpacity>
 
           {/*
