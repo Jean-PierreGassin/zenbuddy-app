@@ -184,23 +184,25 @@ class SessionView extends Component {
     }
 
     // Check if user is adhering to schedule instead
-    const currentDay = moment(currentDate).isoWeekday();
-    const previousDay = moment(lastSession.date).isoWeekday();
-    const currentDayIndex = sessionSchedule.days.indexOf(currentDay);
-    let previousScheduledSession = sessionSchedule.days[currentDayIndex - 1];
+    if (sessionSchedule && sessionSchedule.days) {
+      const currentDay = moment(currentDate).isoWeekday();
+      const previousDay = moment(lastSession.date).isoWeekday();
+      const currentDayIndex = sessionSchedule.days.indexOf(currentDay);
+      let previousScheduledSession = sessionSchedule.days[currentDayIndex - 1];
 
-    if (currentDayIndex === sessionSchedule.days.length - 1) {
-      previousScheduledSession = sessionSchedule.days[0];
-    }
+      if (currentDayIndex === sessionSchedule.days.length - 1) {
+        previousScheduledSession = sessionSchedule.days[0];
+      }
 
-    if (currentDayIndex === 0) {
-      previousScheduledSession = sessionSchedule.days[sessionSchedule.days.length - 1];
-    }
+      if (currentDayIndex === 0) {
+        previousScheduledSession = sessionSchedule.days[sessionSchedule.days.length - 1];
+      }
 
-    if (previousScheduledSession === previousDay) {
-      currentStreak += 1;
+      if (previousScheduledSession === previousDay) {
+        currentStreak += 1;
 
-      return currentStreak;
+        return currentStreak;
+      }
     }
 
     // Check if we have missed a day
