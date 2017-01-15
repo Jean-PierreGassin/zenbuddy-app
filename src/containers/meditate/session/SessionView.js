@@ -12,6 +12,7 @@ import { Actions } from 'react-native-router-flux';
 import React, { Component, PropTypes } from 'react';
 import {
   View,
+  Alert,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
@@ -209,6 +210,17 @@ class SessionView extends Component {
     return currentStreak;
   }
 
+  manualFinish = () => {
+    Alert.alert(
+      'Are you sure?',
+      'Manually finishing a session won\'t save it to your history!',
+      [
+        { text: 'Cancel Session', onPress: () => Actions.pop() },
+        { text: 'Continue Session', onPress: () => {}, style: 'cancel' },
+      ],
+    );
+  }
+
   render = () => (
     <View style={AppStyles.containerCentered}>
       <Icon name={'access-time'} size={250} color={'#ffffff'} />
@@ -223,7 +235,7 @@ class SessionView extends Component {
         disabled={this.state.isFinished}
         activeOpacity={0.7}
         hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-        onPress={() => Actions.pop()}
+        onPress={() => this.manualFinish()}
         style={AppStyles.primaryButton}
       >
         <Text>I am finished</Text>
