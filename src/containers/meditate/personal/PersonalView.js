@@ -92,7 +92,7 @@ class PersonalView extends Component {
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           style={AppStyles.primaryPill}
         >
-          <Text h4>{moment(session.date).format('MMMM Do YYYY @ h:mma')}</Text>
+          <Text h4>{moment(session.date).format('dddd, MMM Do YYYY @ h:mma')}</Text>
           <Text>
             My session lasted for {session.length}
             &nbsp;minutes with {session.intervals ? session.intervals : 0}
@@ -124,7 +124,7 @@ class PersonalView extends Component {
           <Spacer size={20} />
 
           <Text h4>
-            My current Zen streak is {this.state.userData.sessionStreak} day(s), keep it up!
+            Current Zen streak is {this.state.userData.sessionStreak} day(s)!
           </Text>
 
           <Spacer size={10} />
