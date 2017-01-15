@@ -29,6 +29,7 @@ const scene = (
     key={'session'}
     component={Session}
     title={'Session'}
+    panHandlers={null}
     analyticsDesc={'Session'}
   />
 );
