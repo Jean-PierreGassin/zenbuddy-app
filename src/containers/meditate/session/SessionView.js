@@ -101,15 +101,15 @@ class SessionView extends Component {
 
   startSound = () => {
     const sessionLength = this.props.user.sessionSettings.length * 60;
-    const intervalTime = (sessionLength + 1) * 1000 / this.props.user.sessionSettings.intervals;
+    const intervalTime = sessionLength / this.props.user.sessionSettings.intervals;
 
     soundTimer = setInterval(() => {
       this.playSound(this.props.user.sessionSettings.sound);
 
-      if ((sessionLength - this.state.currentTime) - (intervalTime / 1000) < 0) {
+      if ((sessionLength - this.state.currentTime - intervalTime) <= 0) {
         clearInterval(soundTimer);
       }
-    }, intervalTime);
+    }, Math.floor(intervalTime) * 1000);
   }
 
   playSound = (file) => {
