@@ -52,7 +52,7 @@ class PersonalView extends Component {
   }
 
   componentDidMount = () => {
-    this.renderHistoryPills();
+    this.syncUser();
   }
 
   syncUser = () => {
