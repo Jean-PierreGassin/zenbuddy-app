@@ -181,6 +181,8 @@ class SessionView extends Component {
     // Session continued from the day before
     if (moment(currentDate).diff(lastSession.date, 'days') === 1) {
       currentStreak += 1;
+
+      return currentStreak;
     }
 
     // Check if user is adhering to schedule instead
