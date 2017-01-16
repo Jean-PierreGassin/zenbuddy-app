@@ -305,23 +305,26 @@ class SettingsView extends Component {
         <ScrollView>
           <Spacer size={20} />
 
-          <Text h3>Zen Schedule</Text>
+          <View style={[AppStyles.container, AppStyles.row]}>
+            <Text h3>Zen Schedule</Text>
+
+            <TouchableOpacity
+              activeOpacity={0.7}
+              hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
+              onPress={() => this.showHint()}
+              style={AppStyles.headerHelpButtonIcon}
+            >
+              <Icon name={'help'} size={25} color={'#fff'} />
+            </TouchableOpacity>
+          </View>
+
           <TouchableOpacity
             activeOpacity={0.7}
-            hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
+            hitSlop={{ top: 5, right: 10, bottom: 5, left: 10 }}
             onPress={() => this.toggleModal('sessionScheduleDays')}
             style={AppStyles.primaryButton}
           >
             <Text>{this.state.readableScheduleDays}</Text>
-
-            <TouchableOpacity
-              activeOpacity={0.7}
-              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              onPress={() => this.showHint()}
-              style={AppStyles.buttonIcon}
-            >
-              <Icon name={'help'} size={35} color={'#fe621d'} />
-            </TouchableOpacity>
           </TouchableOpacity>
 
           {/*

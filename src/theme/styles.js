@@ -221,7 +221,7 @@ export default {
     justifyContent: 'center',
     flexDirection: 'row',
     height: Sizes.buttonHeight,
-    width: Sizes.screen.widthThreeQuarters,
+    width: Sizes.screen.width80Percent,
     backgroundColor: Colors.brand.primary,
   },
   primaryButtonDisabled: {
@@ -231,6 +231,11 @@ export default {
     position: 'absolute',
     right: 4,
     top: 4,
+  },
+  headerHelpButtonIcon: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
   },
 
   // Pills
