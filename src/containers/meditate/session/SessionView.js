@@ -143,7 +143,7 @@ class SessionView extends Component {
 
       const streak = this.calculateStreak(userData);
 
-      userData.sessionHistory.push({
+      userData.sessionHistory.unshift({
         date: moment().format(),
         length: this.props.user.sessionSettings.length,
         intervals: this.props.user.sessionSettings.intervals,
