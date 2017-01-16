@@ -74,20 +74,20 @@ class PersonalView extends Component {
   }
 
   renderHistoryPills = () => {
-    const sessions = [];
+    const newSessions = [];
 
     if (!this.state.userData.sessionHistory) {
       this.setState({
         error: 'No sessions recorded yet',
       });
 
-      return sessions;
+      return newSessions;
     }
 
-    this.state.userData.sessionHistory.forEach((session, key) => {
-      sessions.push(
+    this.state.userData.sessionHistory.forEach((session) => {
+      newSessions.push(
         <TouchableOpacity
-          key={key}
+          key={session.date}
           activeOpacity={0.7}
           hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           style={AppStyles.primaryPill}
@@ -102,15 +102,8 @@ class PersonalView extends Component {
       );
     });
 
-    sessions.sort((a, b) => {
-      const firstKey = a.key;
-      const secondKey = b.key;
-
-      return firstKey < secondKey;
-    });
-
     return this.setState({
-      sessions,
+      sessions: newSessions,
     });
   }
 
