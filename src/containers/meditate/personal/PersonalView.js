@@ -113,7 +113,7 @@ class PersonalView extends Component {
 
     return (
       <View style={AppStyles.containerCentered}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Spacer size={20} />
 
           <Text h4>
