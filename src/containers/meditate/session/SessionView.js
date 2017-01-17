@@ -153,6 +153,11 @@ class SessionView extends Component {
         ...userData,
         sessionStreak: streak,
       });
+
+      setTimeout(() => {
+        Actions.pop();
+        Actions.personal();
+      }, 3000);
     });
   }
 

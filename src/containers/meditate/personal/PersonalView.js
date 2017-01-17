@@ -52,7 +52,19 @@ class PersonalView extends Component {
   }
 
   componentDidMount = () => {
-    this.syncUser();
+    this.renderHistoryPills();
+  }
+
+  componentWillReceiveProps = (newProps) => {
+    if (newProps.user && newProps.user.sessionHistory) {
+      this.setState({
+        userData: newProps.user,
+      });
+
+      setTimeout(() => {
+        this.renderHistoryPills();
+      });
+    }
   }
 
   syncUser = () => {
