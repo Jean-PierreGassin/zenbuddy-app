@@ -134,7 +134,7 @@ class PersonalView extends Component {
 
           <Spacer size={10} />
 
-          <Text h3>Session history</Text>
+          <Text h3>Session history - {this.state.sessions.length} total</Text>
 
           {this.state.sessions}
         </ScrollView>
