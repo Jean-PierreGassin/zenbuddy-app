@@ -2,6 +2,7 @@
  * Settings Screen
  *
  */
+import { version } from '../../../../package.json';
 import iCloudStorage from 'react-native-icloudstore';
 import { Icon } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
@@ -392,7 +393,7 @@ class SettingsView extends Component {
 
         <Spacer size={50} />
 
-        <Text h6>ZenBuddy v1.0.0</Text>
+        <Text h6>ZenBuddy v{version}</Text>
         <Text h6>Created by Jean-Pierre Gassin</Text>
       </View>
     );
