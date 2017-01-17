@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
 });
 
+const timeOuts = [];
 let clockTimer;
 let soundTimer;
 
@@ -72,6 +73,11 @@ class SessionView extends Component {
     clearInterval(clockTimer);
     clearInterval(soundTimer);
 
+    // Clear all of our interval sounds
+    for (let i = 0; i < timeOuts.length; i += 1) {
+      clearTimeout(timeOuts[i]);
+    }
+
     KeepAwake.deactivate();
   }
 
@@ -105,9 +111,11 @@ class SessionView extends Component {
 
     // Setup a list of timeouts that will play at the appropriate times
     for (let i = 1; i <= this.props.user.sessionSettings.intervals; i += 1) {
-      setTimeout(() => {
-        this.playSound(this.props.user.sessionSettings.sound);
-      }, (intervalTime * i) * 1000);
+      timeOuts.push(
+        setTimeout(() => {
+          this.playSound(this.props.user.sessionSettings.sound);
+        }, (intervalTime * i) * 1000),
+      );
     }
   }
 
