@@ -163,7 +163,7 @@ class SessionView extends Component {
     if (!currentStreak) currentStreak = 1;
 
     const currentDate = moment().format();
-    const lastSession = userData.sessionHistory[userData.sessionHistory.length - 1];
+    const lastSession = userData.sessionHistory[0];
     const sessionSchedule = userData.sessionSettings.schedule;
 
     // Do not increase streak if we already increased it today
