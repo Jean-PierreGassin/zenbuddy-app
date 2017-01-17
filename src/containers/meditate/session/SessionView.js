@@ -112,25 +112,29 @@ class SessionView extends Component {
     }, Math.floor(intervalTime) * 1000);
   }
 
-  playSound = (file) => {
+  playSound = (file, extra = {}) => {
     const soundFile = new Sound(file, Sound.MAIN_BUNDLE, () => {
       soundFile.play(() => {});
+
+      // Allows for sounds to be faded in
+      if (extra && extra.beQuiet) {
+        soundFile.setVolume(0.1);
+
+        setTimeout(() => {
+          soundFile.setVolume(1);
+        }, 850);
+      }
     });
   }
 
   finishSession = () => {
-    this.playSound('finish.mp3');
+    this.playSound('finish.mp3', { beQuiet: true });
     this.saveHistory();
 
     this.setState({
       isFinished: true,
       readableCurrentTime: `Well done, you've completed your ${this.props.user.sessionSettings.length} minute session!`,
     });
-
-    setTimeout(() => {
-      Actions.pop();
-      Actions.personal();
-    }, 3000);
   }
 
   saveHistory = () => {
