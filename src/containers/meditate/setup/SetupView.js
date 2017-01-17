@@ -40,6 +40,7 @@ class SetupView extends Component {
       loading: false,
       modalType: 'none',
       modalVisible: false,
+      helpModalVisible: false,
       sessionLengths: [],
       sessionSounds: [],
       sessionIntervals: [],
@@ -48,6 +49,7 @@ class SetupView extends Component {
       sessionSound: 0,
       readableSessionSound: 'Pick a mindful sound',
       readableSessionInterval: 'Choose your mindful intervals',
+      helpModalText: '',
     };
   }
 
@@ -145,7 +147,7 @@ class SetupView extends Component {
       />,
     );
 
-    for (let intervals = 3; intervals <= 8; intervals += 1) {
+    for (let intervals = 3; intervals <= 12; intervals += 1) {
       sessionIntervals.push(
         <Picker.Item
           key={intervals}
@@ -215,14 +217,11 @@ class SetupView extends Component {
     });
   }
 
-  showHint = () => {
-    Alert.alert(
-      'ZenBuddy',
-      'Session intervals are the amount of times your selected sound will play during your session, this is helpful for when you want a cue to move onto your next mental exercise',
-      [
-        { text: 'Got it!', onPress: () => {} },
-      ],
-    );
+  showHelpModal = () => {
+    this.setState({
+      helpModalText: 'Session intervals are the amount of times your selected sound will play during your session, this is helpful for when you want a cue to move onto your next mental exercise',
+      helpModalVisible: true,
+    });
   }
 
   render = () => {
@@ -280,7 +279,7 @@ class SetupView extends Component {
           <TouchableOpacity
             activeOpacity={0.7}
             hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-            onPress={() => this.showHint()}
+            onPress={() => this.showHelpModal()}
             style={AppStyles.buttonIcon}
           >
             <Icon name={'help'} size={35} color={'#fe621d'} />
@@ -314,6 +313,31 @@ class SetupView extends Component {
             </TouchableOpacity>
 
             {modalContents}
+          </View>
+        </Modal>
+
+        <Modal
+          transparent
+          animationType={'fade'}
+          visible={this.state.helpModalVisible}
+        >
+          <View style={AppStyles.helpModalContainer}>
+            <View style={AppStyles.helpModalInnerContainer}>
+              <Spacer size={20} />
+              <Text>{this.state.helpModalText}</Text>
+              <Spacer size={20} />
+
+              <TouchableOpacity
+                style={[
+                  AppStyles.primaryButton,
+                  AppStyles.primaryButtonDisabled,
+                  AppStyles.noRadiusTop,
+                ]}
+                onPress={() => this.setState({ helpModalVisible: false })}
+              >
+                <Text>Got it!</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </Modal>
       </View>

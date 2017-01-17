@@ -49,6 +49,8 @@ class SettingsView extends Component {
       loading: false,
       modalType: 'none',
       modalVisible: false,
+      helpModalVisible: false,
+      helpModalText: '',
       scheduleDays: [],
       scheduleTime: 'Reminder time: none',
       readableScheduleDays: 'Days: none',
@@ -276,14 +278,11 @@ class SettingsView extends Component {
     Actions.pop();
   }
 
-  showHint = () => {
-    Alert.alert(
-      'ZenBuddy',
-      'Setting a schedule means that your streak will not be broken if you miss a non-scheduled day',
-      [
-        { text: 'Got it!', onPress: () => {} },
-      ],
-    );
+  showHelpModal = () => {
+    this.setState({
+      helpModalText: 'Setting a schedule means that your streak will not be broken if you miss a non-scheduled day',
+      helpModalVisible: true,
+    });
   }
 
   render = () => {
@@ -311,7 +310,7 @@ class SettingsView extends Component {
             <TouchableOpacity
               activeOpacity={0.7}
               hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
-              onPress={() => this.showHint()}
+              onPress={() => this.showHelpModal()}
               style={AppStyles.headerHelpButtonIcon}
             >
               <Icon name={'help'} size={25} color={'#fff'} />
@@ -352,6 +351,31 @@ class SettingsView extends Component {
             </TouchableOpacity>
 
             {modalContents}
+          </View>
+        </Modal>
+
+        <Modal
+          transparent
+          animationType={'fade'}
+          visible={this.state.helpModalVisible}
+        >
+          <View style={AppStyles.helpModalContainer}>
+            <View style={AppStyles.helpModalInnerContainer}>
+              <Spacer size={20} />
+              <Text>{this.state.helpModalText}</Text>
+              <Spacer size={20} />
+
+              <TouchableOpacity
+                style={[
+                  AppStyles.primaryButton,
+                  AppStyles.primaryButtonDisabled,
+                  AppStyles.noRadiusTop,
+                ]}
+                onPress={() => this.setState({ helpModalVisible: false })}
+              >
+                <Text>Got it!</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </Modal>
 

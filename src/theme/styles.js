@@ -225,6 +225,7 @@ export default {
     backgroundColor: Colors.brand.primary,
   },
   primaryButtonDisabled: {
+    borderWidth: 0,
     backgroundColor: Colors.brand.disabled,
   },
   buttonIcon: {
@@ -258,6 +259,22 @@ export default {
     height: Sizes.screen * 0.45,
     width: Sizes.screen.width,
     backgroundColor: Colors.background,
+  },
+  helpModalContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: Sizes.screen.height,
+    width: Sizes.screen.width,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  helpModalInnerContainer: {
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Sizes.screen.width80Percent,
+    backgroundColor: Colors.brand.primary,
   },
   modalPickerItem: {
     color: Colors.brand.secondary,
@@ -294,5 +311,15 @@ export default {
     backgroundColor: '#ffffff',
     borderTopColor: Colors.border,
     borderTopWidth: 1,
+  },
+
+  // Custom mixins
+  noRadiusTop: {
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+  },
+  noRadiusBottom: {
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
 };
