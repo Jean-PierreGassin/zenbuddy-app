@@ -70,13 +70,7 @@ class SessionView extends Component {
   }
 
   componentWillUnmount = () => {
-    clearInterval(clockTimer);
-    clearInterval(soundTimer);
-
-    // Clear all of our interval sounds
-    for (let i = 0; i < timeOuts.length; i += 1) {
-      clearTimeout(timeOuts[i]);
-    }
+    this.cleanSession();
 
     KeepAwake.deactivate();
   }
@@ -87,8 +81,7 @@ class SessionView extends Component {
 
     clockTimer = setInterval(() => {
       if (this.state.currentTime >= sessionLength) {
-        clearInterval(clockTimer);
-        clearInterval(soundTimer);
+        this.cleanSession();
 
         this.finishSession();
 
@@ -229,6 +222,16 @@ class SessionView extends Component {
     }
 
     return currentStreak;
+  }
+
+  cleanSession = () => {
+    clearInterval(clockTimer);
+    clearInterval(soundTimer);
+
+    // Clear all of our interval sounds
+    for (let i = 0; i < timeOuts.length; i += 1) {
+      clearTimeout(timeOuts[i]);
+    }
   }
 
   manualFinish = () => {
