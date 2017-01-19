@@ -58,6 +58,7 @@ class PersonalView extends Component {
   componentWillReceiveProps = (newProps) => {
     if (newProps.user && newProps.user.sessionHistory) {
       this.setState({
+        error: '',
         userData: newProps.user,
       });
 
