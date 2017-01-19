@@ -188,7 +188,10 @@ class SessionView extends Component {
     }
 
     // Session continued from the day before
-    if (moment(currentDate).diff(lastSession.date, 'days') === 1) {
+    const startOfCurrentDay = moment(currentDate).startOf('day');
+    const startOfPreviousDay = moment(lastSession.date).startOf('day');
+
+    if (startOfCurrentDay.diff(startOfPreviousDay, 'days') === 1) {
       currentStreak += 1;
 
       return currentStreak;
@@ -217,7 +220,7 @@ class SessionView extends Component {
     }
 
     // Check if we have missed a day
-    if (moment(currentDate).diff(lastSession.date, 'days') !== 1) {
+    if (moment(currentDate).diff(lastSession.date, 'days') > 1) {
       currentStreak = 1;
     }
 
