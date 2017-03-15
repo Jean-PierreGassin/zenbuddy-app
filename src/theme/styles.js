@@ -15,9 +15,11 @@ export default {
   // Default
   container: {
     position: 'relative',
-    flex: 1,
     flexDirection: 'column',
     backgroundColor: Colors.background,
+  },
+  center: {
+    alignItems: 'center',
   },
   containerCentered: {
     height: Sizes.screen.height - Sizes.navbarHeight - Sizes.tabbarHeight,
@@ -211,9 +213,22 @@ export default {
   flex6: {
     flex: 6,
   },
+  flex7: {
+    flex: 7,
+  },
+  flex8: {
+    flex: 8,
+  },
+  flex9: {
+    flex: 9,
+  },
+  flex10: {
+    flex: 10,
+  },
 
   // Buttons
   primaryButton: {
+    flex: 10,
     borderWidth: 1,
     borderRadius: 4,
     borderColor: Colors.border,
@@ -221,7 +236,6 @@ export default {
     justifyContent: 'center',
     flexDirection: 'row',
     height: Sizes.buttonHeight,
-    width: Sizes.screen.width80Percent,
     backgroundColor: Colors.brand.primary,
   },
   primaryButtonDisabled: {
@@ -238,42 +252,49 @@ export default {
     right: 0,
     top: 0,
   },
+  helpModalCloseButton: {
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: Colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    height: Sizes.tabbarHeight,
+    backgroundColor: Colors.brand.primary,
+  },
 
   // Pills
   primaryPill: {
+    flex: 10,
     padding: 10,
     borderWidth: 1,
     borderRadius: 4,
     borderColor: Colors.border,
     justifyContent: 'center',
     flexDirection: 'column',
-    width: Sizes.screen.width * 0.90,
     backgroundColor: Colors.brand.primary,
   },
 
   // Modals
   modalContainer: {
+    left: 0,
+    right: 0,
     bottom: 0,
+    height: 250,
     position: 'absolute',
     flexDirection: 'column',
-    height: Sizes.screen * 0.45,
-    width: Sizes.screen.width,
     backgroundColor: Colors.background,
   },
   helpModalContainer: {
-    flexDirection: 'column',
+    flex: 1,
+    paddingHorizontal: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    height: Sizes.screen.height,
-    width: Sizes.screen.width,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   helpModalInnerContainer: {
-    paddingHorizontal: 20,
+    flex: 1,
     borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: Sizes.screen.width80Percent,
     backgroundColor: Colors.brand.primary,
   },
   modalPickerItem: {
@@ -309,7 +330,7 @@ export default {
   // TabBar
   tabbar: {
     backgroundColor: '#ffffff',
-    borderTopColor: Colors.border,
+    borderTopColor: '#ffffff',
     borderTopWidth: 1,
   },
 

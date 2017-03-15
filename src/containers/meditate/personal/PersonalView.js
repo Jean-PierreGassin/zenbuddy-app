@@ -99,19 +99,24 @@ class PersonalView extends Component {
 
     this.state.userData.sessionHistory.forEach((session) => {
       newSessions.push(
-        <TouchableOpacity
-          key={session.date}
-          activeOpacity={0.7}
-          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          style={AppStyles.primaryPill}
-        >
-          <Text h4>{moment(session.date).format('dddd, MMM Do YYYY @ h:mma')}</Text>
-          <Text>
-            My session lasted for {session.length}
-            &nbsp;minutes with {session.intervals ? session.intervals : 0}
-            &nbsp;session intervals
-          </Text>
-        </TouchableOpacity>,
+        <View key={session.date} style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
+
+          <TouchableOpacity
+            activeOpacity={0.7}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            style={AppStyles.primaryPill}
+          >
+            <Text h4>{moment(session.date).format('dddd, MMM Do YYYY @ h:mma')}</Text>
+            <Text>
+              My session lasted for {session.length}
+              &nbsp;minutes with {session.intervals ? session.intervals : 0}
+              &nbsp;session intervals
+            </Text>
+          </TouchableOpacity>
+
+          <View style={[AppStyles.flex1]} />
+        </View>,
       );
     });
 
@@ -125,21 +130,43 @@ class PersonalView extends Component {
     if (this.state.error) return <Error text={this.state.error} />;
 
     return (
-      <View style={AppStyles.containerCentered}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Spacer size={20} />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          AppStyles.container,
+        ]}
+      >
+        <Spacer size={30} />
 
-          <Text h4>
-            Current Zen streak is {this.state.userData.sessionStreak} day(s)!
-          </Text>
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
 
-          <Spacer size={10} />
+          <View style={[AppStyles.flex10]}>
+            <Text h4>
+              Current Zen streak is {this.state.userData.sessionStreak} day(s)!
+            </Text>
+          </View>
 
-          <Text h3>Session history - {this.state.sessions.length} total</Text>
+          <View style={[AppStyles.flex1]} />
+        </View>
 
-          {this.state.sessions}
-        </ScrollView>
-      </View>
+
+        <Spacer size={10} />
+
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
+
+          <View style={[AppStyles.flex10]}>
+            <Text h3>Session history - {this.state.sessions.length} total</Text>
+          </View>
+
+          <View style={[AppStyles.flex1]} />
+        </View>
+
+        {this.state.sessions}
+
+        <Spacer size={30} />
+      </ScrollView>
     );
   }
 }

@@ -14,6 +14,7 @@ import {
   View,
   Alert,
   StyleSheet,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 
@@ -247,7 +248,11 @@ class SessionView extends Component {
   }
 
   render = () => (
-    <View style={AppStyles.containerCentered}>
+    <ScrollView
+      style={{ overflow: 'visible' }}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={AppStyles.container}
+    >
       <Icon name={'access-time'} size={250} color={'#ffffff'} />
 
       <Spacer size={50} />
@@ -256,16 +261,22 @@ class SessionView extends Component {
 
       <Spacer size={50} />
 
-      <TouchableOpacity
-        disabled={this.state.isFinished}
-        activeOpacity={0.7}
-        hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-        onPress={() => this.manualFinish()}
-        style={AppStyles.primaryButton}
-      >
-        <Text>I am finished</Text>
-      </TouchableOpacity>
-    </View>
+      <View style={[AppStyles.row]}>
+        <View style={[AppStyles.flex1]} />
+
+        <TouchableOpacity
+          disabled={this.state.isFinished}
+          activeOpacity={0.7}
+          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+          onPress={() => this.manualFinish()}
+          style={AppStyles.primaryButton}
+        >
+          <Text>I am finished</Text>
+        </TouchableOpacity>
+
+        <View style={[AppStyles.flex1]} />
+      </View>
+    </ScrollView>
   );
 }
 
