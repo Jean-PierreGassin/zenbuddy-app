@@ -10,7 +10,7 @@ import { Text } from 'react-native';
 // Consts and Libs
 import { AppStyles } from '@theme/';
 
-// Component 
+// Component
 class CustomText extends Component {
   static propTypes = {
     h1: PropTypes.bool,
@@ -19,6 +19,8 @@ class CustomText extends Component {
     h4: PropTypes.bool,
     h5: PropTypes.bool,
     p: PropTypes.bool,
+    style: PropTypes.oneOfType(PropTypes.shape(), PropTypes.array),
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   }
 
   static defaultProps = {
@@ -57,5 +59,5 @@ class CustomText extends Component {
   render = () => <Text {...this.textProps()}>{this.props.children}</Text>;
 }
 
-// Export Component 
+// Export Component
 export default CustomText;

@@ -2,11 +2,10 @@
  * Settings Screen
  *
  */
-import { version } from '../../../../package.json';
+import React, { Component } from 'react';
 import iCloudStorage from 'react-native-icloudstore';
-import { Icon } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
-import React, { Component, PropTypes } from 'react';
+import { Icon } from 'react-native-elements';
 import {
   View,
   Modal,
@@ -17,12 +16,15 @@ import {
 } from 'react-native';
 
 // Consts and Libs
-import { AppStyles, AppSizes } from '@theme/';
+import { AppStyles } from '@theme/';
 
 // Components
 import { Text, Spacer } from '@ui/';
 import Loading from '@components/general/Loading';
 import Error from '@components/general/Error';
+
+// Version information
+import { version } from '../../../../package.json';
 
 const daysList = [
   { name: 'None', index: '0', friendlyName: 'Days: none' },
@@ -143,19 +145,20 @@ class SettingsView extends Component {
     return (
       <ScrollView contentContainerStyle={AppStyles.modalScrollView}>
         {daysList.map(day => (
-          <TouchableOpacity
-            key={day.index}
-            activeOpacity={0.7}
-            onPress={() => this.setScheduleDays(day)}
-            hitSlop={{ top: 1, right: 10, bottom: 1, left: 10 }}
-            style={AppStyles.primaryButton}
-          >
-            <Text>{day.name}</Text>
+          <View key={day.index} style={[AppStyles.row]}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => this.setScheduleDays(day)}
+              hitSlop={{ top: 1, right: 10, bottom: 1, left: 10 }}
+              style={AppStyles.primaryButton}
+            >
+              <Text>{day.name}</Text>
 
-            {dayIndexes.indexOf(day.index) > -1 &&
-              <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
-            }
-          </TouchableOpacity>
+              {dayIndexes.indexOf(day.index) > -1 &&
+                <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
+              }
+            </TouchableOpacity>
+          </View>
         ))}
       </ScrollView>
     );
@@ -301,11 +304,19 @@ class SettingsView extends Component {
     }
 
     return (
-      <View style={AppStyles.containerCentered}>
-        <ScrollView>
-          <Spacer size={20} />
+      <ScrollView
+        style={[{ overflow: 'visible' }]}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          AppStyles.container,
+        ]}
+      >
+        <Spacer size={30} />
 
-          <View style={[AppStyles.container, AppStyles.row]}>
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
+
+          <View style={[AppStyles.flex10]}>
             <Text h3>Zen Schedule</Text>
 
             <TouchableOpacity
@@ -318,6 +329,12 @@ class SettingsView extends Component {
             </TouchableOpacity>
           </View>
 
+          <View style={[AppStyles.flex1]} />
+        </View>
+
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
+
           <TouchableOpacity
             activeOpacity={0.7}
             hitSlop={{ top: 5, right: 10, bottom: 5, left: 10 }}
@@ -327,21 +344,24 @@ class SettingsView extends Component {
             <Text>{this.state.readableScheduleDays}</Text>
           </TouchableOpacity>
 
-          {/*
-          <TouchableOpacity
-          activeOpacity={0.7}
-          hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
-          onPress={() => this.toggleModal('sessionScheduleTime')}
-          style={AppStyles.primaryButton}>
-            <Text>{this.state.scheduleTime}</Text>
-          </TouchableOpacity>
-          */}
-        </ScrollView>
+          <View style={[AppStyles.flex1]} />
+        </View>
+
+        {/*
+        <TouchableOpacity
+        activeOpacity={0.7}
+        hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
+        onPress={() => this.toggleModal('sessionScheduleTime')}
+        style={AppStyles.primaryButton}>
+          <Text>{this.state.scheduleTime}</Text>
+        </TouchableOpacity>
+        */}
 
         <Modal
           transparent
           animationType={'slide'}
           visible={this.state.modalVisible}
+          supportedOrientations={['portrait', 'landscape']}
         >
           <View style={AppStyles.modalContainer}>
             <TouchableOpacity
@@ -359,43 +379,54 @@ class SettingsView extends Component {
           transparent
           animationType={'fade'}
           visible={this.state.helpModalVisible}
+          supportedOrientations={['portrait', 'landscape']}
         >
           <View style={AppStyles.helpModalContainer}>
-            <View style={AppStyles.helpModalInnerContainer}>
-              <Spacer size={20} />
-              <Text>{this.state.helpModalText}</Text>
-              <Spacer size={20} />
+            <View style={[AppStyles.flex5]} />
 
-              <TouchableOpacity
-                style={[
-                  AppStyles.primaryButton,
-                  AppStyles.primaryButtonDisabled,
-                  AppStyles.noRadiusTop,
-                ]}
-                onPress={() => this.setState({ helpModalVisible: false })}
-              >
-                <Text>Got it!</Text>
-              </TouchableOpacity>
-            </View>
+            <Text>{this.state.helpModalText}</Text>
+
+            <View style={[AppStyles.flex5]} />
           </View>
+
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={[
+              AppStyles.helpModalCloseButton,
+              AppStyles.noRadiusTop,
+            ]}
+            onPress={() => this.setState({ helpModalVisible: false })}
+          >
+            <Text>Got it!</Text>
+          </TouchableOpacity>
         </Modal>
 
         <Spacer size={50} />
 
-        <TouchableOpacity
-          activeOpacity={0.7}
-          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          onPress={() => this.saveSettings()}
-          style={AppStyles.primaryButton}
-        >
-          <Text>Save</Text>
-        </TouchableOpacity>
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
+
+          <TouchableOpacity
+            activeOpacity={0.7}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            onPress={() => this.saveSettings()}
+            style={AppStyles.primaryButton}
+          >
+            <Text>Save</Text>
+          </TouchableOpacity>
+
+          <View style={[AppStyles.flex1]} />
+        </View>
 
         <Spacer size={50} />
 
-        <Text h6>ZenBuddy v{version}</Text>
-        <Text h6>Created by Jean-Pierre Gassin</Text>
-      </View>
+        <View style={[AppStyles.center]}>
+          <Text h6>ZenBuddy v{version}</Text>
+          <Text h6>Created by Jean-Pierre Gassin</Text>
+        </View>
+
+        <Spacer size={30} />
+      </ScrollView>
     );
   }
 }

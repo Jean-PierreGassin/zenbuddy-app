@@ -7,7 +7,7 @@ import { Scene } from 'react-native-router-flux';
 
 // Consts and Libs
 import { AppConfig } from '@constants/';
-import { AppStyles, AppSizes } from '@theme/';
+import { AppSizes } from '@theme/';
 
 // Scenes
 import Session from '@containers/meditate/session/SessionContainer';

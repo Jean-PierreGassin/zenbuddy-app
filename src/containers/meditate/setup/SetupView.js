@@ -7,10 +7,9 @@ import iCloudStorage from 'react-native-icloudstore';
 import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   View,
-  Alert,
   Modal,
   Picker,
   ScrollView,
@@ -18,7 +17,7 @@ import {
 } from 'react-native';
 
 // Consts and Libs
-import { AppStyles, AppSizes } from '@theme/';
+import { AppStyles } from '@theme/';
 
 // Components
 import { Text, Spacer } from '@ui/';
@@ -105,32 +104,34 @@ class SetupView extends Component {
     ];
 
     return (
-      <ScrollView contentContainerStyle={AppStyles.modalScrollView}>
+      <ScrollView contentContainerStyle={[AppStyles.modalScrollView]}>
         {sounds.map(sound => (
-          <TouchableOpacity
-            key={`SOUND-${sound.name}`}
-            activeOpacity={0.7}
-            onPress={() => {
-              this.playSound(sound.file);
+          <View key={`SOUND-${sound.name}`} style={[AppStyles.row]}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => {
+                this.playSound(sound.file);
 
-              this.setState({
-                sessionSound: sound.file,
-                readableSessionSound: `You'll be listening to ${sound.name}`,
-              });
-            }}
-            hitSlop={{ top: 1, right: 10, bottom: 1, left: 10 }}
-            style={AppStyles.primaryButton}
-          >
-            <Text>{sound.name}</Text>
+                this.setState({
+                  sessionSound: sound.file,
+                  readableSessionSound: `You'll be listening to ${sound.name}`,
+                });
+              }}
+              hitSlop={{ top: 1, right: 10, bottom: 1, left: 10 }}
+              style={AppStyles.primaryButton}
+            >
+              <Text>{sound.name}</Text>
 
-            {this.state.sessionSound === sound.file &&
-              <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
-            }
+              {this.state.sessionSound === sound.file &&
+                <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
+              }
 
-            {this.state.sessionSound !== sound.file &&
-              <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
-            }
-          </TouchableOpacity>
+              {this.state.sessionSound !== sound.file &&
+                <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
+              }
+            </TouchableOpacity>
+          </View>
+
         ))}
       </ScrollView>
     );
@@ -245,64 +246,97 @@ class SetupView extends Component {
     }
 
     return (
-      <View style={[AppStyles.containerCentered]}>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
-          onPress={() => this.toggleModal('sessionLengths')}
-          style={AppStyles.primaryButton}
-        >
-          <Text>{this.state.readableSessionLength}</Text>
-        </TouchableOpacity>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          AppStyles.container,
+          AppStyles.center,
+        ]}
+      >
+        <Spacer size={30} />
 
-        <Spacer size={10} />
-
-        <TouchableOpacity
-          activeOpacity={0.7}
-          hitSlop={{ top: 5, right: 10, bottom: 10, left: 10 }}
-          onPress={() => this.toggleModal('sessionSounds')}
-          style={AppStyles.primaryButton}
-        >
-          <Text>{this.state.readableSessionSound}</Text>
-        </TouchableOpacity>
-
-        <Spacer size={10} />
-
-        <TouchableOpacity
-          activeOpacity={0.7}
-          hitSlop={{ top: 5, right: 10, bottom: 10, left: 10 }}
-          onPress={() => this.toggleModal('sessionIntervals')}
-          style={AppStyles.primaryButton}
-        >
-          <Text>{this.state.readableSessionInterval}</Text>
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
 
           <TouchableOpacity
             activeOpacity={0.7}
-            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-            onPress={() => this.showHelpModal()}
-            style={AppStyles.buttonIcon}
+            hitSlop={{ top: 10, right: 10, bottom: 5, left: 10 }}
+            onPress={() => this.toggleModal('sessionLengths')}
+            style={AppStyles.primaryButton}
           >
-            <Icon name={'help'} size={35} color={'#fe621d'} />
+            <Text>{this.state.readableSessionLength}</Text>
           </TouchableOpacity>
-        </TouchableOpacity>
+
+          <View style={[AppStyles.flex1]} />
+        </View>
+
+        <Spacer size={10} />
+
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
+
+          <TouchableOpacity
+            activeOpacity={0.7}
+            hitSlop={{ top: 5, right: 10, bottom: 10, left: 10 }}
+            onPress={() => this.toggleModal('sessionSounds')}
+            style={AppStyles.primaryButton}
+          >
+            <Text>{this.state.readableSessionSound}</Text>
+          </TouchableOpacity>
+
+          <View style={[AppStyles.flex1]} />
+        </View>
+
+        <Spacer size={10} />
+
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
+
+          <TouchableOpacity
+            activeOpacity={0.7}
+            hitSlop={{ top: 5, right: 10, bottom: 10, left: 10 }}
+            onPress={() => this.toggleModal('sessionIntervals')}
+            style={AppStyles.primaryButton}
+          >
+            <Text>{this.state.readableSessionInterval}</Text>
+
+            <TouchableOpacity
+              activeOpacity={0.7}
+              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+              onPress={() => this.showHelpModal()}
+              style={AppStyles.buttonIcon}
+            >
+              <Icon name={'help'} size={35} color={'#fe621d'} />
+            </TouchableOpacity>
+          </TouchableOpacity>
+
+          <View style={[AppStyles.flex1]} />
+        </View>
 
         <Spacer size={50} />
 
-        <TouchableOpacity
-          disabled={buttonDisabled}
-          activeOpacity={0.7}
-          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          onPress={() => this.startSession()}
-          style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}
-        >
-          <Text>Begin your session</Text>
-          <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
-        </TouchableOpacity>
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
+
+          <TouchableOpacity
+            disabled={buttonDisabled}
+            activeOpacity={0.7}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            onPress={() => this.startSession()}
+            style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}
+          >
+            <Text>Begin your session</Text>
+            <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
+          </TouchableOpacity>
+
+          <View style={[AppStyles.flex1]} />
+        </View>
 
         <Modal
           transparent
           animationType={'slide'}
           visible={this.state.modalVisible}
+          supportedOrientations={['portrait', 'landscape']}
         >
           <View style={AppStyles.modalContainer}>
             <TouchableOpacity
@@ -320,27 +354,30 @@ class SetupView extends Component {
           transparent
           animationType={'fade'}
           visible={this.state.helpModalVisible}
+          supportedOrientations={['portrait', 'landscape']}
         >
           <View style={AppStyles.helpModalContainer}>
-            <View style={AppStyles.helpModalInnerContainer}>
-              <Spacer size={20} />
-              <Text>{this.state.helpModalText}</Text>
-              <Spacer size={20} />
+            <View style={[AppStyles.flex5]} />
 
-              <TouchableOpacity
-                style={[
-                  AppStyles.primaryButton,
-                  AppStyles.primaryButtonDisabled,
-                  AppStyles.noRadiusTop,
-                ]}
-                onPress={() => this.setState({ helpModalVisible: false })}
-              >
-                <Text>Got it!</Text>
-              </TouchableOpacity>
-            </View>
+            <Text>{this.state.helpModalText}</Text>
+
+            <View style={[AppStyles.flex5]} />
           </View>
+
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={[
+              AppStyles.helpModalCloseButton,
+              AppStyles.noRadiusTop,
+            ]}
+            onPress={() => this.setState({ helpModalVisible: false })}
+          >
+            <Text>Got it!</Text>
+          </TouchableOpacity>
         </Modal>
-      </View>
+
+        <Spacer size={30} />
+      </ScrollView>
     );
   }
 }

@@ -18,14 +18,14 @@ import { AppColors, AppStyles } from '@theme/';
 import Loading from '@components/general/Loading';
 import Error from '@components/general/Error';
 
-// Styles 
+// Styles
 const styles = StyleSheet.create({
   container: {
     backgroundColor: AppColors.background,
   },
 });
 
-// Component 
+// Component
 class AppWebView extends Component {
   static componentName = 'AppWebView';
 
@@ -80,5 +80,5 @@ class AppWebView extends Component {
   }
 }
 
-// Export Component 
+// Export Component
 export default AppWebView;
