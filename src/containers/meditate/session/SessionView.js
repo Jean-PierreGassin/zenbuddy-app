@@ -9,7 +9,7 @@ import iCloudStorage from 'react-native-icloudstore';
 import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Alert,
@@ -18,12 +18,10 @@ import {
 } from 'react-native';
 
 // Consts and Libs
-import { AppStyles, AppSizes } from '@theme/';
+import { AppStyles } from '@theme/';
 
 // Components
 import { Text, Spacer } from '@ui/';
-import Loading from '@components/general/Loading';
-import Error from '@components/general/Error';
 
 // Styles
 const styles = StyleSheet.create({

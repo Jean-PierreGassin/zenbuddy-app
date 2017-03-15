@@ -87,7 +87,7 @@ const UTIL = {
   stripTags: str => striptags(str),
 };
 
-// Export 
+// Export
 module.exports = UTIL;
 module.exports.details = {
   title: 'UTIL',

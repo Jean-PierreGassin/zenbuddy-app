@@ -5,7 +5,7 @@
  */
 import moment from 'moment';
 import iCloudStorage from 'react-native-icloudstore';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   ScrollView,
@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 
 // Consts and Libs
-import { AppStyles, AppSizes } from '@theme/';
+import { AppStyles } from '@theme/';
 
 // Components
 import { Text, Spacer } from '@ui/';

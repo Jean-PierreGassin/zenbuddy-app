@@ -16,7 +16,7 @@ import { AppStyles } from '@theme/';
 // Components
 import { Spacer, Text } from '@ui/';
 
-// Component 
+// Component
 const Loading = ({ text, transparent }) => (
   <View
     style={[
@@ -44,5 +44,5 @@ Loading.propTypes = {
   transparent: PropTypes.bool,
 };
 
-// Export Component 
+// Export Component
 export default Loading;

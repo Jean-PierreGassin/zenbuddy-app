@@ -9,7 +9,7 @@ import iCloudStorage from 'react-native-icloudstore';
   * - Receives complete user data in return
   */
 export function updateMe(userData) {
-  return dispatch =>  {
+  return (dispatch) => {
     dispatch({
       type: 'USER_REPLACE',
       data: userData,
@@ -20,3 +20,5 @@ export function updateMe(userData) {
     return userData;
   };
 }
+
+export default updateMe;

@@ -1,14 +1,13 @@
 import iCloudStorage from 'react-native-icloudstore';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   View,
-  StyleSheet,
   ActivityIndicator,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 // Consts and Libs
-import { AppStyles, AppSizes } from '@theme/';
+import { AppStyles } from '@theme/';
 
 // Component
 class AppLaunch extends Component {

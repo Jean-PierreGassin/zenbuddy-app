@@ -13,7 +13,7 @@ import { AppStyles } from '@theme/';
 // Components
 import { Text } from '@ui/';
 
-// Component 
+// Component
 const ComingSoon = ({ text }) => (
   <View style={[AppStyles.container, AppStyles.containerCentered]}>
     <Text>{text}</Text>
@@ -24,5 +24,5 @@ ComingSoon.propTypes = { text: PropTypes.string };
 ComingSoon.defaultProps = { text: 'Coming soon...' };
 ComingSoon.componentName = 'ComingSoon';
 
-// Export Component 
+// Export Component
 export default ComingSoon;
