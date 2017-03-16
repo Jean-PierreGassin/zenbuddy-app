@@ -19,7 +19,7 @@ class CustomText extends Component {
     h4: PropTypes.bool,
     h5: PropTypes.bool,
     p: PropTypes.bool,
-    style: PropTypes.oneOfType(PropTypes.shape(), PropTypes.array),
+    style: PropTypes.oneOfType([PropTypes.shape(), PropTypes.array]),
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   }
 
