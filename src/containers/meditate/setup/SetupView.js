@@ -3,6 +3,8 @@
  *  - Allows the user to sit through a meditation session
  *
  */
+/* global fetch */
+
 import iCloudStorage from 'react-native-icloudstore';
 import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements';
@@ -19,6 +21,7 @@ import {
 
 // Consts and Libs
 import { AppStyles } from '@theme/';
+import { AppInfo, AppQuotes } from '@lib/info';
 
 // Components
 import { Text, Spacer } from '@ui/';
@@ -37,24 +40,21 @@ class SetupView extends Component {
     super(props);
 
     this.state = {
-      loading: false,
+      quoteLoading: true,
       modalType: 'none',
       modalVisible: false,
       helpModalVisible: false,
-      sessionLengths: [],
-      sessionSounds: [],
-      sessionIntervals: [],
-      sessionLength: 0,
       readableSessionLength: 'Set your session length',
-      sessionSound: 0,
       readableSessionSound: 'Pick a mindful sound',
       readableSessionInterval: 'Choose your mindful intervals',
-      helpModalText: '',
-      quoteLoading: true,
     };
   }
 
   componentDidMount = () => {
+    this.getQuote();
+  }
+
+  getQuote = () => {
     fetch('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en', {
       method: 'POST',
     }).then(response => response.json()).then((data) => {
@@ -66,8 +66,8 @@ class SetupView extends Component {
     }).catch(() => {
       this.setState({
         quoteLoading: false,
-        quoteAuthor: 'ZenBuddy',
-        quoteBody: 'Always think with the outlook of abundance, there are always more positives than negatives.',
+        quoteAuthor: AppQuotes.defaultAuthor,
+        quoteBody: AppQuotes.defaultContent,
       });
     });
   }
@@ -240,7 +240,7 @@ class SetupView extends Component {
 
   showHelpModal = () => {
     this.setState({
-      helpModalText: 'Session intervals are the amount of times your selected sound will play during your session, this is helpful for when you want a cue to move onto your next mental exercise',
+      helpModalText: AppInfo.intervalHelpText,
       helpModalVisible: true,
     });
   }
@@ -369,8 +369,8 @@ class SetupView extends Component {
 
           {!this.state.quoteLoading &&
             <View style={[AppStyles.flex10, AppStyles.center]}>
-              <Text h4 style={[AppStyles.textCenterAligned]}>{this.state.quoteAuthor}</Text>
-              <Text style={[AppStyles.textCenterAligned]}>{this.state.quoteBody}</Text>
+              <Text h4 style={AppStyles.textCenterAligned}>{this.state.quoteAuthor}</Text>
+              <Text style={AppStyles.textCenterAligned}>{this.state.quoteBody}</Text>
             </View>
           }
 
