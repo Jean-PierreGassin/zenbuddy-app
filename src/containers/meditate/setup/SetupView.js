@@ -25,8 +25,6 @@ import { AppInfo, AppQuotes } from '@lib/info';
 
 // Components
 import { Text, Spacer } from '@ui/';
-import Loading from '@components/general/Loading';
-import Error from '@components/general/Error';
 
 // Component
 class SetupView extends Component {
@@ -246,9 +244,6 @@ class SetupView extends Component {
   }
 
   render = () => {
-    if (this.state.loading) return <Loading />;
-    if (this.state.error) return <Error text={this.state.error} />;
-
     let modalContents;
     const buttonDisabled = (!this.state.sessionLength ||
       !this.state.sessionSound || !this.state.sessionInterval);
