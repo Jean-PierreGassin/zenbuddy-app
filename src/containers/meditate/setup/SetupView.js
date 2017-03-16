@@ -63,8 +63,7 @@ class SetupView extends Component {
         quoteAuthor: data.quoteAuthor,
         quoteBody: data.quoteText,
       });
-    }).catch((e) => {
-      console.log(e);
+    }).catch(() => {
       this.setState({
         quoteLoading: false,
         quoteAuthor: 'ZenBuddy',
