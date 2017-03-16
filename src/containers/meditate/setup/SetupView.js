@@ -14,6 +14,7 @@ import {
   Picker,
   ScrollView,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 
 // Consts and Libs
@@ -49,7 +50,26 @@ class SetupView extends Component {
       readableSessionSound: 'Pick a mindful sound',
       readableSessionInterval: 'Choose your mindful intervals',
       helpModalText: '',
+      quoteLoading: true,
     };
+  }
+
+  componentDidMount = () => {
+    fetch('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en', {
+      method: 'POST',
+    }).then(response => response.json()).then((data) => {
+      this.setState({
+        quoteLoading: false,
+        quoteAuthor: data.quoteAuthor,
+        quoteBody: data.quoteText,
+      });
+    }).catch(() => {
+      this.setState({
+        quoteLoading: false,
+        quoteAuthor: 'ZenBuddy',
+        quoteBody: 'Always think with the outlook of abundance, there are always more positives than negatives.',
+      });
+    });
   }
 
   getSessionLengths = () => {
@@ -328,6 +348,31 @@ class SetupView extends Component {
             <Text>Begin your session</Text>
             <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
           </TouchableOpacity>
+
+          <View style={[AppStyles.flex1]} />
+        </View>
+
+        <Spacer size={50} />
+
+        <View style={[AppStyles.row]}>
+          <View style={[AppStyles.flex1]} />
+
+          {this.state.quoteLoading &&
+            <View style={[AppStyles.flex10, AppStyles.centerAligned]}>
+              <ActivityIndicator
+                animating
+                size={'small'}
+                color={'#FFFFFF'}
+              />
+            </View>
+          }
+
+          {!this.state.quoteLoading &&
+            <View style={[AppStyles.flex10, AppStyles.center]}>
+              <Text h4 style={[AppStyles.textCenterAligned]}>{this.state.quoteAuthor}</Text>
+              <Text style={[AppStyles.textCenterAligned]}>{this.state.quoteBody}</Text>
+            </View>
+          }
 
           <View style={[AppStyles.flex1]} />
         </View>

@@ -25,10 +25,10 @@ const scene = (
   <Scene
     {...navbarPropsTabs}
     hideNavBar
-    direction={'vertical'}
     key={'session'}
     component={Session}
     title={'Session'}
+    animation={'fade'}
     panHandlers={null}
     analyticsDesc={'Session'}
   />

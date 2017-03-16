@@ -19,7 +19,7 @@ class CustomText extends Component {
     h4: PropTypes.bool,
     h5: PropTypes.bool,
     p: PropTypes.bool,
-    style: PropTypes.oneOfType(PropTypes.shape(), PropTypes.array),
+    style: PropTypes.oneOfType([PropTypes.shape(), PropTypes.array]),
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   }
 
@@ -47,10 +47,10 @@ class CustomText extends Component {
     if (this.props.h5) props.style = AppStyles.h5;
 
     if (this.props.style) {
-      props.style = [
+      props.style = {
         ...props.style,
-        ...this.props.style,
-      ];
+        ...this.props.style[0],
+      };
     }
 
     return props;

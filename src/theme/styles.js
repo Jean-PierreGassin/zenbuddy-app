@@ -253,9 +253,6 @@ export default {
     top: 0,
   },
   helpModalCloseButton: {
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: Colors.border,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
