@@ -49,7 +49,7 @@ class CustomText extends Component {
     if (this.props.style) {
       props.style = {
         ...props.style,
-        ...this.props.style[0],
+        ...this.props.style,
       };
     }
 

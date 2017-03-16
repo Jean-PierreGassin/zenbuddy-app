@@ -257,7 +257,7 @@ class SessionView extends Component {
 
       <Spacer size={50} />
 
-      <Text h2 style={[styles.clockText]}>{this.state.readableCurrentTime}</Text>
+      <Text h2 style={AppStyles.textCenterAligned}>{this.state.readableCurrentTime}</Text>
 
       <Spacer size={50} />
 
