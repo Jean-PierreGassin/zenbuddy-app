@@ -245,7 +245,7 @@ export default {
   buttonIcon: {
     position: 'absolute',
     right: 4,
-    top: 4,
+    top: 5,
   },
   headerHelpButtonIcon: {
     position: 'absolute',

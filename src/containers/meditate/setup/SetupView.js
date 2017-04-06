@@ -203,7 +203,7 @@ class SetupView extends Component {
             style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}
           >
             <Text>Begin your session</Text>
-            <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
+            <Icon name={'play-circle-filled'} size={36} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
           </TouchableOpacity>
 
           <View style={[AppStyles.flex1]} />
