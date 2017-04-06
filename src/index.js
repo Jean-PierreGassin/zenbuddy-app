@@ -5,6 +5,7 @@
  */
 /* global __DEV__ */
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 import logger from 'redux-logger';
@@ -34,6 +35,9 @@ if (__DEV__) {
     logger(), // Logs state changes to the dev console
   ];
 }
+
+// Change status bar colour
+StatusBar.setBarStyle('light-content');
 
 // Init redux store (using the given reducer & middleware)
 const store = compose(
