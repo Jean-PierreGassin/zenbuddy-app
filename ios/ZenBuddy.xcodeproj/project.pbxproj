@@ -192,6 +192,13 @@
 			remoteGlobalIDString = 19825A1E1BD4A89800EE0337;
 			remoteInfo = RNSound;
 		};
+		16B4EE271E97179F00DF357F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C455A49EA46C448C886C99B0 /* KCKeepAwake.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 325F5AB71E6763EC00E6CDE4;
+			remoteInfo = "KCKeepAwake-tvOS";
+		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
@@ -505,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				1667464D1E28FB32000B1C66 /* libKCKeepAwake.a */,
+				16B4EE281E97179F00DF357F /* libKCKeepAwake-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -949,6 +957,13 @@
 			fileType = archive.ar;
 			path = libRNSound.a;
 			remoteRef = 169342621E1E29F500B44A6D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16B4EE281E97179F00DF357F /* libKCKeepAwake-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libKCKeepAwake-tvOS.a";
+			remoteRef = 16B4EE271E97179F00DF357F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
