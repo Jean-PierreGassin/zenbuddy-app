@@ -382,13 +382,17 @@ class SettingsView extends Component {
           visible={this.state.helpModalVisible}
           supportedOrientations={['portrait', 'landscape']}
         >
-          <View style={AppStyles.helpModalContainer}>
+          <TouchableOpacity
+            style={AppStyles.helpModalContainer}
+            activeOpacity={1}
+            onPress={() => this.setState({ helpModalVisible: false })}
+          >
             <View style={[AppStyles.flex5]} />
 
             <Text>{this.state.helpModalText}</Text>
 
             <View style={[AppStyles.flex5]} />
-          </View>
+          </TouchableOpacity>
 
           <TouchableOpacity
             activeOpacity={0.8}
