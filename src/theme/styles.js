@@ -245,7 +245,7 @@ export default {
   buttonIcon: {
     position: 'absolute',
     right: 4,
-    top: 4,
+    top: 5,
   },
   headerHelpButtonIcon: {
     position: 'absolute',
@@ -287,7 +287,7 @@ export default {
     paddingHorizontal: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
   helpModalInnerContainer: {
     flex: 1,

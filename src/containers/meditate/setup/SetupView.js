@@ -3,15 +3,15 @@
  *  - Allows the user to sit through a meditation session
  *
  */
+/* global fetch */
+
 import iCloudStorage from 'react-native-icloudstore';
-import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import React, { Component } from 'react';
 import {
   View,
   Modal,
-  Picker,
   ScrollView,
   TouchableOpacity,
   ActivityIndicator,
@@ -19,11 +19,12 @@ import {
 
 // Consts and Libs
 import { AppStyles } from '@theme/';
+import { AppInfo, AppQuotes } from '@lib/info';
 
 // Components
 import { Text, Spacer } from '@ui/';
-import Loading from '@components/general/Loading';
-import Error from '@components/general/Error';
+import SoundPicker from '@meditate/SoundPicker';
+import CustomPicker from '@meditate/CustomPicker';
 
 // Component
 class SetupView extends Component {
@@ -37,24 +38,21 @@ class SetupView extends Component {
     super(props);
 
     this.state = {
-      loading: false,
+      quoteLoading: true,
       modalType: 'none',
       modalVisible: false,
       helpModalVisible: false,
-      sessionLengths: [],
-      sessionSounds: [],
-      sessionIntervals: [],
-      sessionLength: 0,
       readableSessionLength: 'Set your session length',
-      sessionSound: 0,
       readableSessionSound: 'Pick a mindful sound',
       readableSessionInterval: 'Choose your mindful intervals',
-      helpModalText: '',
-      quoteLoading: true,
     };
   }
 
   componentDidMount = () => {
+    this.getQuote();
+  }
+
+  getQuote = () => {
     fetch('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en', {
       method: 'POST',
     }).then(response => response.json()).then((data) => {
@@ -66,148 +64,16 @@ class SetupView extends Component {
     }).catch(() => {
       this.setState({
         quoteLoading: false,
-        quoteAuthor: 'ZenBuddy',
-        quoteBody: 'Always think with the outlook of abundance, there are always more positives than negatives.',
+        quoteAuthor: AppQuotes.defaultAuthor,
+        quoteBody: AppQuotes.defaultContent,
       });
     });
-  }
-
-  getSessionLengths = () => {
-    const sessionLengths = [];
-
-    sessionLengths.push(
-      <Picker.Item
-        key={'DEFAULT'}
-        label={'-'}
-        value={''}
-      />,
-    );
-
-    for (let time = 5; time <= 120; time += 1) {
-      sessionLengths.push(
-        <Picker.Item
-          key={time}
-          label={`${time} minutes`}
-          value={time}
-        />,
-      );
-    }
-
-    const picker = (
-      <Picker
-        itemStyle={AppStyles.modalPickerItem}
-        selectedValue={this.state.sessionLength}
-        onValueChange={(length) => {
-          if (length) {
-            this.setState({
-              sessionLength: length,
-              readableSessionLength: `Your session will be ${length} minutes long`,
-            });
-          }
-        }}
-      >
-        {sessionLengths}
-      </Picker>
-    );
-
-    return picker;
-  }
-
-  getSessionSounds = () => {
-    const sounds = [
-      { name: 'Bellow', file: 'bellow.wav' },
-      { name: 'Birds', file: 'birds.wav' },
-      { name: 'Bleep', file: 'bleep.wav' },
-      { name: 'Twinkle', file: 'twinkle.mp3' },
-      { name: 'Chimes', file: 'chimes.mp3' },
-      { name: 'Water Drop', file: 'water-drop.wav' },
-    ];
-
-    return (
-      <ScrollView contentContainerStyle={[AppStyles.modalScrollView]}>
-        {sounds.map(sound => (
-          <View key={`SOUND-${sound.name}`} style={[AppStyles.row]}>
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={() => {
-                this.playSound(sound.file);
-
-                this.setState({
-                  sessionSound: sound.file,
-                  readableSessionSound: `You'll be listening to ${sound.name}`,
-                });
-              }}
-              hitSlop={{ top: 1, right: 10, bottom: 1, left: 10 }}
-              style={AppStyles.primaryButton}
-            >
-              <Text>{sound.name}</Text>
-
-              {this.state.sessionSound === sound.file &&
-                <Icon name={'done'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
-              }
-
-              {this.state.sessionSound !== sound.file &&
-                <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
-              }
-            </TouchableOpacity>
-          </View>
-
-        ))}
-      </ScrollView>
-    );
-  }
-
-  getSessionIntervals = () => {
-    const sessionIntervals = [];
-
-    sessionIntervals.push(
-      <Picker.Item
-        key={'DEFAULT'}
-        label={'-'}
-        value={''}
-      />,
-    );
-
-    for (let intervals = 3; intervals <= 12; intervals += 1) {
-      sessionIntervals.push(
-        <Picker.Item
-          key={intervals}
-          label={`${intervals} intervals`}
-          value={intervals}
-        />,
-      );
-    }
-
-    const picker = (
-      <Picker
-        itemStyle={AppStyles.modalPickerItem}
-        selectedValue={this.state.sessionInterval}
-        onValueChange={(interval) => {
-          if (interval) {
-            this.setState({
-              sessionInterval: interval,
-              readableSessionInterval: `${interval} times during your session`,
-            });
-          }
-        }}
-      >
-        {sessionIntervals}
-      </Picker>
-    );
-
-    return picker;
   }
 
   toggleModal = (type) => {
     this.setState({
       modalType: type,
       modalVisible: !this.state.modalVisible,
-    });
-  }
-
-  playSound = (file) => {
-    const soundFile = new Sound(file, Sound.MAIN_BUNDLE, () => {
-      soundFile.play(() => {});
     });
   }
 
@@ -240,30 +106,21 @@ class SetupView extends Component {
 
   showHelpModal = () => {
     this.setState({
-      helpModalText: 'Session intervals are the amount of times your selected sound will play during your session, this is helpful for when you want a cue to move onto your next mental exercise',
+      helpModalText: AppInfo.intervalHelpText,
       helpModalVisible: true,
     });
   }
 
+  isButtonDisabled = () => {
+    if (!this.state.sessionLength || !this.state.sessionSound || !this.state.sessionInterval) {
+      return true;
+    }
+
+    return false;
+  }
+
   render = () => {
-    if (this.state.loading) return <Loading />;
-    if (this.state.error) return <Error text={this.state.error} />;
-
-    let modalContents;
-    const buttonDisabled = (!this.state.sessionLength ||
-      !this.state.sessionSound || !this.state.sessionInterval);
-
-    if (this.state.modalType === 'sessionLengths') {
-      modalContents = this.getSessionLengths();
-    }
-
-    if (this.state.modalType === 'sessionSounds') {
-      modalContents = this.getSessionSounds();
-    }
-
-    if (this.state.modalType === 'sessionIntervals') {
-      modalContents = this.getSessionIntervals();
-    }
+    const buttonDisabled = this.isButtonDisabled();
 
     return (
       <ScrollView
@@ -346,7 +203,7 @@ class SetupView extends Component {
             style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}
           >
             <Text>Begin your session</Text>
-            <Icon name={'play-circle-filled'} size={35} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
+            <Icon name={'play-circle-filled'} size={36} color={'#fe621d'} containerStyle={AppStyles.buttonIcon} />
           </TouchableOpacity>
 
           <View style={[AppStyles.flex1]} />
@@ -369,8 +226,8 @@ class SetupView extends Component {
 
           {!this.state.quoteLoading &&
             <View style={[AppStyles.flex10, AppStyles.center]}>
-              <Text h4 style={[AppStyles.textCenterAligned]}>{this.state.quoteAuthor}</Text>
-              <Text style={[AppStyles.textCenterAligned]}>{this.state.quoteBody}</Text>
+              <Text h4 style={AppStyles.textCenterAligned}>{this.state.quoteAuthor}</Text>
+              <Text style={AppStyles.textCenterAligned}>{this.state.quoteBody}</Text>
             </View>
           }
 
@@ -391,7 +248,49 @@ class SetupView extends Component {
               <Text h4>Close</Text>
             </TouchableOpacity>
 
-            {modalContents}
+            {this.state.modalType === 'sessionLengths' &&
+              <CustomPicker
+                minValue={5}
+                maxValue={120}
+                selectedValue={this.state.sessionLength}
+                onValueChange={(value) => {
+                  if (value) {
+                    this.setState({
+                      sessionLength: value,
+                      readableSessionLength: `Your session will be ${value} minutes long`,
+                    });
+                  }
+                }}
+              />
+            }
+
+            {this.state.modalType === 'sessionSounds' &&
+              <SoundPicker
+                selectedSound={this.state.sessionSound}
+                onPress={(sound) => {
+                  this.setState({
+                    sessionSound: sound.file,
+                    readableSessionSound: `You'll be listening to ${sound.name}`,
+                  });
+                }}
+              />
+            }
+
+            {this.state.modalType === 'sessionIntervals' &&
+              <CustomPicker
+                minValue={3}
+                maxValue={12}
+                selectedValue={this.state.sessionInterval}
+                onValueChange={(interval) => {
+                  if (interval) {
+                    this.setState({
+                      sessionInterval: interval,
+                      readableSessionInterval: `${interval} times during your session`,
+                    });
+                  }
+                }}
+              />
+            }
           </View>
         </Modal>
 
@@ -401,13 +300,17 @@ class SetupView extends Component {
           visible={this.state.helpModalVisible}
           supportedOrientations={['portrait', 'landscape']}
         >
-          <View style={AppStyles.helpModalContainer}>
+          <TouchableOpacity
+            style={AppStyles.helpModalContainer}
+            activeOpacity={1}
+            onPress={() => this.setState({ helpModalVisible: false })}
+          >
             <View style={[AppStyles.flex5]} />
 
             <Text>{this.state.helpModalText}</Text>
 
             <View style={[AppStyles.flex5]} />
-          </View>
+          </TouchableOpacity>
 
           <TouchableOpacity
             activeOpacity={0.8}

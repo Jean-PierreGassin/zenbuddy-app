@@ -13,7 +13,6 @@ import React, { Component } from 'react';
 import {
   View,
   Alert,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
@@ -23,14 +22,6 @@ import { AppStyles } from '@theme/';
 
 // Components
 import { Text, Spacer } from '@ui/';
-
-// Styles
-const styles = StyleSheet.create({
-  clockText: {
-    ...AppStyles.h2,
-    textAlign: 'center',
-  },
-});
 
 const timeOuts = [];
 let clockTimer;

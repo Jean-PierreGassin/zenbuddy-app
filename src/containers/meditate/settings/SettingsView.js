@@ -17,6 +17,7 @@ import {
 
 // Consts and Libs
 import { AppStyles } from '@theme/';
+import { AppInfo, AppQuotes } from '@lib/info';
 
 // Components
 import { Text, Spacer } from '@ui/';
@@ -284,7 +285,7 @@ class SettingsView extends Component {
 
   showHelpModal = () => {
     this.setState({
-      helpModalText: 'Setting a schedule means that your streak will not be broken if you miss a non-scheduled day',
+      helpModalText: AppInfo.scheduleHelpText,
       helpModalVisible: true,
     });
   }
@@ -381,13 +382,17 @@ class SettingsView extends Component {
           visible={this.state.helpModalVisible}
           supportedOrientations={['portrait', 'landscape']}
         >
-          <View style={AppStyles.helpModalContainer}>
+          <TouchableOpacity
+            style={AppStyles.helpModalContainer}
+            activeOpacity={1}
+            onPress={() => this.setState({ helpModalVisible: false })}
+          >
             <View style={[AppStyles.flex5]} />
 
             <Text>{this.state.helpModalText}</Text>
 
             <View style={[AppStyles.flex5]} />
-          </View>
+          </TouchableOpacity>
 
           <TouchableOpacity
             activeOpacity={0.8}
