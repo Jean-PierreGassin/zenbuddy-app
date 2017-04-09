@@ -30,6 +30,8 @@ class CustomText extends Component {
     h4: false,
     h5: false,
     p: false,
+    style: {},
+    children: [],
   }
 
   textProps = () => {

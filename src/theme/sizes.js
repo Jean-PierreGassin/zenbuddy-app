@@ -28,7 +28,7 @@ export default {
     width80Percent: screenWidth * 0.80,
   },
   navbarHeight: (Platform.OS === 'ios') ? 64 : 54,
-  buttonHeight: (Platform.OS === 'ios') ? 45 : 35,
+  buttonHeight: (Platform.OS === 'ios') ? 45 : 45,
   statusBarHeight: (Platform.OS === 'ios') ? 16 : 0,
   tabbarHeight: 51,
 

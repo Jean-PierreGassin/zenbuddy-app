@@ -3,6 +3,8 @@
  *
  */
 
+import { Platform } from 'react-native';
+
 import Colors from './colors';
 import Fonts from './fonts';
 import Sizes from './sizes';
@@ -49,14 +51,28 @@ export default {
     fontSize: Fonts.base.size,
     lineHeight: Fonts.base.lineHeight,
     color: Colors.textPrimary,
-    fontWeight: '500',
+    ...Platform.select({
+      ios: {
+        fontWeight: '500',
+      },
+      android: {
+        fontWeight: '300',
+      },
+    }),
   },
   p: {
     fontFamily: Fonts.base.family,
     fontSize: Fonts.base.size,
     lineHeight: Fonts.base.lineHeight,
     color: Colors.textPrimary,
-    fontWeight: '500',
+    ...Platform.select({
+      ios: {
+        fontWeight: '500',
+      },
+      android: {
+        fontWeight: '300',
+      },
+    }),
     marginBottom: 8,
   },
   h1: {
@@ -64,56 +80,91 @@ export default {
     fontSize: Fonts.h1.size,
     lineHeight: Fonts.h1.lineHeight,
     color: Colors.headingPrimary,
-    fontWeight: '800',
     margin: 0,
     marginBottom: 4,
     left: 0,
     right: 0,
+    ...Platform.select({
+      ios: {
+        fontWeight: '800',
+      },
+      android: {
+        fontWeight: '500',
+      },
+    }),
   },
   h2: {
     fontFamily: Fonts.h2.family,
     fontSize: Fonts.h2.size,
     lineHeight: Fonts.h2.lineHeight,
     color: Colors.headingPrimary,
-    fontWeight: '800',
     margin: 0,
     marginBottom: 4,
     left: 0,
     right: 0,
+    ...Platform.select({
+      ios: {
+        fontWeight: '800',
+      },
+      android: {
+        fontWeight: '500',
+      },
+    }),
   },
   h3: {
     fontFamily: Fonts.h3.family,
     fontSize: Fonts.h3.size,
     lineHeight: Fonts.h3.lineHeight,
     color: Colors.headingPrimary,
-    fontWeight: '500',
     margin: 0,
     marginBottom: 4,
     left: 0,
     right: 0,
+    ...Platform.select({
+      ios: {
+        fontWeight: '500',
+      },
+      android: {
+        fontWeight: '300',
+      },
+    }),
   },
   h4: {
     fontFamily: Fonts.h4.family,
     fontSize: Fonts.h4.size,
     lineHeight: Fonts.h4.lineHeight,
     color: Colors.headingPrimary,
-    fontWeight: '800',
     margin: 0,
     marginBottom: 4,
     left: 0,
     right: 0,
+    ...Platform.select({
+      ios: {
+        fontWeight: '800',
+      },
+      android: {
+        fontWeight: '500',
+      },
+    }),
   },
   h5: {
     fontFamily: Fonts.h5.family,
     fontSize: Fonts.h5.size,
     lineHeight: Fonts.h5.lineHeight,
     color: Colors.headingPrimary,
-    fontWeight: '800',
     margin: 0,
     marginTop: 4,
     marginBottom: 4,
     left: 0,
     right: 0,
+    ...Platform.select({
+      ios: {
+        fontWeight: '800',
+      },
+      android: {
+        fontWeight: '500',
+      },
+    }),
   },
   strong: {
     fontWeight: '900',
@@ -319,6 +370,14 @@ export default {
     fontWeight: 'bold',
     fontFamily: Fonts.base.family,
     fontSize: Fonts.base.size,
+    ...Platform.select({
+      ios: {
+        top: 5,
+      },
+      android: {
+        top: 8,
+      },
+    }),
   },
   navbarButton: {
     tintColor: '#ffffff',

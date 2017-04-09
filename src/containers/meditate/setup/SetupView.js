@@ -253,6 +253,7 @@ class SetupView extends Component {
               <CustomPicker
                 minValue={5}
                 maxValue={120}
+                type={'minutes'}
                 selectedValue={this.state.sessionLength}
                 onValueChange={(value) => {
                   if (value) {
@@ -281,6 +282,7 @@ class SetupView extends Component {
               <CustomPicker
                 minValue={3}
                 maxValue={12}
+                type={'intervals'}
                 selectedValue={this.state.sessionInterval}
                 onValueChange={(interval) => {
                   if (interval) {
