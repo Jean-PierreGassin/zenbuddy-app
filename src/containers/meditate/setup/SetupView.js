@@ -12,7 +12,9 @@ import React, { Component } from 'react';
 import {
   View,
   Modal,
+  Platform,
   ScrollView,
+  AsyncStorage,
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
@@ -77,7 +79,7 @@ class SetupView extends Component {
     });
   }
 
-  startSession = () => {
+  startIOSSession = () => {
     iCloudStorage.getItem('user').then((response) => {
       let userData = {};
 
@@ -102,6 +104,32 @@ class SetupView extends Component {
 
       Actions.session();
     });
+  }
+
+  startAndroidSession = async () => {
+    const user = await AsyncStorage.getItem('user');
+    let userData = {};
+
+    if (user) {
+      userData = JSON.parse(user);
+    }
+
+    if (!userData.sessionSettings) {
+      userData.sessionSettings = {};
+    }
+
+    userData.sessionSettings = {
+      ...userData.sessionSettings,
+      sound: this.state.sessionSound,
+      length: this.state.sessionLength,
+      intervals: this.state.sessionInterval,
+    };
+
+    this.props.updateMe({
+      ...userData,
+    });
+
+    Actions.session();
   }
 
   showHelpModal = () => {
@@ -199,7 +227,15 @@ class SetupView extends Component {
             disabled={buttonDisabled}
             activeOpacity={0.7}
             hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-            onPress={() => this.startSession()}
+            onPress={() => {
+              if (Platform.OS === 'ios') {
+                this.startIOSSession();
+              }
+
+              if (Platform.OS === 'android') {
+                this.startAndroidSession();
+              }
+            }}
             style={[AppStyles.primaryButton, buttonDisabled && AppStyles.primaryButtonDisabled]}
           >
             <Text>Begin your session</Text>

@@ -3,6 +3,7 @@
  *
  */
 import iCloudStorage from 'react-native-icloudstore';
+import { Platform, AsyncStorage } from 'react-native';
 
 /**
   * Update My User Data
@@ -15,7 +16,13 @@ export function updateMe(userData) {
       data: userData,
     });
 
-    iCloudStorage.setItem('user', JSON.stringify(userData));
+    if (Platform.OS === 'ios') {
+      iCloudStorage.setItem('user', JSON.stringify(userData));
+    }
+
+    if (Platform.OS === 'android') {
+      AsyncStorage.setItem('user', JSON.stringify(userData));
+    }
 
     return userData;
   };

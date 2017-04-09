@@ -13,7 +13,9 @@ import React, { Component } from 'react';
 import {
   View,
   Alert,
+  Platform,
   ScrollView,
+  AsyncStorage,
   TouchableOpacity,
 } from 'react-native';
 
@@ -119,7 +121,14 @@ class SessionView extends Component {
 
   finishSession = () => {
     this.playSound('finish.mp3', { beQuiet: true });
-    this.saveHistory();
+
+    if (Platform.OS === 'ios') {
+      this.saveIOSHistory();
+    }
+
+    if (Platform.OS === 'android') {
+      this.saveAndroidHistory();
+    }
 
     this.setState({
       isFinished: true,
@@ -127,7 +136,7 @@ class SessionView extends Component {
     });
   }
 
-  saveHistory = () => {
+  saveIOSHistory = () => {
     iCloudStorage.getItem('user').then((response) => {
       const userData = JSON.parse(response);
 
@@ -153,6 +162,37 @@ class SessionView extends Component {
         Actions.personal();
       }, 3000);
     });
+  }
+
+  saveAndroidHistory = async () => {
+    const user = await AsyncStorage.getItem('user');
+    const userData = JSON.parse(user);
+
+    if (!userData.sessionHistory) {
+      userData.sessionHistory = [];
+    }
+
+    if (!userData.sessionSettings) {
+      userData.sessionSettings = {};
+    }
+
+    const streak = this.calculateStreak(userData);
+
+    userData.sessionHistory.unshift({
+      date: moment().format(),
+      length: this.props.user.sessionSettings.length,
+      intervals: this.props.user.sessionSettings.intervals,
+    });
+
+    this.props.updateMe({
+      ...userData,
+      sessionStreak: streak,
+    });
+
+    setTimeout(() => {
+      Actions.pop();
+      Actions.personal();
+    }, 3000);
   }
 
   calculateStreak = (userData) => {
