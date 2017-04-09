@@ -363,6 +363,7 @@ class SettingsView extends Component {
           animationType={'slide'}
           visible={this.state.modalVisible}
           supportedOrientations={['portrait', 'landscape']}
+          onRequestClose={() => this.setState({ helpModalVisible: false })}
         >
           <View style={AppStyles.modalContainer}>
             <TouchableOpacity
@@ -381,6 +382,7 @@ class SettingsView extends Component {
           animationType={'fade'}
           visible={this.state.helpModalVisible}
           supportedOrientations={['portrait', 'landscape']}
+          onRequestClose={() => this.setState({ helpModalVisible: false })}
         >
           <TouchableOpacity
             style={AppStyles.helpModalContainer}
